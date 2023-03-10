@@ -1,13 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import MyCart from "./Components/MyCart";
 
 function App() {
   return (
-    <div className="App">
-      
-      <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
+    <div>
+      <div  className="bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7TarD4RVnVwBFK5g5CJLcxXC_wRqh4ZJaMFelX5nBPUQ0THDpTkgWjkobJ5v69yVePk0&usqp=CAU')]">
+      <MyCart />
+      </div>
+    
     </div>
   );
 }
