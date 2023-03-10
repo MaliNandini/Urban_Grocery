@@ -6,10 +6,8 @@ function Home() {
   const [data, setData] = useState([]);
   return (
     <div>
-      <Navbar setData={setData}/>
-         <Card  data={data} />
-
-      
+      <Navbar setData={setData} />
+      <Card data={data} />
     </div>
   );
 }
