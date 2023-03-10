@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaShoppingCart,FaGreaterThan} from "react-icons/fa";
 import CartQuantity from "./Button/CartQuantity";
-import mockProduct from "../Models/MockProduct";
+import {mockProduct} from "../Models/MockProduct";
 
 function MyCart() {
   const [showModal, setShowModal] = useState(false);
@@ -35,7 +35,7 @@ function MyCart() {
                   </button>
                 </div>
                 
-                {productData.map((item)=>{
+                {productData && productData.map((item)=>{
                   return (
                     <>
                     <div class="mt-3 p-5">
@@ -94,7 +94,7 @@ function MyCart() {
 
               <button className=" flex justify-between bg-lime text-white ml-3 p-2 fixed bottom-0 w-[380px] rounded-lg">
                 <p className="p-2">Total : ₹ 350</p>
-                <p className="p-2">Process to Pay ></p>
+                <p className="p-2">Process to Pay </p>
               </button>
               </div>
             </div>
