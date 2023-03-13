@@ -3,7 +3,8 @@ import React from "react";
 import Search from "../Search/Search";
 import MyCart from '../MyCart';
 
-export const Navbar = ({setData}) => {
+export const Navbar = ({setData,addItem}) => {
+  console.log(addItem,"...")
   return (
     <div>
       <nav class="bg-white px-2 sm:px-4  dark:bg-gray-900 fixed w-full z-20 top-0 left-0 border-b border-gray-200 dark:border-gray-600">
@@ -18,11 +19,12 @@ export const Navbar = ({setData}) => {
               Hi, There!
             </span>
           </a>
+          
           <div class="flex md:order-2">
            
-             <MyCart/>
+          <MyCart addItem={addItem}/>
             
-            <button
+            {/* <button
               data-collapse-toggle="navbar-sticky"
               type="button"
               class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
@@ -43,7 +45,7 @@ export const Navbar = ({setData}) => {
                   clip-rule="evenodd"
                 ></path>
               </svg>
-            </button>
+            </button> */}
           </div>
           <div
             class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"

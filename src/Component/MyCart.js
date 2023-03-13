@@ -3,9 +3,11 @@ import { FaShoppingCart,FaGreaterThan} from "react-icons/fa";
 import CartQuantity from "./Button/CartQuantity";
 import {mockProduct} from "../Models/MockProduct";
 
-function MyCart() {
+function MyCart({addItem}) {
+   console.log(addItem , ">>>>>")
   const [showModal, setShowModal] = useState(false);
-  const [productData, setProductData] = useState(mockProduct.data)
+  // const [productData, setProductData] = useState(addItem)
+  // console.log(productData,"LLLLLLLLLL")
   
   return (
     <>
@@ -35,7 +37,7 @@ function MyCart() {
                   </button>
                 </div>
                 
-                {productData && productData.map((item)=>{
+                {addItem && addItem.map((item)=>{
                   return (
                     <>
                     <div class="mt-3 p-5">
@@ -57,7 +59,7 @@ function MyCart() {
                                 <a href="#" className="float-left">{item.name}</a>
                               </h3><br/>
                              
-                              {item.variants.map((data)=>{
+                              {/* {item.variants.map((data)=>{
                                 return(
                                   <div>
                                     <p class="text-sm text-gray-500 float-left">{data.measurement} {data.measurement_unit_name}</p><br/>
@@ -65,13 +67,13 @@ function MyCart() {
                                   </div>
                                  
                                 )})}
-                             
+                              */}
                               
                             </div>
                          
-                          <div class="flex  items-end justify-between text-sm">
+                          {/* <div class="flex  items-end justify-between text-sm">
                             <p class="text-gray-500">Qty {item.total_allowed_quantity}</p>
-                            <CartQuantity/>
+                            <CartQuantity/> */}
 
                             {/* <div class="flex">
                               <button
@@ -81,7 +83,7 @@ function MyCart() {
                                 Remove
                               </button>
                             </div> */}
-                          </div>
+                          {/* </div> */}
                         </div>
                       </li>
                     </ul>
