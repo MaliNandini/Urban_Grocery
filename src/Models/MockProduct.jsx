@@ -1,4 +1,4 @@
-export const mockProduct = [
+const mockProduct = 
   {
     error: false,
     message: "Products Retrived Successfully.",
@@ -2293,6 +2293,5 @@ export const mockProduct = [
           },
         ],
       },
-    ],
-  },
-];
+    ]
+  }

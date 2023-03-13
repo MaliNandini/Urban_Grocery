@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { categoryData } from "../../Models/MockCategoryData";
 
 export const Card = ({ name, data }) => {
@@ -24,7 +24,7 @@ export const Card = ({ name, data }) => {
                     <button className="bg-blue-500 hover:bg-red-700 text-white py-1 px-3 rounded text-sm">
                       Buy Now
                     </button>
-                  </div>
+                  </div> 
                 </div>
               );
             })}

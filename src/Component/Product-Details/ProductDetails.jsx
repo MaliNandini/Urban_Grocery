@@ -5,12 +5,11 @@ import { mockProduct } from "../../Models/MockProduct";
 import { categoryData } from "../../Models/MockCategoryData";
 
 export const ProductDetails = () => {
-  const [productPageData, setProductPage] = useState(mockProduct[0].data);
+  const [productPageData, setProductPage] = useState(mockProduct.data);
   
   const [cardData, setCardData] = useState(categoryData.data);
 
   // console.log(cardData);
-
   // console.log(productPageData);
 
   const { id } = useParams();
@@ -19,9 +18,7 @@ export const ProductDetails = () => {
     return data.id === id;
   });
 
- 
-
-  // console.log(filterData, "filterData");
+  console.log(filterData, "filterData");
   
   return (
     <div className="flex mt-10 p-16 justify-between">
