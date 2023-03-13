@@ -6,22 +6,28 @@ import { categoryData } from "../../Models/MockCategoryData";
 
 export const ProductDetails = () => {
   const [productPageData, setProductPage] = useState(mockProduct[0].data);
+  
   const [cardData, setCardData] = useState(categoryData.data);
 
-  console.log(cardData);
+  // console.log(cardData);
 
-  console.log(productPageData);
+  // console.log(productPageData);
+
   const { id } = useParams();
 
   const filterData = cardData.filter((data) => {
     return data.id === id;
   });
 
-  console.log(filterData, "filterData");
+ 
+
+  // console.log(filterData, "filterData");
+  
   return (
     <div className="flex mt-10 p-16 justify-between">
       {filterData &&
         filterData.map((items) => {
+          console.log(filterData)
           return (
             <>
               <div
@@ -64,34 +70,34 @@ export const ProductDetails = () => {
               </div>
               <div className="flex flex-col mr-24 al p-6">
                 <nav
-                  class="flex  px-20 py-3 text-gray-700 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
+                  className="flex px-20 py-3 text-gray-700 bg-gray-50 dark:bg-gray-800 dark:border-gray-700"
                   aria-label="Breadcrumb"
                 >
-                  <ol class="inline-flex items-center space-x-1 md:space-x-3">
-                    <li class="inline-flex items-center">
+                  <ol className="inline-flex items-center space-x-1 md:space-x-3">
+                    <li className="inline-flex items-center">
                       <a
                         href="#"
-                        class="inline-flex gap-3 items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
+                        className="inline-flex gap-3 items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
                       >
                         <FaRegHeart />
                         Wish List
                       </a>
                     </li>
                     <li>
-                      <div class="flex items-center">
+                      <div className="flex items-center">
                         <FaArrowsAlt />
                         <a
                           href="#"
-                          class="ml-1 gap-3 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
+                          className="ml-1 gap-3 text-sm font-medium text-gray-700 hover:text-blue-600 md:ml-2 dark:text-gray-400 dark:hover:text-white"
                         >
                           Share
                         </a>
                       </div>
                     </li>
                     <li aria-current="page">
-                      <div class="flex items-center ">
+                      <div className="flex items-center ">
                         <FaAlignLeft />
-                        <span class="ml-1 gap-3 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
+                        <span className="ml-1 gap-3 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
                           Similar Products
                         </span>
                       </div>
@@ -108,7 +114,7 @@ export const ProductDetails = () => {
                 <h1 className="text-left  ml-20">
                   You Save <span className="text-green-600 ">#90.00</span>
                 </h1>
-                <button className="bg-green-700 mt-5 w-24  ml-20 text-white font-bold py-2 px-4 rounded-lg">
+                <button className="bg-green-700 mt-5 w-24  ml-20 text-white font-bold py-2 px-4 rounded-lg" >
                   Add
                 </button>
               </div>
