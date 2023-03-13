@@ -4,41 +4,38 @@ import { useParams } from "react-router-dom";
 import { mockProduct } from "../../Models/MockProduct";
 import { categoryData } from "../../Models/MockCategoryData";
 
-export const ProductDetails = ({addItemHandler}) => {
+export const ProductDetails = ({setAddItem,addItem}) => {
   const [productPageData, setProductPage] = useState(mockProduct[0].data);
-  const [cardData, setCardData] = useState(categoryData.data);
- 
-
   const { id } = useParams();
 
-  const filterData = cardData.filter((data) => {
+  
+  const addItemHandler = (item) => {
+    // Update cart item quantity if already in cart
+    if (addItem.some((cartItem) => cartItem.id === item.id)) {
+      setAddItem((cart) =>
+        cart.map((data) =>
+          data.id === item.id
+            ? {
+                ...data,
+                amount: data.amount + 1,
+              }
+            : data
+        )
+      );
+      return;
+    }
+    // Add to cart
+    setAddItem((cart) => [
+      ...cart,
+      { ...item, amount: 1 }, // <-- initial amount 1
+    ]);
+  };
+
+ 
+
+  const filterData = productPageData.filter((data) => {
     return data.id === id;
   });
-
-
-
-    // const ItemIndex = addItem.findIndex((data) => data.id === addItem.id);
-    // console.log(ItemIndex,"ItemIndex///");
-    // if (ItemIndex >= 0) {
-    // // state.carts[ItemIndex].qnty += 1;
-    // setAddItem([ItemIndex].qnty +=1)
-    // return {
-    //   // ...addItem,
-    //   // carts: [...addItem],
-    //   // setAddItem({addItem:[...addItem]});
-    //   setAddItem((current) => [...current, addItem])
-    // }
-    
-    // } else {
-    // const temp = { ...item, qnty: 1 };
-    // console.log(temp , "temp///")
-    // return {
-    //   // ...addItem,
-    //   carts: [...addItem, temp],
-    // };
-    // }
-  
-  
   
 
   return (

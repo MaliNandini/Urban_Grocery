@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
-import { categoryData } from "../../Models/MockCategoryData";
+import { NavLink } from "react-router-dom";
+import { mockProduct } from "../../Models/MockProduct";
 
 export const Card = ({ name, data }) => {
-  const [cardData, setCardData] = useState(categoryData.data);
+  const [cardData, setCardData] = useState(mockProduct[0].data);
 
   return (
     <>
@@ -21,9 +21,11 @@ export const Card = ({ name, data }) => {
                     <p className="text-gray-700 decoration-double text-sm">
                       {item.subtitle}
                     </p>
+                    <NavLink to={`product-details/${item.id}`}>
                     <button className="bg-lime hover:bg-red-700 text-white py-1 px-3 rounded text-sm">
                       Buy Now
                     </button>
+                    </NavLink>
                   </div>
                 </div>
               );

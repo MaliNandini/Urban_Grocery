@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Card } from "./Card/Card";
-import { Navbar } from "./Navbar/Navbar";
 
-function Home({addItem ,data}) {
-  // const [data, setData] = useState([]);
+
+function Home({data}) {
+
   return (
     <div>
-      {/* <Navbar setData={setData} addItem={addItem}/> */}
       <Card data={data} />
     </div>
   );
