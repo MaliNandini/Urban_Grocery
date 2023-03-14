@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { categoryData } from "../../Models/MockCategoryData";
+import { mockProduct } from "../../Models/MockProduct";
 
 export const Card = ({ name, data }) => {
-  const [cardData, setCardData] = useState(categoryData.data);
+  const [cardData, setCardData] = useState(mockProduct[0].data);
 
   return (
     <>
@@ -26,8 +26,7 @@ export const Card = ({ name, data }) => {
                       Buy Now
                     </button>
                     </NavLink>
-                    
-                  </div> 
+                  </div>
                 </div>
               );
             })}

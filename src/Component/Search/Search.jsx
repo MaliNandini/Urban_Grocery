@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { Card } from "../Card/Card";
 import { categoryData } from "../../Models/MockCategoryData";
 
 const Search = ({ setData }) => {
-  // console.log(data);
+
 
   const [name, setName] = useState("");
   const [searchData, setSearchData] = useState(categoryData.data);
@@ -12,12 +10,12 @@ const Search = ({ setData }) => {
   const handleChange = (e) => {
     const filteredData = e.target.value;
     setName(filteredData);
-    console.log(name);
+ 
     let result;
     result = searchData.filter((item) => {
       return item.name.toLowerCase().startsWith(filteredData.toLowerCase());
     });
-    console.log("result", result);
+
     setData(result);
 
     // else {

@@ -4,57 +4,39 @@ import { useParams } from "react-router-dom";
 import { mockProduct } from "../../Models/MockProduct";
 import { categoryData } from "../../Models/MockCategoryData";
 
-export const ProductDetails = ({addItemHandler}) => {
-  // const [productPageData, setProductPage] = useState(mockProduct[0].data);
-  const [cardData, setCardData] = useState(categoryData.data);
-  const [products, setProducts] = useState(categoryData.data)
- 
-
+export const ProductDetails = ({setAddItem,addItem}) => {
+  const [productPageData, setProductPage] = useState(mockProduct[0].data);
   const { id } = useParams();
 
-  const filterData = cardData.filter((data) => {
+  
+  const addItemHandler = (item) => {
+    // Update cart item quantity if already in cart
+    console.log(item)
+    if (addItem.some((cartItem) => cartItem.id === item.id)) {
+      setAddItem((cart) =>
+        cart.map((data) =>
+          data.id === item.id
+            ? {
+                ...data,
+                amount: data.amount + 1,
+              }
+            : data
+        )
+      );
+      return;
+    }
+    // Add to cart
+    setAddItem((cart) => [
+      ...cart,
+      { ...item, amount: 1 }, // <-- initial amount 1
+    ]);
+  };
+
+ 
+
+  const filterData = productPageData.filter((data) => {
     return data.id === id;
   });
-
-  const handleClick =(productId)=>{
-    setProducts(products.map((product)=>{
-      if(product.id === productId){
-        return {
-          ...product,
-          row_order : product.row_order + 1
-        };
-      }else{
-        return product;
-      }
-    }))
-    console.log(products);
-
-  }
-
-
-
-    // const ItemIndex = addItem.findIndex((data) => data.id === addItem.id);
-    // console.log(ItemIndex,"ItemIndex///");
-    // if (ItemIndex >= 0) {
-    // // state.carts[ItemIndex].qnty += 1;
-    // setAddItem([ItemIndex].qnty +=1)
-    // return {
-    //   // ...addItem,
-    //   // carts: [...addItem],
-    //   // setAddItem({addItem:[...addItem]});
-    //   setAddItem((current) => [...current, addItem])
-    // }
-    
-    // } else {
-    // const temp = { ...item, qnty: 1 };
-    // console.log(temp , "temp///")
-    // return {
-    //   // ...addItem,
-    //   carts: [...addItem, temp],
-    // };
-    // }
-  
-  
   
 
   return (
@@ -75,7 +57,7 @@ export const ProductDetails = ({addItemHandler}) => {
                 <div className="text-left">
                   <h1 className="font-bold mt-2">Product Details</h1>
                   <h3 className="font-medium">Key Features</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <p className="text-gray-600" innerHTML>{item.description}</p>
 
                   <h2 className="font-medium mt-2">Ingredients</h2>
                   <p className="text-gray-600">
@@ -147,14 +129,14 @@ export const ProductDetails = ({addItemHandler}) => {
                 <h1 className="text-left  ml-20">
                   You Save <span className="text-green-600 ">#90.00</span>
                 </h1>
-                <button className="bg-lime mt-5 w-24  ml-20 text-white font-bold py-2 px-4 rounded-lg"
+                {/* <button className="bg-lime mt-5 w-24  ml-20 text-white font-bold py-2 px-4 rounded-lg"
                 onClick={handleClick}>
                   Add
-                </button>
-                {/* <button className="bg-lime mt-5 w-24  ml-20 text-white font-bold py-2 px-4 rounded-lg"
+                </button> */}
+                <button className="bg-lime mt-5 w-24  ml-20 text-white font-bold py-2 px-4 rounded-lg"
                 onClick={()=>addItemHandler(item)}>
                   Add
-                </button> */}
+                </button>
               </div>
             </>
           );
