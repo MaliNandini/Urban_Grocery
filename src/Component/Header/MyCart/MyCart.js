@@ -11,6 +11,7 @@ function MyCart({ addItem, setAddItem }) {
   const [amount, setAmount] = useState();
   const [price, setPrice] = useState(0);
   const [showForm , setShowForm] = useState(false);
+  
   const hideMOdal = () => {
     console.log("hide")
     setShowModal(false);
@@ -37,7 +38,7 @@ function MyCart({ addItem, setAddItem }) {
   const removeItemHandler = (item) => {
     console.log(item)
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
-    let price=price-(item.amount*parseFloat(item.variants[0].price))
+    let price = price-(item.amount*parseFloat(item.variants[0].price))
     setPrice(price);
 
   };
