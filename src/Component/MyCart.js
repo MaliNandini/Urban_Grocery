@@ -9,41 +9,45 @@ function MyCart({ addItem, setAddItem }) {
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState();
   const [price, setPrice] = useState(0);
-  const [showForm , setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
   const hideMOdal = () => {
-    console.log("hide")
+    console.log("hide");
+    setIsLoading(false);
     setShowModal(false);
     setShowForm(false);
-  }
-  const back=()=>{
-    if(showForm){
-    setShowForm(false)
+  };
+  const back = () => {
+    if (showForm) {
+      setIsLoading(false);
+      setShowForm(false);
     }
-  }
+  };
   const total = () => {
-    console.log(addItem)
+    console.log(addItem);
     let price = 0;
-      addItem.map((e) => {
-        price +=parseFloat( e.variants[0].price) * e.amount ;
-      });
+    addItem.map((e) => {
+      price += parseFloat(e.variants[0].price) * e.amount;
+    });
     setPrice(price);
-    console.log(price)
+    console.log(price);
   };
   useEffect(() => {
     total();
   }, [total]);
 
   const removeItemHandler = (item) => {
-    console.log(item)
+    console.log(item);
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
-    let price=price-(item.amount*parseFloat(item.variants[0].price))
+    let price = price - item.amount * parseFloat(item.variants[0].price);
     setPrice(price);
-
   };
 
   const formHandler = () => {
     setShowForm(true);
     console.log("hello");
+    setIsLoading(true);
   };
   return (
     <>
@@ -62,7 +66,11 @@ function MyCart({ addItem, setAddItem }) {
             <div className="relative">
               <div className=" min-h-screen w-[400px] border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
                 <div className="flex items-start justify-between p-5 m-0">
-                  {showForm?<button className="back-button" onClick={back}>&#8592;</button>:null}
+                  {showForm ? (
+                    <button className="back-button" onClick={back}>
+                      &#8592;
+                    </button>
+                  ) : null}
                   <p className="py-2 text-xl font-bold">My Cart</p>
                   <button
                     className="bg-transparent text-black float-right"
@@ -74,107 +82,104 @@ function MyCart({ addItem, setAddItem }) {
                   </button>
                 </div>
 
-                {!showForm && addItem.length ? (
-                  addItem &&
-                  addItem.map((item) => {
-                    return (
-                      <>
-                        <div class="mt-3 p-5 " >
-                          <div class="flow-root">
-                            <ul
-                              role="list"
-                              class="-my-6 divide-y divide-gray-200"
-                            >
-                              <li class="flex py-6">
-                                <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                  <img
-                                    src={item.image}
-                                    alt="product"
-                                    class="h-full w-full object-cover object-center"
-                                  />
-                                </div>
+                {!showForm && addItem.length
+                  ? addItem &&
+                    addItem.map((item) => {
+                      return (
+                        <>
+                          <div class="mt-3 p-5 ">
+                            <div class="flow-root">
+                              <ul
+                                role="list"
+                                class="-my-6 divide-y divide-gray-200"
+                              >
+                                <li class="flex py-6">
+                                  <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                    <img
+                                      src={item.image}
+                                      alt="product"
+                                      class="h-full w-full object-cover object-center"
+                                    />
+                                  </div>
 
-                                <div class="ml-4 flex flex-1 flex-col">
-                                  <div class="  text-base font-medium text-gray-900">
-                                    <h3>
-                                      <a href="#" className="float-left">
-                                        {item.name}
-                                      </a>
-                                    </h3>
-                                    <br />
-                                    {item.variants.map((data) => {
-                                      return (
-                                        <>
+                                  <div class="ml-4 flex flex-1 flex-col">
+                                    <div class="  text-base font-medium text-gray-900">
+                                      <h3>
+                                        <a href="#" className="float-left">
+                                          {item.name}
+                                        </a>
+                                      </h3>
+                                      <br />
+                                      {item.variants.map((data) => {
+                                        return (
+                                          <>
+                                            <p class="text-sm text-gray-500 float-left">
+                                              {data.measurement}{" "}
+                                              {data.measurement_unit_name}
+                                            </p>
+                                            <br></br>
+                                            <p class="text-sm text-gray-500 float-left">
+                                              Price ₹{data.price}
+                                            </p>{" "}
+                                            <br />
+                                          </>
+                                        );
+                                      })}
+
+                                      <div className="flex justify-between">
+                                        <div>
                                           <p class="text-sm text-gray-500 float-left">
-                                            {data.measurement}{" "}
-                                            {data.measurement_unit_name}
+                                            {" "}
+                                            Qty {item.amount}
+                                            {() => setAmount(item.amount)}
                                           </p>
-                                          <br></br>
-                                          <p class="text-sm text-gray-500 float-left">
-                                            Price ₹{data.price}
-                                          </p>{" "}
-                                          <br />
-                                        </>
-                                      );
-                                    })}
+                                        </div>
 
-                                    <div className="flex justify-between">
-                                      <div>
-                                        <p class="text-sm text-gray-500 float-left">
-                                          {" "}
-                                          Qty {item.amount}
-                                          {() => setAmount(item.amount)}
-                                        </p>
-                                      </div>
-
-                                      <div>
-                                        <CartQuantity
-                                          item={item}
-                                          setAddItem={setAddItem}
-                                          addItem={addItem}
-                                        />
-                                      </div>
-                                      <div>
-                                        <FaTrash
-                                          onClick={() =>
-                                            removeItemHandler(item)
-                                          }
-                                          className="cursor-pointer text-xl "
-                                        />
+                                        <div>
+                                          <CartQuantity
+                                            item={item}
+                                            setAddItem={setAddItem}
+                                            addItem={addItem}
+                                          />
+                                        </div>
+                                        <div>
+                                          <FaTrash
+                                            onClick={() =>
+                                              removeItemHandler(item)
+                                            }
+                                            className="cursor-pointer text-xl "
+                                          />
+                                        </div>
                                       </div>
                                     </div>
                                   </div>
-                                </div>
-                              </li>
-                            </ul>
-                            <button
-                              className=" flex justify-between bg-lime text-white ml-3 p-2 fixed bottom-0 w-[380px] rounded-lg"
-                              onClick={formHandler}
-                            >
-                              <p className="p-2">Total : ₹ {price}</p>
-                              <p className="p-2">Process to Pay </p>
-                            </button>
+                                </li>
+                              </ul>
+                              <button
+                                className=" flex justify-between bg-lime text-white ml-3 p-2 fixed bottom-0 w-[380px] rounded-lg"
+                                onClick={formHandler}
+                              >
+                                <p className="p-2">Total : ₹ {price}</p>
+                                <p className="p-2">Process to Pay </p>
+                              </button>
+                            </div>
                           </div>
-                        </div>
-                      </>
-                    );
-                  })
+                        </>
+                      );
+                    })
+                  : null}
+
+                {!showForm && !addItem.length ? (
+                  <div className="relative p-6 flex-auto">
+                    <p>your cart is empty</p>
+                  </div>
                 ) : null}
-
-                  {!showForm && !addItem.length ? (
-                
-                <div className="relative p-6 flex-auto">
-                  <p>your cart is empty</p>
-                </div>
-              ): null}
-                {showForm ? <Form hideMOdal={hideMOdal}/> : null}
-
+                {showForm ? <Form hideMOdal={hideMOdal} /> : null}
               </div>
             </div>
           </div>
         </>
       ) : null}
-     
     </>
   );
 }

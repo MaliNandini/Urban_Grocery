@@ -3,12 +3,13 @@ import { NavLink } from "react-router-dom";
 import { mockProduct } from "../../Models/MockProduct";
 
 export const Card = ({ name, data }) => {
-  const [cardData, setCardData] = useState(mockProduct[0].data);
+  const [cardData, setCardData] = useState(mockProduct.data);
 
+  console.log(cardData , "////")
   return (
     <>
       {data.length == 0 ? (
-        <div className="flex">
+        <div className="flex flex-row flex-wrap">
           {cardData &&
             cardData.map((item) => {
               return (

@@ -5,7 +5,7 @@ import { mockProduct } from "../../Models/MockProduct";
 import { categoryData } from "../../Models/MockCategoryData";
 
 export const ProductDetails = ({setAddItem,addItem}) => {
-  const [productPageData, setProductPage] = useState(mockProduct[0].data);
+  const [productPageData, setProductPage] = useState(mockProduct.data);
   const { id } = useParams();
 
   
