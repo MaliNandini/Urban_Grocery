@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home data={data} />} />
         <Route path="/product-details/:id" element={<ProductDetails setAddItem={setAddItem} addItem={addItem}/>} />
-        <Route path="/form" element={<Form/>} />
+        <Route path="/payment" element={<Form/>} />
       </Routes>
     </div>
   );

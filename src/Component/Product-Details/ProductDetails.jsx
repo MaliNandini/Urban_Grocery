@@ -11,6 +11,7 @@ export const ProductDetails = ({setAddItem,addItem}) => {
   
   const addItemHandler = (item) => {
     // Update cart item quantity if already in cart
+    console.log(item)
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
       setAddItem((cart) =>
         cart.map((data) =>
@@ -56,7 +57,7 @@ export const ProductDetails = ({setAddItem,addItem}) => {
                 <div className="text-left">
                   <h1 className="font-bold mt-2">Product Details</h1>
                   <h3 className="font-medium">Key Features</h3>
-                  <p className="text-gray-600">{item.description}</p>
+                  <p className="text-gray-600" innerHTML>{item.description}</p>
 
                   <h2 className="font-medium mt-2">Ingredients</h2>
                   <p className="text-gray-600">

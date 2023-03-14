@@ -10,29 +10,41 @@ function MyCart({ addItem, setAddItem }) {
   const [amount, setAmount] = useState();
   const [price, setPrice] = useState(0);
   const [showForm , setShowForm] = useState(false);
-
+  const hideMOdal = () => {
+    console.log("hide")
+    setShowModal(false);
+    setShowForm(false);
+  }
+  const back=()=>{
+    if(showForm){
+    setShowForm(false)
+    }
+  }
   const total = () => {
+    console.log(addItem)
     let price = 0;
-    addItem.variants &&
-      addItem.variants.map((e) => {
-        price = e.price * amount + price;
+      addItem.map((e) => {
+        price +=parseFloat( e.variants[0].price) * e.amount ;
       });
     setPrice(price);
+    console.log(price)
   };
-
   useEffect(() => {
     total();
   }, [total]);
 
   const removeItemHandler = (item) => {
+    console.log(item)
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
+    let price=price-(item.amount*parseFloat(item.variants[0].price))
+    setPrice(price);
+
   };
 
   const formHandler = () => {
     setShowForm(true);
     console.log("hello");
   };
-
   return (
     <>
       <button
@@ -50,10 +62,11 @@ function MyCart({ addItem, setAddItem }) {
             <div className="relative">
               <div className=" min-h-screen w-[400px] border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
                 <div className="flex items-start justify-between p-5 m-0">
+                  {showForm?<button className="back-button" onClick={back}>&#8592;</button>:null}
                   <p className="py-2 text-xl font-bold">My Cart</p>
                   <button
                     className="bg-transparent text-black float-right"
-                    onClick={() => setShowModal(false)}
+                    onClick={hideMOdal}
                   >
                     <span className="text-black opacity-6 h-10 w-9 text-3xl block bg-gray-400 py-0 rounded-full">
                       x
@@ -61,7 +74,7 @@ function MyCart({ addItem, setAddItem }) {
                   </button>
                 </div>
 
-                {addItem.length ? (
+                {!showForm && addItem.length ? (
                   addItem &&
                   addItem.map((item) => {
                     return (
@@ -146,13 +159,15 @@ function MyCart({ addItem, setAddItem }) {
                       </>
                     );
                   })
-                ) : (
-                  <div className="relative p-6 flex-auto">
-                    <p>your cart is empty</p>
-                  </div>
-                )}
+                ) : null}
 
-                {showForm ? <Form/> : null}
+                  {!showForm && !addItem.length ? (
+                
+                <div className="relative p-6 flex-auto">
+                  <p>your cart is empty</p>
+                </div>
+              ): null}
+                {showForm ? <Form hideMOdal={hideMOdal}/> : null}
 
               </div>
             </div>
