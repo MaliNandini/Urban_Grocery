@@ -1,31 +1,34 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function Form({ hideMOdal }) {
-  const [fromData, setFormdata] = useState({
+  const navigate = useNavigate();
+  const [formData, setFormdata] = useState({
     city: "",
     state: "",
     pin: "",
   });
 
   const formHandler = (e) => {
-    setFormdata({[e.target.value] : e.target.value});
+    let name = e.target.name;
+    let value = e.target.value;
+
+    setFormdata({ ...formData, [name]: value });
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
-   alert("done")
-    setFormdata({
-      city: "",
-      state: "",
-      pin: "",
-    });
+
+    if (formData !== "") {
+      hideMOdal();
+      navigate("/payment");
+    }
   };
 
   return (
     <>
       <form className="w-full max-w-sm mt-16" onSubmit={submitHandler}>
-        <div className="md:flex md:items-center mb-6">
+        <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
               className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
@@ -42,11 +45,12 @@ function Form({ hideMOdal }) {
               name="city"
               placeholder="Enter-city"
               onChange={formHandler}
-              value={fromData.city}
+              value={formData.city}
+              required
             />
           </div>
         </div>
-        <div className="md:flex md:items-center mb-6">
+        <div className="md:flex  mb-6">
           <div className="md:w-1/3">
             <label
               className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
@@ -62,7 +66,8 @@ function Form({ hideMOdal }) {
                 id="grid-state"
                 onChange={formHandler}
                 name="state"
-                value={fromData.state}
+                value={formData.state}
+                required
               >
                 <option>Madhya-Pradesh</option>
                 <option>Gujrat</option>
@@ -81,7 +86,7 @@ function Form({ hideMOdal }) {
             </div>
           </div>
         </div>
-        <div className="md:flex md:items-center mb-6">
+        <div className="md:flex  mb-6">
           <div className="md:w-1/3">
             <label
               className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
@@ -98,29 +103,17 @@ function Form({ hideMOdal }) {
               placeholder="pin-code"
               onChange={formHandler}
               name="pin"
-              value={fromData.pin}
+              value={formData.pin}
+              required
             />
           </div>
         </div>
-        <div className="md:flex md:items-center">
-          <div className="md:w-1/3"></div>
-          <div className="md:w-2/3">
-            <NavLink to={`/payment`}>
-              <button
-                type="button"
-                className="text-white bg-lime hover:opacity-90 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2"
-                onClick={hideMOdal}
-              >
-                Next
-              </button>
-            </NavLink>
-          </div>
+        <div className="text-center">
+          <button className="bg-lime text-white hover:opacity-90 px-4 py-1.5 rounded-lg ">
+            Next
+          </button>
         </div>
       </form>
-
-      {/* <NavLink to={`/payment`}>
-  <button onChange={hideMOdal}>next</button>
-</NavLink> */}
     </>
   );
 }

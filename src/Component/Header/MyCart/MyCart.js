@@ -1,44 +1,35 @@
 import React, { useEffect, useState } from "react";
-import { FaShoppingCart, FaTrash } from "react-icons/fa";
-import CartQuantity from "./Button/CartQuantity";
-import { NavLink } from "react-router-dom";
-import Form from "./Form/Form";
+import { FaArrowLeft, FaShoppingCart, FaTrash } from "react-icons/fa";
+import CartQuantity from "../../Button/CartQuantity";
+import Form from "../../Form/Form";
 
 function MyCart({ addItem, setAddItem }) {
-  console.log(addItem, ">>>>>");
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState();
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
   const hideMOdal = () => {
-    console.log("hide");
-    setIsLoading(false);
     setShowModal(false);
     setShowForm(false);
   };
   const back = () => {
     if (showForm) {
-      setIsLoading(false);
       setShowForm(false);
     }
   };
   const total = () => {
-    console.log(addItem);
     let price = 0;
     addItem.map((e) => {
       price += parseFloat(e.variants[0].price) * e.amount;
     });
     setPrice(price);
-    console.log(price);
   };
   useEffect(() => {
     total();
   }, [total]);
 
   const removeItemHandler = (item) => {
-    console.log(item);
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
     let price = price - item.amount * parseFloat(item.variants[0].price);
     setPrice(price);
@@ -47,18 +38,25 @@ function MyCart({ addItem, setAddItem }) {
   const formHandler = () => {
     setShowForm(true);
     console.log("hello");
-    setIsLoading(true);
   };
   return (
     <>
       <button
-        className=" relative bg-lime text-white active:bg-blue-500 float-right flex gap-2
+        className=" relative  bg-lime text-white active:bg-blue-500 float-right flex gap-2
         font-bold px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
         type="button"
         onClick={() => setShowModal(true)}
       >
+        <div className="mt-1 text-2xl relative">
         <FaShoppingCart />
+        {addItem.length >=1 && 
+        <span class="-top-[13px] left-3 absolute  w-6 h-6 bg-red border-2 border-white dark:border-gray-800 rounded-full text-white text-sm">{addItem.length}</span>
+      }
+        </div>
+        <div className="ml-2">
         My Cart
+        </div>
+       
       </button>
       {showModal ? (
         <>
@@ -66,11 +64,14 @@ function MyCart({ addItem, setAddItem }) {
             <div className="relative">
               <div className=" min-h-screen w-[400px] border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
                 <div className="flex items-start justify-between p-5 m-0">
+                  <div className="mt-3">
                   {showForm ? (
                     <button className="back-button" onClick={back}>
-                      &#8592;
+                      <FaArrowLeft/>
                     </button>
                   ) : null}
+                  </div>
+                  
                   <p className="py-2 text-xl font-bold">My Cart</p>
                   <button
                     className="bg-transparent text-black float-right"
@@ -82,25 +83,26 @@ function MyCart({ addItem, setAddItem }) {
                   </button>
                 </div>
 
-                {!showForm && addItem.length
-                  ? addItem &&
-                    addItem.map((item) => {
-                      return (
-                        <>
-                          <div class="mt-3 p-5 ">
-                            <div class="flow-root">
-                              <ul
-                                role="list"
-                                class="-my-6 divide-y divide-gray-200"
-                              >
-                                <li class="flex py-6">
-                                  <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                    <img
-                                      src={item.image}
-                                      alt="product"
-                                      class="h-full w-full object-cover object-center"
-                                    />
-                                  </div>
+            
+               {!showForm && addItem.length ? (
+                  addItem &&
+                  addItem.map((item) => {
+                    return (
+                      <>
+                        <div class="mt-3 p-5" >
+                          <div class="flow-root">
+                            <ul
+                              role="list"
+                              class="-my-6 divide-y divide-gray-200"
+                            >
+                              <li class="flex py-6">
+                                <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                  <img
+                                    src={item.image}
+                                    alt="product"
+                                    class="h-full w-full object-cover object-center"
+                                  />
+                                </div>
 
                                   <div class="ml-4 flex flex-1 flex-col">
                                     <div class="  text-base font-medium text-gray-900">
@@ -167,14 +169,24 @@ function MyCart({ addItem, setAddItem }) {
                         </>
                       );
                     })
-                  : null}
+                  ): null}
 
                 {!showForm && !addItem.length ? (
                   <div className="relative p-6 flex-auto">
                     <p>your cart is empty</p>
                   </div>
                 ) : null}
-                {showForm ? <Form hideMOdal={hideMOdal} /> : null}
+            
+          
+              
+                  {!showForm && !addItem.length ? (
+                
+                <div className="relative p-6 flex-auto">
+                  <p>your cart is empty</p>
+                </div>
+              ): null}
+                {showForm ? <Form hideMOdal={hideMOdal}/> : null}
+
               </div>
             </div>
           </div>

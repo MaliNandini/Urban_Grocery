@@ -2,11 +2,11 @@ import React from "react";
 import { Card } from "./Card/Card";
 
 
-function Home({data}) {
+function Home({data,addItem,setAddItem}) {
 
   return (
     <div>
-      <Card data={data} />
+      <Card data={data} addItem={addItem} setAddItem={setAddItem}/>
     </div>
   );
 }

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { categoryData } from "../../Models/MockCategoryData";
+import { mockProduct } from "../../../Models/MockProduct";
 
 const Search = ({ setData }) => {
 
 
   const [name, setName] = useState("");
-  const [searchData, setSearchData] = useState(categoryData.data);
+  const [searchData, setSearchData] = useState(mockProduct);
+  
 
   const handleChange = (e) => {
     const filteredData = e.target.value;
@@ -50,24 +51,6 @@ const Search = ({ setData }) => {
           </svg>
         </div>
       </div>
-
-      {/* <NavLink to="/product-details/1">
-
-            <div className='flex flex-row items-center justify-between leading-tight p-2 md:p-4'>
-                {searchUser && searchUser.length > 0 ? (
-                     searchUser.map((item) => {
-                        return (
-                            <Card key={item.id} name={item.name} subtitle={item.subtitle} image={item.image} />
-                        )
-                    })
-                ) : (
-                    <div className='flex items-center justify-center text-center w-full'>
-                    <h1>No Results Found!</h1>
-                    </div>
-                )}
-            </div>
-
-            </NavLink> */}
     </div>
   );
 };
