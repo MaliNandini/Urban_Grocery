@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { FaShoppingCart, FaTrash } from "react-icons/fa";
-import CartQuantity from "./Button/CartQuantity";
+import CartQuantity from "../../Button/CartQuantity";
 import { NavLink } from "react-router-dom";
-import Form from "./Form/Form";
+import { Scrollbars } from "react-custom-scrollbars-2";
+import Form from "../../Form/Form";
 
 function MyCart({ addItem, setAddItem }) {
   console.log(addItem, ">>>>>");
@@ -48,13 +49,21 @@ function MyCart({ addItem, setAddItem }) {
   return (
     <>
       <button
-        className=" relative bg-lime text-white active:bg-blue-500 float-right flex gap-2
+        className=" relative  bg-lime text-white active:bg-blue-500 float-right flex gap-2
         font-bold px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
         type="button"
         onClick={() => setShowModal(true)}
       >
+        <div className="mt-1 text-2xl relative">
         <FaShoppingCart />
+        {addItem.length >=1 && 
+        <span class="-top-[13px] left-3 absolute  w-6 h-6 bg-red border-2 border-white dark:border-gray-800 rounded-full text-white text-sm">{addItem.length}</span>
+      }
+        </div>
+        <div className="ml-2">
         My Cart
+        </div>
+       
       </button>
       {showModal ? (
         <>
@@ -74,12 +83,13 @@ function MyCart({ addItem, setAddItem }) {
                   </button>
                 </div>
 
-                {!showForm && addItem.length ? (
+            
+               {!showForm && addItem.length ? (
                   addItem &&
                   addItem.map((item) => {
                     return (
                       <>
-                        <div class="mt-3 p-5 " >
+                        <div class="mt-3 p-5" >
                           <div class="flow-root">
                             <ul
                               role="list"
@@ -160,7 +170,9 @@ function MyCart({ addItem, setAddItem }) {
                     );
                   })
                 ) : null}
-
+            
+          
+              
                   {!showForm && !addItem.length ? (
                 
                 <div className="relative p-6 flex-auto">
