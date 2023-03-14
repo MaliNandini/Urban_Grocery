@@ -8,11 +8,11 @@ export const Card = ({ name, data }) => {
   return (
     <>
       {data.length == 0 ? (
-        <div className="flex flex-row flex-wrap">
+        <div className="flex">
           {cardData &&
             cardData.map((item) => {
               return (
-                <div className="max-w-sm rounded mt-20 mx-1 py-3 container px-4 md:px-12 flex-wrap w-[30%]">
+                <div className="max-w-sm rounded mt-20 mx-1 py-3 container px-4 md:px-12">
                   <NavLink to={`product-details/${item.id}`}>
                     <img className="w-full h-56" src={item.image} alt={name} />
                   </NavLink>
@@ -21,9 +21,12 @@ export const Card = ({ name, data }) => {
                     <p className="text-gray-700 decoration-double text-sm">
                       {item.subtitle}
                     </p>
-                    <button className="bg-blue-500 hover:bg-red-700 text-white py-1 px-3 rounded text-sm">
+                    <NavLink to={`product-details/${item.id}`}>
+                    <button className="bg-lime hover:bg-red-700 text-white py-1 px-3 rounded text-sm">
                       Buy Now
                     </button>
+                    </NavLink>
+                    
                   </div> 
                 </div>
               );
@@ -42,9 +45,12 @@ export const Card = ({ name, data }) => {
                       <p className="text-gray-700 decoration-double text-sm">
                         {item.subtitle}
                       </p>
+                      
                       <button className="bg-blue-500 hover:bg-red-700 text-white py-1 px-3 rounded text-sm">
                         Buy Now
                       </button>
+        
+                     
                     </div>
                   </div>
                 </>

@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { FaShoppingCart,FaGreaterThan} from "react-icons/fa";
 import CartQuantity from "./Button/CartQuantity";
-import mockProduct from "../Models/MockProduct";
+import {mockProduct} from "../Models/MockProduct";
+import { NavLink } from "react-router-dom";
 
-function MyCart() {
+function MyCart({addItem}) {
+   console.log(addItem , ">>>>>")
   const [showModal, setShowModal] = useState(false);
-  const [productData, setProductData] = useState(mockProduct.data)
+  // const [productData, setProductData] = useState(addItem)
+  // console.log(productData,"LLLLLLLLLL")
+
+  const handleFormClick =()=>{
+    
+  }
   
   return (
     <>
@@ -20,7 +27,7 @@ function MyCart() {
       </button>
       {showModal ? (
         <>
-          <div className="  float-right absolute top-0 right-0 ">
+          <div className=" float-right absolute top-0 right-0 ">
             <div className="relative ">
               <div className=" min-h-screen w-[400px] border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
                 <div className="flex items-start justify-between p-5 m-0">
@@ -35,7 +42,7 @@ function MyCart() {
                   </button>
                 </div>
                 
-                {productData && productData.map((item)=>{
+                {addItem && addItem.map((item)=>{
                   return (
                     <>
                     <div class="mt-3 p-5">
@@ -57,7 +64,7 @@ function MyCart() {
                                 <a href="#" className="float-left">{item.name}</a>
                               </h3><br/>
                              
-                              {item.variants.map((data)=>{
+                              {/* {item.variants.map((data)=>{
                                 return(
                                   <div>
                                     <p class="text-sm text-gray-500 float-left">{data.measurement} {data.measurement_unit_name}</p><br/>
@@ -65,13 +72,13 @@ function MyCart() {
                                   </div>
                                  
                                 )})}
-                             
+                              */}
                               
                             </div>
                          
-                          <div class="flex  items-end justify-between text-sm">
+                          {/* <div class="flex  items-end justify-between text-sm">
                             <p class="text-gray-500">Qty {item.total_allowed_quantity}</p>
-                            <CartQuantity/>
+                            <CartQuantity/> */}
 
                             {/* <div class="flex">
                               <button
@@ -81,7 +88,7 @@ function MyCart() {
                                 Remove
                               </button>
                             </div> */}
-                          </div>
+                          {/* </div> */}
                         </div>
                       </li>
                     </ul>
@@ -90,12 +97,14 @@ function MyCart() {
                     </>
                   )
                 })}
-                
 
-              <button className=" flex justify-between bg-lime text-white ml-3 p-2 fixed bottom-0 w-[380px] rounded-lg">
+                <NavLink to={`/form`}>
+                <button className=" flex justify-between bg-lime text-white ml-3 p-2 fixed bottom-0 w-[380px] rounded-lg" onClick={handleFormClick}>
                 <p className="p-2">Total : ₹ 350</p>
                 <p className="p-2">Process to Pay </p>
               </button>
+                </NavLink>
+             
               </div>
             </div>
           </div>

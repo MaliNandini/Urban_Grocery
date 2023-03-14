@@ -4,13 +4,11 @@ import { useParams } from "react-router-dom";
 import { mockProduct } from "../../Models/MockProduct";
 import { categoryData } from "../../Models/MockCategoryData";
 
-export const ProductDetails = () => {
-  const [productPageData, setProductPage] = useState(mockProduct.data);
-  
+export const ProductDetails = ({addItemHandler}) => {
+  // const [productPageData, setProductPage] = useState(mockProduct[0].data);
   const [cardData, setCardData] = useState(categoryData.data);
-
-  // console.log(cardData);
-  // console.log(productPageData);
+  const [products, setProducts] = useState(categoryData.data)
+ 
 
   const { id } = useParams();
 
@@ -18,28 +16,66 @@ export const ProductDetails = () => {
     return data.id === id;
   });
 
-  console.log(filterData, "filterData");
+  const handleClick =(productId)=>{
+    setProducts(products.map((product)=>{
+      if(product.id === productId){
+        return {
+          ...product,
+          row_order : product.row_order + 1
+        };
+      }else{
+        return product;
+      }
+    }))
+    console.log(products);
+
+  }
+
+
+
+    // const ItemIndex = addItem.findIndex((data) => data.id === addItem.id);
+    // console.log(ItemIndex,"ItemIndex///");
+    // if (ItemIndex >= 0) {
+    // // state.carts[ItemIndex].qnty += 1;
+    // setAddItem([ItemIndex].qnty +=1)
+    // return {
+    //   // ...addItem,
+    //   // carts: [...addItem],
+    //   // setAddItem({addItem:[...addItem]});
+    //   setAddItem((current) => [...current, addItem])
+    // }
+    
+    // } else {
+    // const temp = { ...item, qnty: 1 };
+    // console.log(temp , "temp///")
+    // return {
+    //   // ...addItem,
+    //   carts: [...addItem, temp],
+    // };
+    // }
   
+  
+  
+
   return (
     <div className="flex mt-10 p-16 justify-between">
       {filterData &&
-        filterData.map((items) => {
-          console.log(filterData)
+        filterData.map((item) => {
           return (
             <>
               <div
                 className="flex flex-col bg-white dark:bg-neutral-700"
-                key={items.id}
+                key={item.id}
               >
                 <img
                   className="ml-20 w-[500px] h-[400px] object-cover"
-                  src={items.image}
+                  src={item.image}
                   alt=""
                 />
                 <div className="text-left">
                   <h1 className="font-bold mt-2">Product Details</h1>
                   <h3 className="font-medium">Key Features</h3>
-                  <p className="text-gray-600">{items.description}</p>
+                  <p className="text-gray-600">{item.description}</p>
 
                   <h2 className="font-medium mt-2">Ingredients</h2>
                   <p className="text-gray-600">
@@ -103,17 +139,22 @@ export const ProductDetails = () => {
                 </nav>
 
                 <h3 className="mb-2 text-3xl text-green-700 font-medium float-left text-left ml-20 dark:text-neutral-50">
-                  {items.name}
+                  {item.name}
                 </h3>
                 <h2 className="text-3xl text-left  ml-20">
-                  {items.ratings} <span>0</span>
+                  {item.ratings} <span>0</span>
                 </h2>
                 <h1 className="text-left  ml-20">
                   You Save <span className="text-green-600 ">#90.00</span>
                 </h1>
-                <button className="bg-green-700 mt-5 w-24  ml-20 text-white font-bold py-2 px-4 rounded-lg" >
+                <button className="bg-lime mt-5 w-24  ml-20 text-white font-bold py-2 px-4 rounded-lg"
+                onClick={handleClick}>
                   Add
                 </button>
+                {/* <button className="bg-lime mt-5 w-24  ml-20 text-white font-bold py-2 px-4 rounded-lg"
+                onClick={()=>addItemHandler(item)}>
+                  Add
+                </button> */}
               </div>
             </>
           );

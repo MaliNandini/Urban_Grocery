@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Card } from "./Card/Card";
 import { Navbar } from "./Navbar/Navbar";
 
-function Home() {
-  const [data, setData] = useState([]);
+function Home({addItem ,data}) {
+  // const [data, setData] = useState([]);
   return (
     <div>
-      <Navbar setData={setData} />
+      {/* <Navbar setData={setData} addItem={addItem}/> */}
       <Card data={data} />
     </div>
   );
