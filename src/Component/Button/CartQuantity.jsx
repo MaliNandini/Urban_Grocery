@@ -1,7 +1,6 @@
 import React from "react";
 
 function CartQuantity({item,setAddItem,addItem}) {
-
   
   const quantityDecrease =(id)=>{
     if (addItem.some((cartItem) => cartItem.id === item.id)) {

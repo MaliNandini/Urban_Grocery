@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { FaArrowLeft, FaShoppingCart, FaTrash } from "react-icons/fa";
-import CartQuantity from "../../Button/CartQuantity";
-import Form from "../../Form/Form";
+import CartQuantity from "../Button/CartQuantity";
+import Form from "./Form/Form";
+import Review from "./Review/Review";
 
-function MyCart({ addItem, setAddItem }) {
+function MyCart({ addItem, setAddItem,formData,setFormdata}) {
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState();
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
-
+  
   const hideMOdal = () => {
     setShowModal(false);
     setShowForm(false);
@@ -18,6 +19,7 @@ function MyCart({ addItem, setAddItem }) {
       setShowForm(false);
     }
   };
+
   const total = () => {
     let price = 0;
     addItem.map((e) => {
@@ -28,6 +30,10 @@ function MyCart({ addItem, setAddItem }) {
   useEffect(() => {
     total();
   }, [total]);
+
+  useEffect(()=>{
+
+  },[formData])
 
   const removeItemHandler = (item) => {
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
@@ -62,7 +68,7 @@ function MyCart({ addItem, setAddItem }) {
         <>
           <div className="  float-right absolute top-0 right-0 ">
             <div className="relative">
-              <div className=" min-h-screen w-[400px] border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
+              <div className=" min-h-screen w-[400px] border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none overflow-y-auto h-32 ">
                 <div className="flex items-start justify-between p-5 m-0">
                   <div className="mt-3">
                   {showForm ? (
@@ -105,7 +111,7 @@ function MyCart({ addItem, setAddItem }) {
                                 </div>
 
                                   <div class="ml-4 flex flex-1 flex-col">
-                                    <div class="  text-base font-medium text-gray-900">
+                                    <div class="text-base font-medium text-gray-900">
                                       <h3>
                                         <a href="#" className="float-left">
                                           {item.name}
@@ -176,16 +182,13 @@ function MyCart({ addItem, setAddItem }) {
                     <p>your cart is empty</p>
                   </div>
                 ) : null}
-            
-          
-              
-                  {!showForm && !addItem.length ? (
-                
-                <div className="relative p-6 flex-auto">
-                  <p>your cart is empty</p>
-                </div>
-              ): null}
-                {showForm ? <Form hideMOdal={hideMOdal}/> : null}
+
+                {showForm ? <Form back={back} setFormdata={setFormdata} formData={formData}/> : null}
+
+                {/* {showForm ? <Review formData={formData}/> : null } */}
+
+                {showForm ? null : <Review formData={formData}/>}
+
 
               </div>
             </div>

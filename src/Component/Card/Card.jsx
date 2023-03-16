@@ -33,10 +33,10 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
       {/* show multipal product  */}
       {data.length == 0 ? (
         <div className="flex flex-row flex-wrap md:ml-20 ">
-          {cardData &&
+          { cardData &&
             cardData.map((item) => {
               return (
-                <div className="max-w-sm rounded mt-20 mx-1 py-3 container px-4 md:px-12 flex-wrap  drop-shadow-2xl">
+                <div className="max-w-sm rounded mt-20 mx-1 py-3 container px-4 md:px-12 flex-wrap drop-shadow-2xl">
                   <NavLink to={`product-details/${item.id}`}>
                     <img className="w-full h-56" src={item.image} alt={name} />
                   </NavLink>
@@ -84,8 +84,7 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
                       >
                         Add to cart
                       </button>
-        
-                     
+
                     </div>
                   </div>
                 </>
