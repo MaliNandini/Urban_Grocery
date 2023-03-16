@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { FaRegHeart, FaAlignLeft, FaArrowsAlt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { mockProduct } from "../../Models/MockProduct";
-import { categoryData } from "../../Models/MockCategoryData";
 
 export const ProductDetails = ({ setAddItem, addItem}) => {
   const [productPageData, setProductPage] = useState(mockProduct.data);
@@ -47,7 +46,7 @@ export const ProductDetails = ({ setAddItem, addItem}) => {
                   key={item.id}
                 >
                   <img
-                    className="w-[500px] h-[400px] object-cover"
+                    className="w-[500px] h-[400px] object-cover rounded-lg shadow-lg"
                     src={item.image}
                     alt=""
                   />
@@ -56,7 +55,6 @@ export const ProductDetails = ({ setAddItem, addItem}) => {
                     <p className="text-gray-600">{item.description}</p>
                     <h1 className="font-bold mt-5">Manufacturer</h1>
                     <p>{item.manufacturer}</p>
-
                     <h1 className="font-bold mt-5">Made In</h1>
                     <p>{item.made_in}</p>
                   </div>

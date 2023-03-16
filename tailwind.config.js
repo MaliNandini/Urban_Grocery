@@ -22,7 +22,9 @@ module.exports = {
     colors: {
       'lime': '#3f6212',
       'white': '#fff',
-      'red' : '#FF0000'
+      'red' : '#FF0000',
+      'skyblue':"#f5f7f7",
+      
     }
    
   },

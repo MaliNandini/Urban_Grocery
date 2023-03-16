@@ -5,16 +5,13 @@ const Search = ({ setData }) => {
 
   const [name, setName] = useState("");
   const [searchData, setSearchData] = useState(mockProduct.data);
-  
   const handleChange = (e) => {
     const filteredData = e.target.value;
     setName(filteredData);
- 
     let result;
     result = searchData.filter((item) => {
       return item.name.toLowerCase().startsWith(filteredData.toLowerCase());
     });
-
     setData(result);
   };
 

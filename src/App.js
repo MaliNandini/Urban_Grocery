@@ -3,8 +3,8 @@ import { Route, Routes } from "react-router-dom";
 import { ProductDetails } from "./Component/Product-Details/ProductDetails";
 import Home from "./Component/Home";
 import { useState } from "react";
-import Form from "./Component/MyCart/Form/Form";
-import Review from "./Component/MyCart/Review/Review";
+import MyCart from "./Component/MyCart/MyCart";
+
 
 function App() {
   const [addItem, setAddItem] = useState([]);
@@ -18,13 +18,14 @@ function App() {
     pin: "",
   });
  
+  console.log(formData,"///")
   return (
     <div>
       <Navbar setData={setData} addItem={addItem}  setAddItem={setAddItem} formData={formData} setFormdata={setFormdata}/>
       <Routes>
         <Route path="/" element={<Home data={data}  addItem={addItem} setAddItem={setAddItem}/>} />
         <Route path="/product-details/:id" element={<ProductDetails setAddItem={setAddItem} addItem={addItem}/>} />
-        {/* <Route path="/review" element={<Review/>} /> */}
+        {/* <Route path="/mycart" element={<MyCart/>} /> */}
       </Routes>
     </div>
   );

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { FaChevronDown } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
-
-function Form({ back, setFormdata, formData }) {
-
+function Form({ back, formData,setFormdata }) {
+  const navigate = useNavigate();
   const formHandler = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -21,45 +20,46 @@ function Form({ back, setFormdata, formData }) {
 
   return (
     <>
-      <form className="w-full max-w-sm mt-16" onSubmit={submitHandler}>
+      <form className="w-full  xs:px-9  " onSubmit={submitHandler}>
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
               className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
-              for="inline-city"
+              for="inline-full-name"
             >
               Name:
             </label>
           </div>
-          <div className="md:w-2/3">
+          <div className="md:w-7/12">
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
               type="text"
               name="name"
-              placeholder="Enter-Name"
+              placeholder="Enter-name"
               onChange={formHandler}
               value={formData.name}
               required
             />
           </div>
         </div>
+
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
               className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
-              for="inline-address"
+              for="inline-full-name"
             >
               Address:
             </label>
           </div>
-          <div className="md:w-2/3">
+          <div className="md:w-7/12">
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="address"
               type="text"
               name="address"
-              placeholder="enter-address"
+              placeholder="Enter-address"
               onChange={formHandler}
               value={formData.address}
               required
@@ -71,12 +71,37 @@ function Form({ back, setFormdata, formData }) {
           <div className="md:w-1/3">
             <label
               className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
+              for="inline-full-name"
+            >
+              Phone:
+            </label>
+          </div>
+          <div className="md:w-7/12">
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="phone"
+              type="text"
+              name="phone"
+              placeholder="Enter-phone"
+              onChange={formHandler}
+              value={formData.phone}
+              required
+            />
+          </div>
+        </div>
+       
+        
+
+        <div className="md:flex mb-6">
+          <div className="md:w-1/3">
+            <label
+              className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
               for="inline-city"
             >
               City:
             </label>
           </div>
-          <div className="md:w-2/3">
+          <div className="md:w-7/12">
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="city"
@@ -89,28 +114,7 @@ function Form({ back, setFormdata, formData }) {
             />
           </div>
         </div>
-        <div className="md:flex mb-6">
-          <div className="md:w-1/3">
-            <label
-              className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
-              for="inline-cno"
-            >
-              Phone:
-            </label>
-          </div>
-          <div className="md:w-2/3">
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="phone"
-              type="phone"
-              name="phone"
-              placeholder="Enter-Mobile Number"
-              onChange={formHandler}
-              value={formData.cno}
-              required
-            />
-          </div>
-        </div>
+       
 
         <div className="md:flex  mb-6">
           <div className="md:w-1/3">
@@ -121,7 +125,7 @@ function Form({ back, setFormdata, formData }) {
               State :
             </label>
           </div>
-          <div className="md:w-2/3">
+          <div className="md:w-7/12">
             <div className="relative">
               <select
                 className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -137,7 +141,7 @@ function Form({ back, setFormdata, formData }) {
                 <option>Punjab</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <FaChevronDown />
+                {/* <FaChevronDown /> */}
               </div>
             </div>
           </div>
@@ -151,7 +155,7 @@ function Form({ back, setFormdata, formData }) {
               Pin-Code:
             </label>
           </div>
-          <div className="md:w-2/3">
+          <div className="md:w-7/12">
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="pin"
