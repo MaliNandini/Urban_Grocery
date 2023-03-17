@@ -36,7 +36,7 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
           {cardData &&
             cardData.map((item) => {
               return (
-                <div className="w-72 2xs:w-72 rounded-lg  mt-10    mx-5 shadow-lg  bg-lightblue ">
+                <div className="w-72 2xs:w-72 rounded-lg mt-10 mx-5 shadow-lg bg-lightblue">
                   <NavLink to={`product-details/${item.id}`}>
                     <img className="w-full h-56" src={item.image} alt={name} />
                   </NavLink>

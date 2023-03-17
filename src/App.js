@@ -10,7 +10,7 @@ function App() {
   const [addItem, setAddItem] = useState([]);
   const [data, setData] = useState([]);
   const [formData, setFormdata] = useState({
-    name: "",
+    username: "",
     address: "",
     city: "",
     phone: "",

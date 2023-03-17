@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { FaChevronDown } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 
-function Form({ back, formData,setFormdata }) {
+function Form({ back,formData, setFormdata }) {
   const navigate = useNavigate();
+  
+  
   const formHandler = (e) => {
     let name = e.target.name;
     let value = e.target.value;
@@ -14,13 +17,14 @@ function Form({ back, formData,setFormdata }) {
     e.preventDefault();
     if (formData !== "") {
       back();
+      // navigate("/mycart");
     }
     console.log(formData);
   };
 
   return (
     <>
-      <form className="w-full  xs:px-9  " onSubmit={submitHandler}>
+      <form className="w-full xs:px-9  " onSubmit={submitHandler}>
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
@@ -89,9 +93,7 @@ function Form({ back, formData,setFormdata }) {
             />
           </div>
         </div>
-       
         
-
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
@@ -114,7 +116,6 @@ function Form({ back, formData,setFormdata }) {
             />
           </div>
         </div>
-       
 
         <div className="md:flex  mb-6">
           <div className="md:w-1/3">
@@ -141,11 +142,13 @@ function Form({ back, formData,setFormdata }) {
                 <option>Punjab</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                {/* <FaChevronDown /> */}
+                <FaChevronDown />
               </div>
             </div>
           </div>
         </div>
+
+
         <div className="md:flex  mb-6">
           <div className="md:w-1/3">
             <label
@@ -168,6 +171,7 @@ function Form({ back, formData,setFormdata }) {
             />
           </div>
         </div>
+
         <div className="text-center">
           <button className="bg-lime text-white hover:opacity-90 px-4 py-1.5 rounded-lg ">
             Next

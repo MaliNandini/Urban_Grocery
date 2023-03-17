@@ -69,6 +69,7 @@ function MyCart({ addItem, setAddItem,formData,setFormdata}) {
         <>
           <div className="float-right absolute top-0 right-0">
             <div className="relative">
+              <div className=" min-h-screen w-[400px] border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none overflow-y-auto h-32 ">
               <div className=" min-h-screen  md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
                 <div className="flex items-start justify-between p-5 m-0">
                   <div className="mt-3">
@@ -194,11 +195,13 @@ function MyCart({ addItem, setAddItem,formData,setFormdata}) {
                 {showForm ? null : <Review formData={formData}/>}
 
 
-                {/* {showForm ? <Form hideMOdal={hideMOdal} /> : null} */}
+                
               </div>
             </div>
           </div>
+          </div>
         </>
+        
       ) : null}
     </>
   );
