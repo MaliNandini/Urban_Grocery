@@ -1,7 +1,6 @@
-import React from "react"; 
+import React from "react";
 
 function Review({ formData }) {
-
   return (
     <div className="px-7 w-screen">
       <div className="text-base font-semibold">

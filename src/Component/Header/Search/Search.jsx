@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { mockProduct } from "../../../Models/MockProduct";
 
 const Search = ({ setData }) => {
-
   const [name, setName] = useState("");
   const [searchData, setSearchData] = useState(mockProduct.data);
   const handleChange = (e) => {
@@ -26,17 +25,17 @@ const Search = ({ setData }) => {
             onChange={handleChange}
             value={name}
           />
-          
+
           <svg
             className="w-6 h-6 absolute left-2.5 top-3.5"
-            // xmlns="http://www.w3.org/2000/svg"
+            xmlns="http://www.w3.org/2000/svg"
             fill="none"
-            // viewBox="0 0 24 24"
+            viewBox="0 0 24 24"
             stroke="#15803d"
           >
             <path
-              // stroke-line-cap="round"
-              // stroke-line-join="round"
+              stroke-line-cap="round"
+              stroke-line-join="round"
               strokeWidth="1"
               d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
             />

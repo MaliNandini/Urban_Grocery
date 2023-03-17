@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaChevronDown } from "react-icons/fa";
 
-
 function Form({ back, setFormdata, formData }) {
-
   const formHandler = (e) => {
     let name = e.target.name;
     let value = e.target.value;
     setFormdata({ ...formData, [name]: value });
-    ;
   };
 
   const submitHandler = (e) => {
@@ -16,12 +13,14 @@ function Form({ back, setFormdata, formData }) {
     if (formData !== "") {
       back();
     }
-    console.log(formData);
   };
 
   return (
     <>
-      <form className="w-full mt-5 xs:px-9  2xs:w-full 2xs:px-9" onSubmit={submitHandler}>
+      <form
+        className="w-full mt-5 xs:px-9  2xs:w-full 2xs:px-9"
+        onSubmit={submitHandler}
+      >
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
@@ -90,7 +89,7 @@ function Form({ back, setFormdata, formData }) {
             />
           </div>
         </div>
-      
+
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
@@ -113,7 +112,6 @@ function Form({ back, setFormdata, formData }) {
             />
           </div>
         </div>
-       
 
         <div className="md:flex  mb-6">
           <div className="md:w-1/3">
@@ -168,6 +166,7 @@ function Form({ back, setFormdata, formData }) {
             />
           </div>
         </div>
+
         <div className="text-center">
           <button className="bg-lime text-white hover:opacity-90 px-4 py-1.5 rounded-lg ">
             Next

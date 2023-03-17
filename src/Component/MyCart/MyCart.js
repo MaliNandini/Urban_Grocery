@@ -33,7 +33,6 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     total();
   }, [total]);
 
-
   const removeItemHandler = (item) => {
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
     let price = price - item.amount * parseFloat(item.variants[0].price);
@@ -50,7 +49,6 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
         className=" relative  bg-lime text-white  float-right flex gap-2
         font-bold  py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
-       
         onClick={() => setShowModal(true)}
       >
         <div className="mt-1 text-xl relative">
@@ -65,7 +63,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
       </button>
       {showModal ? (
         <>
-          <div className="float-right absolute top-0 right-0" >
+          <div className="float-right absolute top-0 right-0">
             <div className="relative">
               <div className=" min-h-screen md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
                 <div className="flex items-start justify-between px-3 py-3 m-0  border-b border-light_gray shadow-sm">
@@ -194,7 +192,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                   ) : null}
                 </div>
 
-                {showForm  ? null : (
+                {showForm ? null : (
                   <div className="fixed bottom-10 bg-white">
                     <Review formData={formData} />
                   </div>

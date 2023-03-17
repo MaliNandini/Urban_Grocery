@@ -6,8 +6,6 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
   const [cardData, setCardData] = useState(mockProduct.data);
 
   const addItemHandler = (item) => {
-    // Update cart item quantity if already in cart
-    console.log(item);
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
       setAddItem((cart) =>
         cart.map((data) =>
@@ -21,17 +19,13 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
       );
       return;
     }
-    // Add to cart
-    setAddItem((cart) => [
-      ...cart,
-      { ...item, amount: 1 }, // <-- initial amount 1
-    ]);
+    setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
   };
 
   return (
     <>
       {/* show multipal product  */}
-      {data.length == 0 ? (
+      {data.length === 0 ? (
         <div className="flex flex-row flex-wrap mt-20 lg:ml-24 xs:ml-6 sm:ml-20 md:ml-40">
           {cardData &&
             cardData.map((item) => {
