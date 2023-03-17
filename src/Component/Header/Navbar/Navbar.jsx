@@ -1,14 +1,13 @@
 import React from "react";
-
 import Search from "../Search/Search";
 import MyCart from '../../MyCart/MyCart'
 import { NavLink } from "react-router-dom";
 
-export const Navbar = ({setData,addItem,setAddItem}) => {
+export const Navbar = ({setData,addItem,setAddItem,formData,setFormdata}) => {
  
   return (
     <div>
-      <nav className="bg-white px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-gray-200 ">
+      <nav className="bg-white px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray  shadow-sm">
         <div className=" flex flex-wrap items-center justify-between mx-auto">
           <NavLink to="/" className="flex items-center">
             <img
@@ -17,13 +16,13 @@ export const Navbar = ({setData,addItem,setAddItem}) => {
               alt="Flowbite Logo"
             />
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-              Hi, There!
+              Hi,There!
             </span>
           </NavLink>
           
           <div class="flex md:order-2 z-10">
            
-          <MyCart addItem={addItem} setAddItem={setAddItem}/>
+          <MyCart addItem={addItem} setAddItem={setAddItem}  formData={formData} setFormdata={setFormdata}/>
           </div>
           <div
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 z-0"
