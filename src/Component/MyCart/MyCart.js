@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { FaArrowLeft, FaShoppingCart, FaTrash } from "react-icons/fa";
 import CartQuantity from "../Button/CartQuantity";
@@ -43,14 +44,41 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     setShowForm(true);
   };
 
+
+  const fetchdata = async () => {
+    console.log("Called>>>>>>>>>>>>>>>>>>>")
+    const apiDomain = "grocery.intelliatech.com";
+    const formData = new FormData();
+    formData.append('accesskey', '90336');
+    formData.append('add_multiple_items', '1');
+    formData.append('user_id', '21');
+    formData.append('product_variant_id', '203');
+    formData.append('qty', '1');
+
+    await axios.post(`http://${apiDomain}/api-firebase/cart.php`, { 
+      headers: {
+        'Content-Type' : 'multipart/form-data',
+        'Authorization':
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzkzMTkwMTUsImlzcyI6ImVLYXJ0IiwiZXhwIjoxNjc5MzIwODE1LCJzdWIiOiJlS2FydCBBdXRoZW50aWNhdGlvbiJ9.UQhiBtWhR30Yk9NyZUX8uGHZF4EsL6R8ai7VTfpAOP0",
+      },
+      data: formData,
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <>
       <button
         className=" relative  bg-lime text-white  float-right flex gap-2
         font-bold  py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
-         onClick={() => setShowModal(true)}
-     
+        //onClick={() => setShowModal(true)}
+        onClick={fetchdata}
       >
         <div className="mt-1 text-xl relative">
           <FaShoppingCart />
