@@ -72,9 +72,9 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                   </div>
 
                   <div className="data 2xs:mt-3 xs:mb-3 ">
-                    <h3 className="2xs:text-base 2xs:font-semibold xs:mt-2 mr-50 xs:text-sm xs:font-bold sm:mt-4 sm:text-3xl md:mt-4 md:text-2xl text-green-700 md:font-medium dark:text-neutral-50">
+                    <p className="2xs:text-base 2xs:font-semibold xs:mt-2 mr-50 xs:text-sm xs:font-bold sm:mt-4 sm:text-3xl md:mt-4 md:text-2xl text-green-700 md:font-medium dark:text-neutral-50">
                       {item.name}
-                    </h3>
+                    </p>
                     {item &&
                       item.variants.map((data) => {
                         return (
@@ -83,17 +83,19 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                               <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
                                 Price : ₹{data.price}{" "}
                               </p>
-                              <h1 className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
+                              <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
                                 Measurement : {data.measurement}
                                 {data.measurement_unit_name}
-                              </h1>
-                              <h1 className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
+                              </p>
+                              <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
                                 discount : ₹{data.discounted_price}{" "}
-                              </h1>
+                              </p>
                             </div>
                           </>
                         );
                       })}
+                      <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">Rating : {item.ratings}</p>
+
                     <button
                       className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 sm:w-40 sm:h-12 md:mt-5 md:w-[118px] text-white md:font-bold md:py-2 md:px-4 md:rounded-lg md:hover:opacity-90"
                       onClick={() => addItemHandler(item)}
@@ -105,22 +107,23 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
               </div>
 
               <div className="text-left">
-                <h1 className="2xs:mt-2 font-bold md:mt-3 xs:text-xl sm:text-2xl">
+                <p className="2xs:mt-2 font-bold md:mt-3 xs:text-xl sm:text-2xl">
                   Product Details
-                </h1>
-                <p className="2xs:text-sm text-gray-600 xs:text-sm sm:text-2xl sm:mt-2 md:text-lg">
+                </p>
+              
+                <p className="2xs:text-sm text-gray-600 xs:text-sm sm:text-2xl sm:mt-2 md:text-lg md:mb-8">
                   {item.description}
                 </p>
-                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-xl sm:text-3xl md:mt- md:text-2xl md:mb-0">
+                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-xl sm:text-3xl md:text-xl ">
                   Manufacturer
                 </p>
-                <p className="2xs:text-sm xs:text-sm sm:mt-2 sm:text-2xl">
+                <p className="2xs:text-sm xs:text-sm sm:mt-2 sm:text-2xl md:text-xl md:mb-1 ">
                   {item.manufacturer}
                 </p>
-                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-xl sm:text-2xl ">
+                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-xl sm:text-2xl md:text-xl ">
                   Made In
                 </p>
-                <p className="2xs:text-sm 2xs:mb-2 xs:text-sm sm:mt-2 sm:text-2xl">
+                <p className="2xs:text-sm 2xs:mb-2 xs:text-sm sm:mt-2 sm:text-2xl md:text-xl md:mb-1">
                   {item.made_in}
                 </p>
               </div>

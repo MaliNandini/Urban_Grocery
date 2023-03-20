@@ -31,7 +31,7 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
   return (
     <>
       {/* show multipal product  */}
-      {data.length == 0 ? (
+      {data && data.length == 0 ? (
         <div className="flex flex-row flex-wrap mt-20 lg:ml-24 xs:ml-6 sm:ml-20 md:ml-40">
           {cardData &&
             cardData.map((item) => {
@@ -55,34 +55,30 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
         </div>
       ) : (
         <div className="flex flex-row flex-wrap mt-20 md:ml-20">
-          {/* show singal product on filter  */}
-          {data &&
-            data.map((item) => {
-              return (
-                <>
-                  <div className="max-w-sm rounded mt-5 mx-1 py-3 container px-4 mx-3">
-                    <NavLink to={`product-details/${item.id}`}>
-                      <img
-                        className="w-full h-56"
-                        src={item.image}
-                        alt={name}
-                      />
-                    </NavLink>
-                    <div className=" py-4 text-center">
-                      <h2 className="text-xl font-normal">{item.name}</h2>
+        {/* show singal product on filter  */}
+        {data &&
+          data.map((item) => {
+            return (
+              <>
+                <div className="max-w-sm rounded mt-5 mx-1 py-3 container px-4">
+                  <NavLink to={`product-details/${item.id}`}>
+                    <img className="w-full h-56" src={item.image} alt={name} />
+                  </NavLink>
+                  <div className=" py-4 text-center">
+                    <h2 className="text-xl font-normal">{item.name}</h2>
 
-                      <button
-                        className="bg-lime hover:opacity-90 text-white py-2 px-3 rounded text-sm mt-3"
-                        onClick={() => addItemHandler(item)}
-                      >
-                        Add to cart
-                      </button>
-                    </div>
+                    <button
+                      className="bg-lime hover:opacity-90 text-white py-2 px-3 rounded text-sm mt-3"
+                      onClick={() => addItemHandler(item)}
+                    >
+                      Add to cart
+                    </button>
                   </div>
-                </>
-              );
-            })}
-        </div>
+                </div>
+              </>
+            );
+          })}
+      </div>
       )}
     </>
   );
