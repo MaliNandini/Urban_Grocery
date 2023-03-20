@@ -26,11 +26,11 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
     <>
       {/* show multipal product  */}
       {data.length === 0 ? (
-        <div className="flex flex-row flex-wrap mt-20 lg:ml-24 xs:ml-6 sm:ml-20 md:ml-40">
+        <div className="flex flex-row flex-wrap mt-20 lg:ml-24 xs:ml-6 sm:ml-20 ">
           {cardData &&
             cardData.map((item) => {
               return (
-                <div className="w-72 2xs:w-72 rounded-lg  mt-10    mx-5 shadow-lg  bg-lightblue ">
+                <div className="w-72 2xs:w-72 rounded-lg  mt-10 mx-5 shadow-lg  bg-lightblue ">
                   <NavLink to={`product-details/${item.id}`}>
                     <img className="w-full h-56" src={item.image} alt={name} />
                   </NavLink>
@@ -48,7 +48,7 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
             })}
         </div>
       ) : (
-        <div className="flex flex-row flex-wrap mt-20 md:ml-20">
+        <div className="flex flex-row flex-wrap mt-20 ">
           {/* show singal product on filter  */}
           {data &&
             data.map((item) => {

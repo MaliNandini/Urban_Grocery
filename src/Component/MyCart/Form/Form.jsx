@@ -18,7 +18,7 @@ function Form({ back, setFormdata, formData }) {
   return (
     <>
       <form
-        className="w-full mt-5 xs:px-9  2xs:w-full 2xs:px-9"
+        className="w-full mt-3 xs:px-9  2xs:w-full 2xs:px-9"
         onSubmit={submitHandler}
       >
         <div className="md:flex mb-6">

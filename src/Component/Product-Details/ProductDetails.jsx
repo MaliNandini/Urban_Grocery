@@ -46,44 +46,44 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                 </div>
 
                 <div className="xs:flex-col md:ml-20 md:p-6 ">
-                  <div className="2xs:flex 2xs:mt-4 xs:flex xs:mt-4 sm:mt-8 md:flex gap-4">
-                    <div className="2xs:flex xs:flex 2xs:gap-1 xs:gap-1 sm:gap-1 md:flex md:gap-1">
-                      <FaRegHeart className="2xs:text-xs xs:text-lg sm:text-3xl sm:gap-2 md:text-xl  " />
-                      <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-xl">
+                  <div className="2xs:flex 2xs:mt-4 xs:flex xs:mt-4 sm:mt-8 md:flex md:gap-4 sm:gap-7 xs:gap-6 2xs:gap-3">
+                    <div className="2xs:flex xs:flex 2xs:gap-1 xs:gap-1  md:flex md:gap-1 ">
+                      <FaRegHeart className="2xs:text-xs xs:text-sm sm:text-3xl  md:text-sm mt-1 " />
+                      <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-sm">
                         Wish_List
                       </p>
                     </div>
-                    <div className="2xs:flex xs:flex xs:gap-1 sm:gap-1 md:flex md:gap-1">
-                      <FaArrowsAlt className="2xs:text-xs xs:text-lg sm:text-3xl md:text-xl " />
-                      <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-xl">
+                    <div className="2xs:flex xs:flex xs:gap-1  md:flex md:gap-1 ">
+                      <FaArrowsAlt className="2xs:text-xs xs:text-sm sm:text-3xl md:text-sm mt-1 " />
+                      <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-sm">
                         Share
                       </p>
                     </div>
-                    <div className="2xs:flex xs:flex xs:gap-1 md:flex sm:gap-1 md:gap-1">
-                      <FaAlignLeft className="2xs:text-xs xs:text-lg xs:gap-1 sm:text-3xl md:text-xl " />
-                      <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-xl">
+                    <div className="2xs:flex xs:flex xs:gap-1 md:flex md:gap-1 ">
+                      <FaAlignLeft className="2xs:text-xs xs:text-sm xs:gap-1 sm:text-3xl md:text-sm mt-1" />
+                      <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-sm">
                         Similar_Products
                       </p>
                     </div>
                   </div>
 
                   <div className="data 2xs:mt-3 xs:mb-3 ">
-                    <h3 className="2xs:text-base 2xs:font-semibold xs:mt-2 mr-50 xs:text-sm xs:font-bold sm:mt-4 sm:text-3xl md:mt-4 md:text-2xl text-green-700 md:font-medium dark:text-neutral-50">
+                    <h3 className="2xs:text-xl 2xs:font-semibold xs:mt-2 mr-50 xs:text-2xl xs:font-semibold sm:mt-4 sm:text-4xl md:mt-4 md:text-2xl  md:font-medium ">
                       {item.name}
                     </h3>
                     {item &&
                       item.variants.map((data) => {
                         return (
                           <>
-                            <div className="xs:text-sm xs:text-left sm:mt-2 md:text-md md:text-left ">
-                              <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
+                            <div className="xs:text-sm xs:text-left sm:mt-2  md:text-left ">
+                              <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl md:text-lg">
                                 Price : ₹{data.price}{" "}
                               </p>
-                              <h1 className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
+                              <h1 className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl md:text-lg">
                                 Measurement : {data.measurement}
                                 {data.measurement_unit_name}
                               </h1>
-                              <h1 className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
+                              <h1 className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl md:text-lg">
                                 discount : ₹{data.discounted_price}{" "}
                               </h1>
                             </div>
@@ -91,7 +91,7 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                         );
                       })}
                     <button
-                      className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 sm:w-40 sm:h-12 md:mt-5 md:w-[118px] text-white md:font-bold md:py-2 md:px-4 md:rounded-lg md:hover:opacity-90"
+                      className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] text-white md:font-bold md:py-2 md:px-4 md:rounded-lg md:hover:opacity-90"
                       onClick={() => addItemHandler(item)}
                     >
                       Add to cart
@@ -101,22 +101,22 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
               </div>
 
               <div className="text-left">
-                <h1 className="2xs:mt-2 font-bold md:mt-3 xs:text-xl sm:text-2xl">
+                <p className="2xs:mt-4 font-bold md:mt-3 xs:text-lg sm:text-3xl md:text-xl ">
                   Product Details
-                </h1>
-                <p className="2xs:text-sm text-gray-600 xs:text-sm sm:text-2xl sm:mt-2 md:text-lg">
+                </p>
+                <p className="2xs:text-sm text-gray-600 xs:text-sm sm:text-2xl sm:mt-1 md:text-base">
                   {item.description}
                 </p>
-                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-xl sm:text-3xl md:mt- md:text-2xl md:mb-0">
+                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-lg sm:text-3xl md:text-xl md:mt-3 sm:mt-5">
                   Manufacturer
                 </p>
-                <p className="2xs:text-sm xs:text-sm sm:mt-2 sm:text-2xl">
+                <p className="2xs:text-sm xs:text-sm sm:mt-1 sm:text-2xl md:text-base md:mt-0">
                   {item.manufacturer}
                 </p>
-                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-xl sm:text-2xl ">
+                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-lg  sm:text-3xl md:text-xl sm:mt-4">
                   Made In
                 </p>
-                <p className="2xs:text-sm 2xs:mb-2 xs:text-sm sm:mt-2 sm:text-2xl">
+                <p className="2xs:text-sm 2xs:mb-2 xs:text-sm sm:mt-1 sm:text-2xl md:text-base md:mt-0">
                   {item.made_in}
                 </p>
               </div>
