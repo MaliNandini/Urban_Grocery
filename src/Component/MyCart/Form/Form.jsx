@@ -1,30 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaChevronDown } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
-function Form({ back,formData, setFormdata }) {
-  const navigate = useNavigate();
-  
-  
+function Form({ back, setFormdata, formData }) {
   const formHandler = (e) => {
     let name = e.target.name;
     let value = e.target.value;
     setFormdata({ ...formData, [name]: value });
-    ;
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
     if (formData !== "") {
       back();
-      // navigate("/mycart");
     }
-    console.log(formData);
   };
 
   return (
     <>
-      <form className="w-full xs:px-9  " onSubmit={submitHandler}>
+      <form
+        className="w-full mt-5 xs:px-9  2xs:w-full 2xs:px-9"
+        onSubmit={submitHandler}
+      >
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
@@ -93,7 +89,7 @@ function Form({ back,formData, setFormdata }) {
             />
           </div>
         </div>
-        
+
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
@@ -147,7 +143,6 @@ function Form({ back,formData, setFormdata }) {
             </div>
           </div>
         </div>
-
 
         <div className="md:flex  mb-6">
           <div className="md:w-1/3">

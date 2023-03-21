@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { mockProduct } from "../../Models/MockProduct";
 
 export const Card = ({ name, data, addItem, setAddItem }) => {
   const [cardData, setCardData] = useState(mockProduct.data);
+    
 
   const addItemHandler = (item) => {
-    // Update cart item quantity if already in cart
-    console.log(item);
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
       setAddItem((cart) =>
         cart.map((data) =>
@@ -21,11 +21,7 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
       );
       return;
     }
-    // Add to cart
-    setAddItem((cart) => [
-      ...cart,
-      { ...item, amount: 1 }, // <-- initial amount 1
-    ]);
+    setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
   };
 
   return (
@@ -36,7 +32,7 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
           {cardData &&
             cardData.map((item) => {
               return (
-                <div className="w-72 2xs:w-72 rounded-lg mt-10 mx-5 shadow-lg bg-lightblue">
+                <div className="w-72 2xs:w-72 rounded-lg  mt-10    mx-5 shadow-lg  bg-lightblue ">
                   <NavLink to={`product-details/${item.id}`}>
                     <img className="w-full h-56" src={item.image} alt={name} />
                   </NavLink>

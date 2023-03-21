@@ -3,13 +3,45 @@ import { FaArrowLeft, FaShoppingCart, FaTrash } from "react-icons/fa";
 import CartQuantity from "../Button/CartQuantity";
 import Form from "./Form/Form";
 import Review from "./Review/Review";
+import axios from "axios";
+import {useNavigate} from 'react-router-dom'
 
-function MyCart({ addItem, setAddItem,formData,setFormdata}) {
+function MyCart({ addItem, setAddItem, formData, setFormdata }) {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState();
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
-  
+  const [handelPaymentButton, setHandelPaymentButoon] = useState(false);
+
+
+ 
+  const fetchdata = async () => {
+    const apiDomain = "grocery.intelliatech.com";
+    await axios.post(`http://${apiDomain}/api-firebase/cart.php`, { 
+      
+      headers: {
+        "access-control-allow-origin" : "*",
+        'Content-Type' : 'multipart/form-data; boundary=<calculated when request is sent>',  
+        Authorization:
+          "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzkzNzU3MjcsImlzcyI6ImVLYXJ0IiwiZXhwIjoxNjc5Mzc3NTI3LCJzdWIiOiJlS2FydCBBdXRoZW50aWNhdGlvbiJ9.UWoBQ3MMtJyV0zv8s4s0_fjnCRNxPH4HzW_fvZUqnDA",
+      },
+      body: {
+        accesskey: "90336",
+        add_multiple_items: "1",
+        user_id: "21",
+        product_variant_id: "883,881,877",
+        qty: "1,2,1",
+      },
+    })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const hideMOdal = () => {
     setShowModal(false);
     setShowForm(false);
@@ -33,10 +65,6 @@ function MyCart({ addItem, setAddItem,formData,setFormdata}) {
     total();
   }, [total]);
 
-  useEffect(()=>{
-
-  },[formData])
-
   const removeItemHandler = (item) => {
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
     let price = price - item.amount * parseFloat(item.variants[0].price);
@@ -45,7 +73,13 @@ function MyCart({ addItem, setAddItem,formData,setFormdata}) {
 
   const formHandler = () => {
     setShowForm(true);
+    setHandelPaymentButoon(true)
   };
+  
+  const handlePayment = ()=>{
+    navigate('/payment')
+    hideMOdal();
+  }
 
   return (
     <>
@@ -54,6 +88,7 @@ function MyCart({ addItem, setAddItem,formData,setFormdata}) {
         font-bold  py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
         onClick={() => setShowModal(true)}
+        // onClick={fetchdata}
       >
         <div className="mt-1 text-xl relative">
           <FaShoppingCart />
@@ -69,9 +104,8 @@ function MyCart({ addItem, setAddItem,formData,setFormdata}) {
         <>
           <div className="float-right absolute top-0 right-0">
             <div className="relative">
-              <div className=" min-h-screen w-[400px] border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none overflow-y-auto h-32 ">
-              <div className=" min-h-screen  md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
-                <div className="flex items-start justify-between p-5 m-0">
+              <div className=" min-h-screen md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
+                <div className="flex items-start justify-between px-3 py-3 m-0  border-b border-light_gray shadow-sm">
                   <div className="mt-3">
                     {showForm ? (
                       <button className="back-button" onClick={back}>
@@ -91,117 +125,134 @@ function MyCart({ addItem, setAddItem,formData,setFormdata}) {
                   </button>
                 </div>
 
-                {!showForm && addItem.length
-                  ? addItem &&
-                    addItem.map((item) => {
-                      return (
-                        <>
-                          <div class="mt-3  md:p-5 xs:p-4 2xs:p-2">
-                            <div class="flow-root">
-                              <ul
-                                role="list"
-                                class="-my-6 divide-y divide-gray-200"
-                              >
-                                <li class="flex py-6">
-                                  <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                    <img
-                                      src={item.image}
-                                      alt="product"
-                                      class="h-full w-full object-cover object-center"
-                                    />
-                                  </div>
+                <div className="overflow-y-scroll md:h-[415px] xs:h-[758px]">
+                  {!showForm && addItem.length
+                    ? addItem &&
+                      addItem.map((item) => {
+                        return (
+                          <>
+                            <div class="mt-3  md:p-5 xs:p-4 2xs:p-2 ">
+                              <div class="flow-root">
+                                <ul
+                                  role="list"
+                                  class="-my-6 divide-y divide-gray-200"
+                                >
+                                  <li class="flex py-6">
+                                    <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                      <img
+                                        src={item.image}
+                                        alt="product"
+                                        class="h-full w-full object-cover object-center"
+                                      />
+                                    </div>
 
-                                  <div class="ml-4 flex flex-1 flex-col">
-                                    <div class="text-base font-medium text-gray-900">
-                                      <h3>
-                                        <a href="#" className="float-left">
-                                          {item.name}
-                                        </a>
-                                      </h3>
-                                      <br />
-                                      {item.variants.map((data) => {
-                                        return (
-                                          <>
-                                            <div className="2xs:flex-col ">
-                                              <p class="text-sm text-gray-500 float-left">
-                                                {data.measurement}
-                                                {data.measurement_unit_name}
-                                              </p>
-                                              <br></br>
-                                              <p class="text-sm text-gray-500 float-left">
-                                                Price ₹{data.price}
-                                              </p>{" "}
-                                              <br />
-                                            </div>
-                                          </>
-                                        );
-                                      })}
+                                    <div class="ml-4 flex flex-1 flex-col">
+                                      <div class="text-base font-medium text-gray-900">
+                                        <h3>
+                                          <a href="#" className="float-left">
+                                            {item.name}
+                                          </a>
+                                        </h3>
+                                        <br />
+                                        {item.variants.map((data) => {
+                                          return (
+                                            <>
+                                              <div className="2xs:flex-col ">
+                                                <p class="text-sm text-gray-500 float-left">
+                                                  {data.measurement}
+                                                  {data.measurement_unit_name}
+                                                </p>
+                                                <br></br>
+                                                <p class="text-sm text-gray-500 float-left">
+                                                  Price ₹{data.price}
+                                                </p>{" "}
+                                                <br />
+                                              </div>
+                                            </>
+                                          );
+                                        })}
 
-                                      <div className="flex justify-between ">
-                                        <div>
-                                          <p class="text-sm text-gray-500 float-left">
-                                            {" "}
-                                            Qty {item.amount}
-                                            {() => setAmount(item.amount)}
-                                          </p>
-                                        </div>
+                                        <div className="flex justify-between ">
+                                          <div>
+                                            <p class="text-sm text-gray-500 float-left">
+                                              {" "}
+                                              Qty {item.amount}
+                                              {() => setAmount(item.amount)}
+                                            </p>
+                                          </div>
 
-                                        <div>
-                                          <CartQuantity
-                                            item={item}
-                                            setAddItem={setAddItem}
-                                            addItem={addItem}
-                                          />
-                                        </div>
-                                        <div>
-                                          <FaTrash
-                                            onClick={() =>
-                                              removeItemHandler(item)
-                                            }
-                                            className="cursor-pointer text-xl "
-                                          />
+                                          <div>
+                                            <CartQuantity
+                                              item={item}
+                                              setAddItem={setAddItem}
+                                              addItem={addItem}
+                                            />
+                                          </div>
+                                          <div>
+                                            <FaTrash
+                                              onClick={() =>
+                                                removeItemHandler(item)
+                                              }
+                                              className="cursor-pointer text-xl "
+                                            />
+                                          </div>
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                                </li>
-                              </ul>
-                              
+                                  </li>
+                                </ul>
+
+                               {
+                                handelPaymentButton ? 
+                                
                                 <button
-                                  className="flex justify-between bg-lime text-white mb-1 fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
-                                  onClick={formHandler}
+                                  className=" flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
+                                  onClick={handlePayment}
                                 >
                                   <p className="p-2 ">Total : ₹ {price}</p>
-                                  <p className="p-2">Process to Pay </p>
+                                  <p className="p-2">Process to Payment </p>
                                 </button>
-                           
+
+                                : 
+                                <button
+                                className=" flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
+                                onClick={formHandler}
+                              >
+                                <p className="p-2 ">Total : ₹ {price}</p>
+                                <p className="p-2">Process to Pay </p>
+                              </button>
+                               }
+                              </div>
                             </div>
-                          </div>
-                        </>
-                      );
-                    })
-                  : null}
+                          </>
+                        );
+                      })
+                    : null}
 
-                {!showForm && !addItem.length ? (
-                  <div className="relative p-6 flex-auto text-center text-2xl font-medium">
-                    <p>your cart is empty</p>
+                  {!showForm && !addItem.length ? (
+                    <div className="relative p-6 flex-auto text-center text-2xl font-medium">
+                      <p>your cart is empty</p>
+                    </div>
+                  ) : null}
+
+                  {showForm ? (
+                    <Form
+                      back={back}
+                      setFormdata={setFormdata}
+                      formData={formData}
+                    />
+                  ) : null}
+                </div>
+
+                {showForm ? null : (
+                  <div className="fixed bottom-10 bg-white">
+                    <Review formData={formData} />
                   </div>
-                ) : null}
-
-                {showForm ? <Form back={back} setFormdata={setFormdata} formData={formData}/> : null}
-
-                {/* {showForm ? <Review formData={formData}/> : null } */}
-
-                {showForm ? null : <Review formData={formData}/>}
-
-
-                
+                )}
               </div>
             </div>
           </div>
-          </div>
         </>
-        
       ) : null}
     </>
   );

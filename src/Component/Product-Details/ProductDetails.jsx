@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaRegHeart, FaAlignLeft, FaArrowsAlt } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { mockProduct } from "../../Models/MockProduct";
@@ -7,8 +7,9 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
   const [productPageData, setProductPage] = useState(mockProduct.data);
   const { id } = useParams();
 
+  
+  
   const addItemHandler = (item) => {
-    // Update cart item quantity if already in cart
     console.log(item);
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
       setAddItem((cart) =>
@@ -23,11 +24,8 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
       );
       return;
     }
-    // Add to cart
-    setAddItem((cart) => [
-      ...cart,
-      { ...item, amount: 1 }, // <-- initial amount 1
-    ]);
+
+    setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
   };
 
   const filterData = productPageData.filter((data) => {
@@ -72,7 +70,7 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                   </div>
 
                   <div className="data 2xs:mt-3 xs:mb-3 ">
-                    <p className="2xs:text-base 2xs:font-semibold xs:mt-2 mr-50 xs:text-sm xs:font-bold sm:mt-4 sm:text-3xl md:mt-4 md:text-2xl text-green-700 md:font-medium dark:text-neutral-50">
+                    <p className="2xs:text-base 2xs:font-semibold xs:mt-2 mr-50  xs:text-sm xs:font-bold sm:mt-4 sm:text-3xl md:mt-4 md:text-2xl text-green-700 md:font-normal dark:text-neutral-50">
                       {item.name}
                     </p>
                     {item &&
@@ -80,21 +78,23 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                         return (
                           <>
                             <div className="xs:text-sm xs:text-left sm:mt-2 md:text-md md:text-left ">
-                              <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
+                              <p className="2xs:text-base 2xs:font-normal xs:font-normal xs:text-xs sm:text-xl md:text-sm">
                                 Price : ₹{data.price}{" "}
                               </p>
-                              <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
+                              <p className="2xs:text-base 2xs:font-normal xs:font-normal xs:text-xs sm:text-xl md:text-sm">
                                 Measurement : {data.measurement}
                                 {data.measurement_unit_name}
                               </p>
-                              <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">
+                              <p className="2xs:text-base 2xs:font-normal xs:font-normal xs:text-xs sm:text-xl md:text-sm">
                                 discount : ₹{data.discounted_price}{" "}
                               </p>
                             </div>
                           </>
                         );
                       })}
-                      <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl">Rating : {item.ratings}</p>
+                    <p className="2xs:text-base 2xs:font-normal xs:font-normal xs:text-xs sm:text-xl md:text-sm">
+                      Rating : {item.ratings}
+                    </p>
 
                     <button
                       className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 sm:w-40 sm:h-12 md:mt-5 md:w-[118px] text-white md:font-bold md:py-2 md:px-4 md:rounded-lg md:hover:opacity-90"
@@ -107,23 +107,23 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
               </div>
 
               <div className="text-left">
-                <p className="2xs:mt-2 font-bold md:mt-3 xs:text-xl sm:text-2xl">
+                <p className="2xs:mt-2 font-medium md:mt-3 xs:text-xl sm:text-2xl">
                   Product Details
                 </p>
-              
-                <p className="2xs:text-sm text-gray-600 xs:text-sm sm:text-2xl sm:mt-2 md:text-lg md:mb-8">
+
+                <p className="2xs:text-sm text-gray-600 xs:text-xs xs:font-normal sm:text-xl sm:mt-2 md:text-sm md:mb-0">
                   {item.description}
                 </p>
-                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-xl sm:text-3xl md:text-xl ">
+                <p className="2xs:mt-2 xs:mt-2 xs:text-sm xs:font-medium sm:text-xl md:text-base md:font-medium md:mb-0 ">
                   Manufacturer
                 </p>
-                <p className="2xs:text-sm xs:text-sm sm:mt-2 sm:text-2xl md:text-xl md:mb-1 ">
+                <p className="2xs:text-sm xs:text-sm xs:font-normal  sm:mt-2 sm:text-xl md:text-base md:mb-0">
                   {item.manufacturer}
                 </p>
-                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-xl sm:text-2xl md:text-xl ">
+                <p className="2xs:mt-2 xs:mt-2 xs:text-sm xs:font-medium  sm:text-xl md:text-base md:font-medium md:mb-0">
                   Made In
                 </p>
-                <p className="2xs:text-sm 2xs:mb-2 xs:text-sm sm:mt-2 sm:text-2xl md:text-xl md:mb-1">
+                <p className="2xs:text-sm 2xs:mb-2 xs:text-sm xs:font-normal  sm:mt-2 sm:text-xl  md:text-base md:mb-0">
                   {item.made_in}
                 </p>
               </div>

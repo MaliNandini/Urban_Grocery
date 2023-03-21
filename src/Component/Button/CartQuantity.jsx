@@ -34,7 +34,7 @@ function CartQuantity({ item, setAddItem, addItem }) {
   };
 
   return (
-    <div class=" rounded-lg bg-lime text-white hover:bg-blue-700 text-black font-bold  px-4 h-[30px]  flex w-20 justify-between">
+    <div class=" rounded-lg bg-lime text-white hover:bg-blue-700 text-black font-bold px-4 h-[30px] flex w-20 justify-between">
       <button className="text-lg" onClick={() => quantityDecrease()}>
         -
       </button>
