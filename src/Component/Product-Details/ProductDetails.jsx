@@ -68,7 +68,7 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                   </div>
 
                   <div className="data 2xs:mt-3 xs:mb-3 ">
-                    <h3 className="2xs:text-xl 2xs:font-semibold xs:mt-2 mr-50 xs:text-2xl xs:font-semibold sm:mt-4 sm:text-4xl md:mt-4 md:text-2xl  md:font-medium ">
+                    <h3 className="  2xs:text-xl 2xs:font-semibold xs:mt-2 mr-50 xs:text-2xl xs:font-semibold sm:mt-4 sm:text-4xl md:mt-3 md:text-xl  md:font-medium ">
                       {item.name}
                     </h3>
                     {item &&
@@ -76,14 +76,14 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                         return (
                           <>
                             <div className="xs:text-sm xs:text-left sm:mt-2  md:text-left ">
-                              <p className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl md:text-lg">
-                                Price : ₹{data.price}{" "}
+                              <p className="2xs:text-base  sm:text-xl md:text-sm  text-lime font-semibold">
+                                ₹{data.price}{" "}
                               </p>
-                              <h1 className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl md:text-lg">
-                                Measurement : {data.measurement}
+                              <h1 className="2xs:text-base  sm:text-xl md:text-sm font-light">
+                              {data.measurement}
                                 {data.measurement_unit_name}
                               </h1>
-                              <h1 className="2xs:text-base 2xs:font-normal xs:font-normal sm:text-xl md:text-lg">
+                              <h1 className="2xs:text-base  sm:text-xl md:text-sm font-light">
                                 discount : ₹{data.discounted_price}{" "}
                               </h1>
                             </div>
@@ -101,22 +101,22 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
               </div>
 
               <div className="text-left">
-                <p className="2xs:mt-4 font-bold md:mt-3 xs:text-lg sm:text-3xl md:text-xl ">
+                <p className="2xs:mt-4 font-semibold md:mt-3 xs:text-lg sm:text-3xl md:text-xl">
                   Product Details
                 </p>
-                <p className="2xs:text-sm text-gray-600 xs:text-sm sm:text-2xl sm:mt-1 md:text-base">
+                <p className="2xs:text-sm  xs:text-sm sm:text-2xl sm:mt-1 md:font-light md:text-sm">
                   {item.description}
                 </p>
-                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-lg sm:text-3xl md:text-xl md:mt-3 sm:mt-5">
+                <p className="font-normal 2xs:mt-2 xs:mt-2 xs:text-lg sm:text-3xl md:text-base md:mt-3 sm:mt-5">
                   Manufacturer
                 </p>
-                <p className="2xs:text-sm xs:text-sm sm:mt-1 sm:text-2xl md:text-base md:mt-0">
+                <p className="2xs:text-sm xs:text-sm sm:mt-1 sm:text-2xl md:text-xs md:mt-0 font-light">
                   {item.manufacturer}
                 </p>
-                <p className="font-bold 2xs:mt-2 xs:mt-2 xs:text-lg  sm:text-3xl md:text-xl sm:mt-4">
+                <p className="font-normal 2xs:mt-2 xs:mt-2 xs:text-lg  sm:text-3xl md:text-sm sm:mt-4">
                   Made In
                 </p>
-                <p className="2xs:text-sm 2xs:mb-2 xs:text-sm sm:mt-1 sm:text-2xl md:text-base md:mt-0">
+                <p className="2xs:text-sm 2xs:mb-2 xs:text-sm sm:mt-1 sm:text-2xl md:text-xs md:mt-0 font-light">
                   {item.made_in}
                 </p>
               </div>

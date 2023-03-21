@@ -34,11 +34,11 @@ function CartQuantity({ item, setAddItem, addItem }) {
   };
 
   return (
-    <div class=" rounded-lg bg-lime text-white hover:bg-blue-700 text-black font-bold px-4 h-[30px] flex w-20 justify-between">
+    <div class=" rounded-lg bg-lime text-white gap-1 hover:bg-blue-700  font-bold px-2 h-[28px] flex  justify-between ">
       <button className="text-lg" onClick={() => quantityDecrease()}>
         -
       </button>
-      <p className="text-lg">{item.amount}</p>
+      <p className="text-sm mt-1">{item.amount}</p>
       <button className="text-lg" onClick={() => quantityIncrease()}>
         +
       </button>

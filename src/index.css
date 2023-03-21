@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "Roboto";
+  src: url("C:\Users\ROYal\Desktop\Nandini WorkSpace\Urban_Grocery\urban-grocery\src\fonts\Roboto\Roboto-Regular.ttf");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 500;
+  src: url("C:\Users\ROYal\Desktop\Nandini WorkSpace\Urban_Grocery\urban-grocery\src\fonts\Roboto\Roboto-Medium.ttf");
+}
+@font-face {
+  font-family: "Roboto";
+  font-weight: 700;
+  src: url("C:\Users\ROYal\Desktop\Nandini WorkSpace\Urban_Grocery\urban-grocery\src\fonts\Roboto\Roboto-Bold.ttf");
+}
+

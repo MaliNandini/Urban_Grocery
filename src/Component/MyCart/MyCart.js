@@ -3,12 +3,15 @@ import { FaArrowLeft, FaShoppingCart, FaTrash } from "react-icons/fa";
 import CartQuantity from "../Button/CartQuantity";
 import Form from "./Form/Form";
 import Review from "./Review/Review";
+import { useNavigate } from "react-router-dom";
 
 function MyCart({ addItem, setAddItem, formData, setFormdata }) {
+  const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState();
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
+  const [Payment, setPayment] = useState(false);
 
   const hideMOdal = () => {
     setShowModal(false);
@@ -41,26 +44,31 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
 
   const formHandler = () => {
     setShowForm(true);
+    setPayment(true);
+  };
+
+  const handlePayment = () => {
+    navigate("/payment");
+    hideMOdal();
   };
 
   return (
     <>
       <button
-        className=" relative  bg-lime text-white  float-right flex gap-2
+        className=" relative  bg-lime text-white  float-right flex gap-1
         font-bold  py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
-         onClick={() => setShowModal(true)}
-     
+        onClick={() => setShowModal(true)}
       >
-        <div className="mt-1 text-xl relative">
-          <FaShoppingCart />
+        <div className="relative xs:px-2 2xs:px-2">
+          <FaShoppingCart className="xs:text-2xl "/>
           {addItem.length >= 1 && (
-            <span class="-top-[13px] left-3 absolute my-1 w-6 h-6 bg-red border-2 border-white  rounded-full text-white text-sm">
+            <span class="-top-[13px] md:left-5 xs:left-5 2xs:left-4 absolute my-1 w-6 h-6 bg-red border-2 border-white  rounded-full text-white text-sm">
               {addItem.length}
             </span>
           )}
         </div>
-        <div className="ml-2">My Cart</div>
+        <div className="xs:hidden 2xs:hidden md:block sm:block">My Cart</div>
       </button>
       {showModal ? (
         <>
@@ -76,12 +84,12 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                     ) : null}
                   </div>
 
-                  <p className="py-2 text-xl font-bold ">My Cart</p>
+                  <p className="py-2 text-xl font-semibold ">My Cart</p>
                   <button
                     className="bg-transparent text-black float-right"
                     onClick={hideMOdal}
                   >
-                    <span className="text-black opacity-6 h-10 w-9 text-3xl block bg-gray-400 py-0 rounded-full">
+                    <span className="text-black opacity-6 h-10 w-9 text-2xl block bg-gray-400 py-0 rounded-full">
                       x
                     </span>
                   </button>
@@ -109,26 +117,25 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                     </div>
 
                                     <div class="ml-4 flex flex-1 flex-col">
-                                      <div class="text-base font-medium text-gray-900">
-                                        <h3>
-                                          <a href="#" className="float-left">
+                                      <div class="text-sm font-semibold text-gray-900">
+                                          <p className="float-left">
                                             {item.name}
-                                          </a>
-                                        </h3>
+                                          </p>
                                         <br />
                                         {item.variants.map((data) => {
                                           return (
                                             <>
-                                              <div className="2xs:flex-col ">
-                                                <p class="text-sm text-gray-500 float-left">
-                                                  {data.measurement}
+                                              <div className="2xs:flex-col md:flex-col">
+                                                <p class="text-sm font-light float-left">
+                                                  {data.measurement}{" "}
                                                   {data.measurement_unit_name}
                                                 </p>
+                                               <br></br>
+                                                <p class="text-sm text-gray-500 float-left text-lime">
+                                                  ₹{data.price}{" "}
+                                                </p>
                                                 <br></br>
-                                                <p class="text-sm text-gray-500 float-left">
-                                                  Price ₹{data.price}
-                                                </p>{" "}
-                                                <br />
+                                               
                                               </div>
                                             </>
                                           );
@@ -136,9 +143,9 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
 
                                         <div className="flex justify-between ">
                                           <div>
-                                            <p class="text-sm text-gray-500 float-left">
+                                            <p class="text-sm font-light float-left">
                                               {" "}
-                                              Qty {item.amount}
+                                              Qty : {item.amount}
                                               {() => setAmount(item.amount)}
                                             </p>
                                           </div>
@@ -148,6 +155,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                               item={item}
                                               setAddItem={setAddItem}
                                               addItem={addItem}
+                                            
                                             />
                                           </div>
                                           <div>
@@ -155,7 +163,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                               onClick={() =>
                                                 removeItemHandler(item)
                                               }
-                                              className="cursor-pointer text-xl "
+                                              className="cursor-pointer mt-1 text-sm text-red"
                                             />
                                           </div>
                                         </div>
@@ -164,13 +172,23 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                   </li>
                                 </ul>
 
-                                <button
-                                  className="flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
-                                  onClick={formHandler}
-                                >
-                                  <p className="p-2 ">Total : ₹ {price}</p>
-                                  <p className="p-2">Process to Pay </p>
-                                </button>
+                                {Payment ? (
+                                  <button
+                                    className="flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
+                                    onClick={handlePayment}
+                                  >
+                                    <p className="p-2 ">Total : ₹ {price}</p>
+                                    <p className="p-2">Process to Payment </p>
+                                  </button>
+                                ) : (
+                                  <button
+                                    className="flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
+                                    onClick={formHandler}
+                                  >
+                                    <p className="p-2 ">Total : ₹ {price}</p>
+                                    <p className="p-2">Process to Pay </p>
+                                  </button>
+                                )}
                               </div>
                             </div>
                           </>
@@ -180,7 +198,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
 
                   {!showForm && !addItem.length ? (
                     <div className="relative p-6 flex-auto text-center text-2xl font-medium">
-                      <p>your cart is empty</p>
+                      <p>Your cart is empty</p>
                     </div>
                   ) : null}
 
