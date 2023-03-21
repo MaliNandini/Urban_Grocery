@@ -48,19 +48,19 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                 <div className="xs:flex-col md:ml-20 md:p-6 ">
                   <div className="2xs:flex 2xs:mt-4 xs:flex xs:mt-4 sm:mt-8 md:flex md:gap-4 sm:gap-7 xs:gap-6 2xs:gap-3">
                     <div className="2xs:flex xs:flex 2xs:gap-1 xs:gap-1  md:flex md:gap-1 ">
-                      <FaRegHeart className="2xs:text-xs xs:text-sm sm:text-3xl  md:text-sm mt-1 " />
+                      <FaRegHeart className="2xs:text-xs xs:text-sm sm:text-3xl  md:text-lg  " />
                       <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-sm">
                         Wish_List
                       </p>
                     </div>
                     <div className="2xs:flex xs:flex xs:gap-1  md:flex md:gap-1 ">
-                      <FaArrowsAlt className="2xs:text-xs xs:text-sm sm:text-3xl md:text-sm mt-1 " />
+                      <FaArrowsAlt className="2xs:text-xs xs:text-sm sm:text-3xl md:text-lg  " />
                       <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-sm">
                         Share
                       </p>
                     </div>
                     <div className="2xs:flex xs:flex xs:gap-1 md:flex md:gap-1 ">
-                      <FaAlignLeft className="2xs:text-xs xs:text-sm xs:gap-1 sm:text-3xl md:text-sm mt-1" />
+                      <FaAlignLeft className="2xs:text-xs xs:text-sm xs:gap-1 sm:text-3xl md:text-lg " />
                       <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-sm">
                         Similar_Products
                       </p>
