@@ -48,7 +48,7 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
             })}
         </div>
       ) : (
-        <div className="flex flex-row flex-wrap mt-20 ">
+        <div className="flex flex-row flex-wrap mt-20 lg:ml-24">
           {/* show singal product on filter  */}
           {data &&
             data.map((item) => {
