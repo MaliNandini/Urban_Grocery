@@ -87,8 +87,8 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
         className=" relative  bg-lime text-white  float-right flex gap-2
         font-bold  py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
-        onClick={() => setShowModal(true)}
-        // onClick={fetchdata}
+         onClick={() => setShowModal(true)}
+     
       >
         <div className="mt-1 text-xl relative">
           <FaShoppingCart />
