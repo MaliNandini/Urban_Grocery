@@ -95,7 +95,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                   </button>
                 </div>
 
-                <div className="overflow-y-scroll md:h-[415px] xs:h-[758px]">
+                <div className="overflow-y-scroll md:h-[500px] xs:h-[758px] sm:h[985px] 2xs:h-[500px]">
                   {!showForm && addItem.length
                     ? addItem &&
                       addItem.map((item) => {
