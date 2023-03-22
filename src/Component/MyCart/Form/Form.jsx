@@ -24,7 +24,7 @@ function Form({ back, setFormdata, formData }) {
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
-              className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
+              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
               for="inline-full-name"
             >
               Name:
@@ -47,7 +47,7 @@ function Form({ back, setFormdata, formData }) {
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
-              className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
+              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
               for="inline-full-name"
             >
               Address:
@@ -70,7 +70,7 @@ function Form({ back, setFormdata, formData }) {
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
-              className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
+              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
               for="inline-full-name"
             >
               Phone:
@@ -93,7 +93,7 @@ function Form({ back, setFormdata, formData }) {
         <div className="md:flex mb-6">
           <div className="md:w-1/3">
             <label
-              className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
+              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
               for="inline-city"
             >
               City:
@@ -116,38 +116,7 @@ function Form({ back, setFormdata, formData }) {
         <div className="md:flex  mb-6">
           <div className="md:w-1/3">
             <label
-              className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
-              for="inline-full-name"
-            >
-              State :
-            </label>
-          </div>
-          <div className="md:w-7/12">
-            <div className="relative">
-              <select
-                className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                id="grid-state"
-                onChange={formHandler}
-                name="state"
-                value={formData.state}
-                required
-              >
-                <option>Madhya-Pradesh</option>
-                <option>Gujrat</option>
-                <option>Uttar-Prdesh</option>
-                <option>Punjab</option>
-              </select>
-              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                <FaChevronDown />
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="md:flex  mb-6">
-          <div className="md:w-1/3">
-            <label
-              className="block text-gray-500 md:text-right mb-1 md:mb-0 pr-4 font-semibold"
+              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
               for="inline-full-name"
             >
               Pin-Code:

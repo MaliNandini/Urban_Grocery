@@ -2,9 +2,7 @@ import React from 'react'
 
 function Payment() {
   return (
-    <div>
-        <h1 className='mt-36 text-center'>Welcome to payment</h1>
-    </div>
+    <div className='mt-20 text-center'>Payment Page coming soon...</div>
   )
 }
 
