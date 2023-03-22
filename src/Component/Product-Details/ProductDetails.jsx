@@ -30,6 +30,11 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
     return data.id === id;
   });
 
+  function stripHTML(myString) {
+    return myString.replace( /(<([^>]+)>)/ig, '');
+  }
+  
+ 
   return (
     <div className="2xs:mt-10 xs:mt-10 md:mt-20 p-10">
       {filterData &&
@@ -104,8 +109,8 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                 <p className="2xs:mt-4 font-semibold md:mt-3 xs:text-lg sm:text-3xl md:text-xl">
                   Product Details
                 </p>
-                <p className="2xs:text-sm  xs:text-sm sm:text-2xl sm:mt-1 md:font-light md:text-sm" >
-                  {item.description}
+                <p className="2xs:text-sm  xs:text-sm sm:text-2xl sm:mt-1 md:font-light md:text-sm md:w-[500px]" >
+                  {stripHTML(item.description)}
                 </p>
                 <p className="font-medium 2xs:mt-2 xs:mt-2 xs:text-lg sm:text-3xl md:text-base md:mt-3 sm:mt-5">
                   Manufacturer
