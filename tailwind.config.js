@@ -25,6 +25,7 @@ module.exports = {
         white: "#fff",
         red: "#FF0000",
         skyblue: "#f5f7f7",
+        orange : "#E34A27"
       },
       borderColor: {
         pink: "#F2B1BC",
@@ -33,6 +34,8 @@ module.exports = {
         orange: "#FFE58F",
         green: "#25BC86",
         light_gray: "#e4e4e4",
+        Charcoal:	"#36454F"
+       
       },
   },
   plugins: [],
