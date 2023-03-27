@@ -5,23 +5,28 @@ import CarouselComponent from "./Carousel/Carousel";
 function Home({ data, addItem, setAddItem }) {
   return (
     <>
-      <div className="container md:mt-24 xs:mt-20">
-        <div className=" md:ml-20 xs:ml-2 ">
+      <div className="container md:mt-24 xs:mt-20 w-full items-center">
+        <div className=" md:ml-20 xs:px-3 sm:px-5 ">
+        
           <img
             src="https://dao54xqhg9jfa.cloudfront.net/oms/d35e223b-0fae-e484-bac5-5f9680387dc4/original/BANNERS-02_(4).jpeg"
             alt=""
-            className="rounded-xl"
+            className="rounded-xl xs:h-[145px] md:w-full md:h-[270px] xs:w-full sm:h-[232px]"
           />
-          <div className="flex flex-row justify-between">
-            <div className="w-96 m-5">
+        
+          
+          <div className="flex md:flex-row justify-between xs:flex-col xs:mt-3">
+            <div className="md:w-[453px] md:p-2 md:mt-4 xs:py-2">
               <img
-                src="https://i.pinimg.com/736x/65/7f/5b/657f5b5b1a8cf7c0db2f5d8c34243559.jpg"
+                src="https://www.whatech.com/images/featured/31344/grocery-ct-25.png"
                 alt=""
-                className="rounded-xl"
+                className="rounded-xl md:h-[260px]  "
               />
             </div>
-            <div className="w-96 m-2 border"><CarouselComponent/></div>
-            <div className="w-96 m-5">
+            <div className="md:w-[453px] md:p-2 md:mt-4 xs:pt-3 sm:h-[400px]">
+              <CarouselComponent/>
+            </div>
+            <div className="md:w-[453px] md:p-2 xs:-mt-20 md:mt-4 xs:py-2">
               <img
                 src="https://m.media-amazon.com/images/S/aplus-media/sota/14f6ba65-28fe-4257-be60-e960c7f1346d.__CR0,0,970,600_PT0_SX970_V1___.png"
                 alt=""
@@ -29,9 +34,7 @@ function Home({ data, addItem, setAddItem }) {
               />
             </div>
           </div>
-          {/* <div className="border">
-            <CarouselComponent />
-          </div> */}
+          
         </div>
       </div>
     </>
