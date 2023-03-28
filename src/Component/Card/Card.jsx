@@ -30,7 +30,7 @@ export const Card = ({ name, data, addItem, setAddItem }) => {
           {cardData &&
             cardData.map((item) => {
               return (
-                <div className="w-80 hover:scale-105 ease-in duration-100 		 2xs:w-72 rounded-lg  mt-10 mx-5 shadow-xl  bg-lightblue ">
+                <div className="w-80 hover:scale-105 ease-in duration-100 2xs:w-72 rounded-lg  mt-10 mx-5 shadow-xl bg-lightblue ">
                   <NavLink to={`product-details/${item.id}`}>
                     <img className="w-full h-56 rounded-md" src={item.image} alt={name} />
                   </NavLink>

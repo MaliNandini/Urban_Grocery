@@ -7,6 +7,8 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
   const [productPageData, setProductPage] = useState(mockProduct.data);
   const { id } = useParams();
 
+  console.log("Pro detail");
+
   const addItemHandler = (item) => {
     console.log(item);
     if (addItem.some((cartItem) => cartItem.id === item.id)) {

@@ -4,6 +4,7 @@ import { mockProduct } from "../../../Models/MockProduct";
 const Search = ({ setData }) => {
   const [name, setName] = useState("");
   const [searchData, setSearchData] = useState(mockProduct.data);
+  
   const handleChange = (e) => {
     const filteredData = e.target.value;
     setName(filteredData);
