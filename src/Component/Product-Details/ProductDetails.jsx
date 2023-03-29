@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { FaRegHeart, FaAlignLeft, FaArrowsAlt } from "react-icons/fa";
+import { FaRegHeart, FaAlignLeft, FaArrowsAlt, FaHeart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
 import { mockProduct } from "../../Models/MockProduct";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import Rating from "../StarRating/Rating";
 
 export const ProductDetails = ({ setAddItem, addItem }) => {
   const [productPageData, setProductPage] = useState(mockProduct.data);
+  const [wishlist, setWishlist] = useState(false);
   const { id } = useParams();
 
   const addItemHandler = (item) => {
@@ -35,31 +37,53 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
     return myString.replace(/(<([^>]+)>)/gi, "");
   }
 
+  const handleWishlist = () => {
+    setWishlist((prev) => !prev);
+  };
+
   return (
-    <div className="2xs:mt-10 xs:mt-10 md:mt-20 p-10">
+    <div className="2xs:mt-10 xs:mt-10 md:p-20 xs:p-8">
       {filterData &&
         filterData.map((item) => {
           return (
             <>
-              <div className="md:flex">
-                <div className="img">
+              <div className="md:flex ">
+                <div className="img md:ml-20 xs:ml-1">
                   <Carousel
                     showIndicators={false}
-                    className="rounded-xl md:w-96 xs:w-80 sm:w-96"
+                    className="rounded-xl md:w-[500px] xs:w-80 sm:w-[500px]"
                   >
-                    <div className=" rounded-xl">
-                      <img src={item.image} alt="" className="rounded-lg" />
+                    <div className=" ">
+                      <img src={item.image} alt="" className="rounded-xl" />
                     </div>
-                    <div className=" rounded-xl">
-                      <img src={item.other_images} alt="" />
+                    <div className=" ">
+                      <img src={item.other_images} alt="" className="rounded-xl"/>
                     </div>
                   </Carousel>
                 </div>
 
-                <div className="xs:flex-col md:ml-20 md:p-6 ">
+                <div className="xs:flex-col md:ml-[750px] md:p-6 md:fixed">
+                  {item &&
+                    item.variants.map((item) =>
+                      item.stock > 0 ? null : (
+                        <p className="text-orange text-sm md:text-lg font-medium sm:text-2xl">
+                          Out of stock
+                        </p>
+                      )
+                    )}
                   <div className="2xs:flex 2xs:mt-4 xs:flex xs:mt-4 sm:mt-8 md:flex md:gap-4 sm:gap-7 xs:gap-6 2xs:gap-3">
                     <div className="2xs:flex xs:flex 2xs:gap-1 xs:gap-1  md:flex md:gap-1 ">
-                      <FaRegHeart className="2xs:text-xs xs:text-sm sm:text-3xl  md:text-lg  text-lime" />
+                      {wishlist ? (
+                        <FaHeart
+                          className="2xs:text-xs xs:text-sm sm:text-3xl  md:text-lg  text-red animate-hbeat"
+                          onClick={handleWishlist}
+                        />
+                      ) : (
+                        <FaRegHeart
+                          className="2xs:text-xs xs:text-sm sm:text-3xl  md:text-lg  text-lime "
+                          onClick={handleWishlist}
+                        />
+                      )}
                       <p className="2xs:text-xs xs:text-sm sm:text-3xl md:text-sm">
                         Wish_List
                       </p>
@@ -82,31 +106,33 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                     <h3 className="  2xs:text-xl 2xs:font-semibold xs:mt-2 mr-50 xs:text-2xl xs:font-semibold sm:mt-4 sm:text-4xl md:mt-3 md:text-2xl  md:font-medium ">
                       {item.name}
                     </h3>
-                    <p className="text-light_gray">
-                      ★★★★★{" "}
-                      <span className="text-black">
-                        {item.number_of_ratings}
-                      </span>
-                    </p>
+
+                    <div className="flex text-yellow_rating mt-2 sm:mt-3 sm:text-2xl md:text-sm">
+                      <Rating
+                        star={item.ratings}
+                        reviews={item.number_of_ratings}
+                      />
+                    </div>
+
                     {item &&
                       item.variants.map((data) => {
                         return (
                           <>
-                            <div className="xs:text-sm xs:text-left sm:mt-2  md:text-left ">
-                              <p className="text-lime text-lg font-bold">
+                            <div className="xs:text-sm xs:text-left sm:mt-2  md:text-left  ">
+                              <p className="text-lime text-lg font-bold sm:text-3xl md:text-lg">
                                 You save ₹{data.price - data.discounted_price}
                                 .00
                               </p>
-                              <p className="2xs:text-base  sm:text-xl md:text-base text-black font-semibold mt-1">
+                              <p className="2xs:text-base  sm:text-2xl md:text-base text-black font-medium md:mt-1 sm:mt-2">
                                 ₹{data.discounted_price}.00{" "}
-                                <span className="text-xs text-black line-through">
+                                <span className="text-xs sm:text-xl md:text-sm text-black line-through">
                                   ₹{data.price}.00{" "}
                                 </span>
                               </p>
-                              <p className="2xs:text-base  sm:text-xl md:text-sm  mt-1 font-light">
+                              <p className="2xs:text-base  sm:text-2xl md:text-sm  mt-1 font-light">
                                 {data.measurement} {data.measurement_unit_name}
                               </p>
-                              <div className="flex flex-row gap-4 mt-2">
+                              <div className="flex flex-row gap-4 mt-2 sm:mt-5">
                                 <div className="box-border h-16 md:w-40 xs:w-44 px-4 xs:px-2 border-2  border-light_gray rounded-lg text-center text-lime">
                                   <img
                                     src="https://media.istockphoto.com/id/1426338781/vector/return-parcel-box-line-icon-exchange-package-of-delivery-service-linear-pictogram-arrow-back.jpg?b=1&s=170x170&k=20&c=wJ3CCtEVjfm-5h8m-auMfNdIbRB2ouYfe8CX9eAExVs="
@@ -114,7 +140,7 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                                     className="w-9 h-9 ml-auto mr-auto "
                                   />
                                   {item.return_status === "1" ? (
-                                    <p>10 Days Returnable</p>
+                                    <p >10 Days Returnable</p>
                                   ) : (
                                     <p>Not Returnable</p>
                                   )}
@@ -128,22 +154,23 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                                   Not Cancellable
                                 </div>
                               </div>
+                              {data.stock > 0 && <button
+                                className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
+                                onClick={() => addItemHandler(item)}
+                              >
+                                Add to cart
+                              </button>}
+                              
                             </div>
                           </>
                         );
                       })}
-                    <button
-                      className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] text-white md:font-bold md:py-2 md:px-4 md:rounded-lg md:hover:opacity-90"
-                      onClick={() => addItemHandler(item)}
-                    >
-                      Add to cart
-                    </button>
                   </div>
                 </div>
               </div>
 
-              <div className="text-left">
-                <p className="2xs:mt-4 font-semibold md:mt-3 xs:text-lg sm:text-3xl md:text-2xl">
+              <div className="text-left md:ml-20 xs:ml-1 ">
+                <p className="2xs:mt-4 font-semibold md:mt-3 xs:text-lg sm:text-3xl md:text-2xl sm:mt-5">
                   Product Details
                 </p>
                 <p className="2xs:text-sm  xs:text-sm sm:text-2xl sm:mt-1 md:font-light md:text-sm md:w-[500px] text-secondary">

@@ -58,8 +58,8 @@ export const SubCategory = ({ setAddItem, addItem }) => {
                     </p>
                     {item.variants.map((data) => {
                       return (
-                        <div className="flex flex-col items-center justify-between float-left ">
-                          <div>
+                        <div className="flex flex-col items-center justify-between  float-left">
+                          <div >
                             <p className="text-lime text-lg font-normal">
                               ₹{data.price}{" "}
                             </p>
@@ -68,12 +68,17 @@ export const SubCategory = ({ setAddItem, addItem }) => {
                             </p>
                           </div>
 
-                          <button
+
+
+                          {data.stock > 0 ? <button
                             className=" my-2 mr-8 text-white bg-lime hover:bg-opacity-75 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                             onClick={() => addItemHandler(item)}
                           >
                             Add to cart
-                          </button>
+                          </button>:<p className="text-orange text-sm font-medium mt-4 mr-[43px]">
+                          Out of stock
+                        </p>}
+                          
                         </div>
                       );
                     })}
