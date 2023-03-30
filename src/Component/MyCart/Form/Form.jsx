@@ -1,5 +1,4 @@
 import React from "react";
-import { FaChevronDown } from "react-icons/fa";
 
 function Form({ back, setFormdata, formData }) {
   const formHandler = (e) => {
@@ -12,8 +11,7 @@ function Form({ back, setFormdata, formData }) {
     e.preventDefault();
     if (formData !== "") {
       back();
-    }
-    
+    }   
   };
 
   return (

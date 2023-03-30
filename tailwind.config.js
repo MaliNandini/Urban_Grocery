@@ -25,7 +25,8 @@ module.exports = {
         white: "#fff",
         red: "#FF0000",
         skyblue: "#f5f7f7",
-        orange : "#E34A27"
+        orange : "#E34A27",
+        grey : "#e5e7eb"
       },
       borderColor: {
         pink: "#F2B1BC",

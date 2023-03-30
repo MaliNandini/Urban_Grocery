@@ -56,7 +56,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     <>
       <button
         className=" relative  bg-lime text-white  float-right flex gap-1
-        font-bold  py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
+        font-bold py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -116,9 +116,9 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                       />
                                     </div>
 
-                                    <div class="ml-4 flex flex-1 flex-col">
-                                      <div class="text-sm font-semibold text-gray-900">
-                                          <p className="float-left">
+                                    <div class="ml-4 flex flex-1 flex-col truncate ...">
+                                      <div class="text-sm font-semibold text-gray-900 ">
+                                          <p className="float-left truncate ...">
                                             {item.name}
                                           </p>
                                         <br />
@@ -211,7 +211,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                   ) : null}
                 </div>
 
-                {showForm ? null : (
+                {showForm && addItem.length ? null : (
                   <div className="fixed bottom-10 bg-white p-3">
                     <Review formData={formData} />
                   </div>
