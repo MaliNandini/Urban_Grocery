@@ -11,16 +11,16 @@ export const Navbar = ({
   setFormdata,
 }) => {
   return (
-    <div>
-      <nav className="bg-white px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray  shadow-sm">
-        <div className=" flex flex-wrap items-center justify-between mx-auto">
-          <NavLink to="/" className="flex items-center">
+    <div className="">
+      <nav className=" px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray  shadow-sm">
+        <div className="bg-white flex flex-wrap items-center justify-between mx-auto ">
+          <NavLink to="/" className="flex items-center bg-white">
             <img
               src="http://grocery.intelliatech.com/dist/img/logo.png"
-              className="h-6 mr-3 mt-2 sm:h-9"
+              className="h-6 mr-3 mt-2 sm:h-9 bg-white"
               alt="Flowbite Logo"
             />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white bg-white">
               Hi,There!
             </span>
           </NavLink>

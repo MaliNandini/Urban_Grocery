@@ -16,19 +16,19 @@ const Search = ({ setData }) => {
   };
 
   return (
-    <div className="w-full max-w-screen-2xl">
-      <div className="inline-flex justify-center relative text-black-500 ">
-        <div className="relative my-3">
+    <div className="w-full max-w-screen-2xl bg-white">
+      <div className="inline-flex justify-center relative text-black-500 bg-white">
+        <div className="relative my-3 bg-white">
           <input
             type="text"
-            className="input p-2 pl-10 text-sm w-96 h-12 font-light rounded-2xl border border-light_gray focus:bg-white focus:outline-none focus:ring-1 focus:border-transparent"
+            className=" bg-white input p-2 pl-10 text-sm w-96 h-12 font-light rounded-2xl border border-light_gray focus:bg-white focus:outline-none focus:ring-1 focus:border-transparent"
             placeholder="Search by Product Name"
             onChange={handleChange}
             value={name}
           />
 
           <svg
-            className="w-6 h-6 absolute left-2.5 top-3.5"
+            className="w-6 h-6 absolute left-2.5 top-3.5 bg-white"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"

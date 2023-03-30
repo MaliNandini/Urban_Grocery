@@ -61,15 +61,15 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        <div className="relative xs:px-2 2xs:px-2">
-          <FaShoppingCart className="xs:text-2xl "/>
+        <div className="relative xs:px-2 2xs:px-2 bg-lime">
+          <FaShoppingCart className="xs:text-2xl bg-lime"/>
           {addItem.length >= 1 && (
             <span class="-top-[13px] md:left-5 xs:left-5 2xs:left-4 absolute my-1 w-5 h-5 bg-red border-2 border-white  rounded-full text-white text-sm">
               {addItem.length}
             </span>
           )}
         </div>
-        <div className="xs:hidden 2xs:hidden md:block sm:block">My Cart</div>
+        <div className="xs:hidden 2xs:hidden md:block sm:block bg-lime">My Cart</div>
       </button>
       {showModal ? (
         <>

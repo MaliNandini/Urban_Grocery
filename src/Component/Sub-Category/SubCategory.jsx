@@ -43,7 +43,7 @@ export const SubCategory = ({ setAddItem, addItem }) => {
           {subcategory &&
             subcategory.map((item) => {
               return (
-                <div className="md:w-56 sm:w-44 mt-5 rounded-2xl shadow cursor-pointer border-1 transform transition-all hover:scale-90 hover:border-light_gray hover:border">
+                <div className="md:w-56 sm:w-44 mt-5 rounded-2xl shadow cursor-pointer  transform transition-all hover:scale-105  ">
                   <NavLink to={`product-details/${item.id}`}>
                     <img
                       className="xs:w-full xs:h-auto md:w-80 md:h-56 rounded-md"

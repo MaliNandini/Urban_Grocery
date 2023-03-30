@@ -103,7 +103,7 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                   </div>
 
                   <div className="data 2xs:mt-3 xs:mb-3 ">
-                    <h3 className="  2xs:text-xl 2xs:font-semibold xs:mt-2 mr-50 xs:text-2xl xs:font-semibold sm:mt-4 sm:text-4xl md:mt-3 md:text-2xl  md:font-medium ">
+                    <h3 className="  2xs:text-xl 2xs:font-semibold xs:mt-2 mr-50 xs:text-2xl xs:font-semibold sm:mt-4 sm:text-4xl md:mt-3 md:text-4xl  md:font-medium ">
                       {item.name}
                     </h3>
 
