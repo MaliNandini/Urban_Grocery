@@ -38,7 +38,7 @@ function CartQuantity({ item, setAddItem, addItem }) {
       <button className="text-lg" onClick={() => quantityDecrease()}>
         -
       </button>
-      <p className="text-sm mt-1">{item.amount}</p>
+      <p className="text-sm mt-1 bg-lime">{item.amount}</p>
       <button className="text-lg" onClick={() => quantityIncrease()}>
         +
       </button>

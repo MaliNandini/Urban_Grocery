@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { mockProduct } from "../../../Models/MockProduct";
 import { NavLink, useNavigate } from "react-router-dom";
 
+
 const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
   const [searchData, setSearchData] = useState(mockProduct.data);
   const navigate = useNavigate();
@@ -15,7 +16,9 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
       return item.name.toLowerCase().startsWith(filteredData.toLowerCase());
     });
     setData(result);
+    // setSearchData("")
   };
+
 
   const addItemHandler = (item) => {
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
@@ -34,19 +37,21 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
     setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
   };
 
+ 
+
   return (
-    <div className="w-full max-w-screen-2xl">
-      <div className="relative xs:my-4 xs:mx-4 md:my-3 xs:mt-20">
+    <div className="w-full max-w-screen-2xl bg-white md:h-[69px]">
+    <div className="inline-flex justify-center relative text-black-500 bg-white xs:my-4 xs:mx-4 md:my-3 xs:mt-20">
         <input
           type="text"
-          className="input xs:w-[330px] xs:overflow-x-hidden xs:h-auto p-2 pl-10 text-sm md:w-96 md:h-12 font-light rounded-2xl border border-light_gray focus:bg-white focus:outline-none focus:ring-1 focus:border-transparent"
+          className=" bg-white input xs:w-[330px] xs:overflow-x-hidden xs:h-auto p-2 pl-10 text-sm md:w-96 md:h-12 font-light rounded-2xl border border-light_gray focus:bg-white focus:outline-none focus:ring-1 focus:border-transparent"
           placeholder="Search by Product Name"
           onChange={handleChange}
           value={name}
         />
 
         <svg
-          className="xs:w-6 xs:h-5 xs:text-white  md:w-6 md:h-6 absolute xs:left-2 xs:top-2.5 md:left-2.5 md:top-3.5"
+          className="xs:w-6 xs:h-5 xs:text-white md:w-6 md:h-6 absolute xs:left-2 xs:top-2.5 md:left-2.5 md:top-3.5 bg-white"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"

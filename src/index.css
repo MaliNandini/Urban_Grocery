@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
+*{
+ background-color: #fbf9f975; 
+}
+
 @font-face {
   font-family: "Roboto";
   src: url("C:\Sandeep Singh Solanki\Urban_Grocery\Urban_Grocery\src\fonts\Roboto\Roboto-Regular.ttf");

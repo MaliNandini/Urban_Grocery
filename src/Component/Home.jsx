@@ -59,7 +59,6 @@ function Home({
               SubCategory={SubCategory}
               productDetails={productDetails}
             />
-
             <ProductCarousel addItem={addItem} setAddItem={setAddItem} />
           </div>
         </div>

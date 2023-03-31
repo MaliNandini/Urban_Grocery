@@ -51,8 +51,8 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
   }
 
   return (
-    <div>
-      <div className="mt-20 flex justify-between">
+    <div className="mt-14">
+      <div className="xs:my-5 mt-20 flex justify-between">
         <div className="text-lime text-base font-semibold">
           <h1>All Proudcts</h1>
         </div>
@@ -67,7 +67,7 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
             allproduct.map((item) => {
               return (
                 <>
-                  <div className="w-72 rounded-lg  container shadow-lg bg-lightblue">
+                  <div className="w-72 rounded-lg xs:mx-7 container shadow-lg bg-lightblue">
                     <NavLink
                       to={`/subcategory-details/${item.category_name}/product-details/${item.id}`}
                     >
@@ -77,8 +77,8 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
                         alt={name}
                       />
                     </NavLink>
-                    <div className="py-4">
-                      <p className="text-lg text-lime font-normal">{item.name}</p>
+                    <div className="py-4 xs:mb-[-10px]">
+                      <p className="text-lg font-normal">{item.name}</p>
                     </div>
                     {item &&
                       item.variants.map((data) => {

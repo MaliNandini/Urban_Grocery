@@ -2,7 +2,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { categoryData } from "../../Models/MockCategoryData";
 
-export const Category = ({ data }) => {
+export const Category = () => {
   const [categorydata, setCategorydata] = useState(categoryData.data);
 
   return (
@@ -17,6 +17,7 @@ export const Category = ({ data }) => {
       </div>
 
       <div className="category xs:mx-2">
+
       <div className=" grid md:grid-cols-4 gap-4 sm:grid-cols-2 xs:grid-cols-2">
             {categorydata &&
               categorydata.map((item) => {
@@ -32,11 +33,11 @@ export const Category = ({ data }) => {
                     <div className="xs:text-center md:py-4 md:text-center ">
                       <p className="md:text-xl">{item.name}</p>
                     </div>
-                  </div>
-                );
-              })}
-          </div>
 
+                  </div>
+              );
+            })}
+        </div>
       </div>
     </>
   );

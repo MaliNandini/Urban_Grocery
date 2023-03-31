@@ -4,6 +4,7 @@ import CartQuantity from "../Button/CartQuantity";
 import Form from "./Form/Form";
 import Review from "./Review/Review";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function MyCart({ addItem, setAddItem, formData, setFormdata }) {
   const navigate = useNavigate();
@@ -60,15 +61,15 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
         type="button"
         onClick={() => setShowModal(true)}
       >
-        <div className="relative xs:px-2 2xs:px-2">
-          <FaShoppingCart className="xs:text-2xl "/>
+        <div className="relative xs:px-2 2xs:px-2 bg-lime">
+          <FaShoppingCart className="xs:text-2xl bg-lime"/>
           {addItem.length >= 1 && (
             <span class="-top-[13px] md:left-5 xs:left-5 2xs:left-4 absolute my-1 w-5 h-5 bg-red border-2 border-white  rounded-full text-white text-sm">
               {addItem.length}
             </span>
           )}
         </div>
-        <div className="xs:hidden 2xs:hidden md:block sm:block">My Cart</div>
+        <div className="xs:hidden 2xs:hidden md:block sm:block bg-lime">My Cart</div>
       </button>
       {showModal ? (
         <>
@@ -177,16 +178,16 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                     className="flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
                                     onClick={handlePayment}
                                   >
-                                    <p className="p-2 ">Total : ₹ {price}</p>
-                                    <p className="p-2">Process to Payment </p>
+                                    <p className="p-2 bg-lime rounded-lg">Total : ₹ {price}</p>
+                                    <p className="p-2 bg-lime rounded-lg">Process to Payment </p>
                                   </button>
                                 ) : (
                                   <button
                                     className="flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
                                     onClick={formHandler}
                                   >
-                                    <p className="p-2 ">Total : ₹ {price}</p>
-                                    <p className="p-2">Process to Pay </p>
+                                    <p className="p-2 bg-lime rounded-lg">Total : ₹ {price}</p>
+                                    <p className="p-2 bg-lime rounded-lg">Process to Pay </p>
                                   </button>
                                 )}
                               </div>

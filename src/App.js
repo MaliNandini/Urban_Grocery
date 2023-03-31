@@ -51,7 +51,7 @@ function App() {
           path="/subcategory-details/:category_name"
           element={<SubCategory setAddItem={setAddItem} addItem={addItem}/>}
         />
-        <Route path="/search" element={<FilterData  setData={setData} data={data}  name={name} addItem={addItem} setAddItem={setAddItem} />} />
+        <Route path="/search" element={<FilterData setData={setData} setName={setName} data={data}  name={name} addItem={addItem} setAddItem={setAddItem} />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/allproducts" element={<Allproducts name={name} setAddItem={setAddItem} addItem={addItem}/>} />
       </Routes>
