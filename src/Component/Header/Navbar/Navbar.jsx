@@ -35,10 +35,12 @@ export const Navbar = ({
     navigate("/search");
   };
   return (
-    <div className="">
-      <nav className=" px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray  shadow-sm">
-        <div className="bg-white flex flex-wrap items-center justify-between mx-auto ">
-          <NavLink to="/" className="flex items-center bg-white">
+
+<div className="">
+<nav className=" px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray  shadow-sm">
+  <div className="bg-white flex flex-wrap items-center justify-between mx-auto ">
+    <NavLink to="/" className="flex items-center bg-white">
+
             <img
               src="http://grocery.intelliatech.com/dist/img/logo.png"
               className="h-6 mr-3 mt-2 sm:h-9 bg-white"
@@ -51,7 +53,7 @@ export const Navbar = ({
 
           <div class="flex md:order-2 z-10 xs:gap-3">
             {showSearch ? null : (
-              <div className="md:visible xs:visible rounded-lg bg-lime w-10 h-10 xs:mt-2">
+              <div className="md:invisible xs:visible rounded-lg bg-lime w-10 h-10 xs:mt-2">
                 <FaSistrix
                   className=" text-white m-2 text-2xl bg-lime"
                   onClick={handleShowSearchBar}
