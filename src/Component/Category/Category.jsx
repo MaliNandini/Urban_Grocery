@@ -17,7 +17,7 @@ export const Category = ({ data }) => {
       </div>
 
       <div className="category xs:mx-2">
-      <div className="shop-category grid md:grid-cols-4 gap-4 sm:grid-cols-2 xs:grid-cols-2">
+      <div className=" grid md:grid-cols-4 gap-4 sm:grid-cols-2 xs:grid-cols-2">
             {categorydata &&
               categorydata.map((item) => {
                 return (

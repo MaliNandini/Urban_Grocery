@@ -23,9 +23,7 @@ export const Navbar = ({
       const isScrollingDown = window.scrollY > 0;
       setShowSearch(!isScrollingDown);
     };
-
     window.addEventListener("scroll", handleScroll);
-
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -40,7 +38,7 @@ export const Navbar = ({
   return (
     <div>
       <nav className="bg-white px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray shadow-sm">
-        <div className=" flex flex-wrap items-center justify-between mx-auto">
+        <div className="flex flex-wrap items-center justify-between mx-auto">
           <NavLink to="/" className="flex items-center">
             <img
               src="http://grocery.intelliatech.com/dist/img/logo.png"
