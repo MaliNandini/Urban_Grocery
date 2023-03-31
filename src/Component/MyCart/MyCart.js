@@ -57,7 +57,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     <>
       <button
         className=" relative  bg-lime text-white  float-right flex gap-1
-        font-bold  py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
+        font-bold py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
         onClick={() => setShowModal(true)}
       >
@@ -178,16 +178,16 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                     className="flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
                                     onClick={handlePayment}
                                   >
-                                    <p className="p-2 ">Total : ₹ {price}</p>
-                                    <p className="p-2">Process to Payment </p>
+                                    <p className="p-2 bg-lime rounded-lg">Total : ₹ {price}</p>
+                                    <p className="p-2 bg-lime rounded-lg">Process to Payment </p>
                                   </button>
                                 ) : (
                                   <button
                                     className="flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
                                     onClick={formHandler}
                                   >
-                                    <p className="p-2 ">Total : ₹ {price}</p>
-                                    <p className="p-2">Process to Pay </p>
+                                    <p className="p-2 bg-lime rounded-lg">Total : ₹ {price}</p>
+                                    <p className="p-2 bg-lime rounded-lg">Process to Pay </p>
                                   </button>
                                 )}
                               </div>

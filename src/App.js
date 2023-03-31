@@ -6,6 +6,8 @@ import { useState } from "react";
 import Payment from "./Component/Payment/Payment";
 import "./index.css";
 import { SubCategory } from "./Component/Sub-Category/SubCategory";
+import Search from "./Component/Header/Search/Search";
+import FilterData from "./Component/FilterData";
 
 function App() {
   const [addItem, setAddItem] = useState([]);
@@ -17,6 +19,8 @@ function App() {
     phone: "",
     pin: "",
   });
+  const [showSearchBar,setShowSearchBar] = useState(false);
+  const [name, setName] = useState("");
 
   return (
     <div>
@@ -26,12 +30,15 @@ function App() {
         setAddItem={setAddItem}
         formData={formData}
         setFormdata={setFormdata}
+        setShowSearchBar={setShowSearchBar}
+        name={name}
+        setName={setName}
       />
       <Routes>
         <Route
           path="/"
           element={
-            <Home data={data} addItem={addItem} setAddItem={setAddItem} />
+            <Home data={data} addItem={addItem} setAddItem={setAddItem} setData={setData} showSearchBar={showSearchBar}/>
           }
         />
         <Route
@@ -43,6 +50,7 @@ function App() {
           path="/subcategory-details/:category_name"
           element={<SubCategory setAddItem={setAddItem} addItem={addItem}/>}
         />
+        <Route path="/search" element={<FilterData  setData={setData} data={data}  name={name}/>} />
         <Route path="/payment" element={<Payment />} />
       </Routes>
     </div>

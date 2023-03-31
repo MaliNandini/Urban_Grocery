@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Search from "../Search/Search";
 import MyCart from "../../MyCart/MyCart";
 import { NavLink } from "react-router-dom";
+import { FaSistrix } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = ({
   setData,
@@ -9,7 +11,29 @@ export const Navbar = ({
   setAddItem,
   formData,
   setFormdata,
+  setShowSearchBar,
+  name,
+  setName,
 }) => {
+  const navigate = useNavigate();
+  const [showSearch, setShowSearch] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrollingDown = window.scrollY > 0;
+      setShowSearch(!isScrollingDown);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  const handleShowSearchBar = () => {
+    console.log("search bar");
+    setShowSearchBar(true);
+    navigate("/search");
+  };
   return (
     <div className="">
       <nav className=" px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray  shadow-sm">
@@ -25,7 +49,16 @@ export const Navbar = ({
             </span>
           </NavLink>
 
-          <div class="flex md:order-2 z-10">
+          <div class="flex md:order-2 z-10 xs:gap-3">
+            {showSearch ? null : (
+              <div className="md:visible xs:visible rounded-lg bg-lime w-10 h-10 xs:mt-2">
+                <FaSistrix
+                  className=" text-white m-2 text-2xl bg-lime"
+                  onClick={handleShowSearchBar}
+                />
+              </div>
+            )}
+
             <MyCart
               addItem={addItem}
               setAddItem={setAddItem}
@@ -35,9 +68,8 @@ export const Navbar = ({
           </div>
           <div
             className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 z-0"
-            id="navbar-sticky"
           >
-            <Search setData={setData} />
+            <Search setData={setData} name={name} setName={setName} />
           </div>
         </div>
       </nav>

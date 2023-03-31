@@ -10,6 +10,7 @@ module.exports = {
           "100%": { transform: "scale(1)" },
         },
       },
+
       animation: {
         hbeat: "hbeat 1s ease-in-out ",
       },
@@ -17,7 +18,7 @@ module.exports = {
     screens: {
       "2xs": "120px",
       xs: "360px",
-      sm: "768px",  // => @media (min-width: 640px) { ... }
+      sm: "768px", // => @media (min-width: 640px) { ... }
       md: "1024px", // => @media (min-width: 1024px) { ... }
       lg: "1200px", // => @media (min-width: 1280px) { ... }
       xl: "1440px", // => @media (min-width: 1536px) { ... }

@@ -2,13 +2,12 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { categoryData } from "../../Models/MockCategoryData";
 
-
-export const Category = () => {
+export const Category = ({ data }) => {
   const [categorydata, setCategorydata] = useState(categoryData.data);
 
   return (
     <>
-      <div className=" md:-mt-20 flex justify-between">
+      <div className="md:-mt-20 flex justify-between">
         <div className="text-lime text-base font-semibold">
           <h1>Shop By Catergoy</h1>
         </div>
@@ -24,11 +23,11 @@ export const Category = () => {
               return (
                 <div className="md:w-72 rounded-lg border-0 border-gray-600  py-6 transform transition duration-500 hover:scale-110 xs:shadow-md md:shadow-lg xs:py-2 md:py-6 ">
                   <NavLink to={`/subcategory-details/${item.name}`}>
-                  <img
-                    className="md:w-full md:h-56 rounded-2xl xs:w-40 xs:h-32 "
-                    src={item.image}
-                    alt="item"
-                  />
+                    <img
+                      className="md:w-full md:h-56 rounded-2xl xs:w-40 xs:h-32 "
+                      src={item.image}
+                      alt="item"
+                    />
                   </NavLink>
                   <div className=" xs:text-center md:py-4 md:text-center ">
                     <p className="text-xl font-normal">{item.name}</p>
@@ -41,6 +40,3 @@ export const Category = () => {
     </>
   );
 };
-
-
-
