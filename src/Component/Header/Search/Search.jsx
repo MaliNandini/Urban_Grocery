@@ -70,7 +70,7 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
         data.map((item) => {
           return (
             <>
-              <div className="w-80 rounded-lg md:mt-[-285px] xs:mt-16 mx-5 container shadow-lg bg-lightblue md:invisible xs:visible">
+              <div className="w-80 rounded-lg md:mt-[-285px] xs:mt-16 mx-5 container shadow-lg bg-lightblue md:hidden xs:visible">
                 <NavLink
                   to={`/subcategory-details/${item.category_name}/product-details/${item.id}`}
                 >

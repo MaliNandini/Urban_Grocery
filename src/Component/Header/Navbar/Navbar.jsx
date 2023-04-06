@@ -53,7 +53,7 @@ export const Navbar = ({
 
           <div class="flex md:order-2 z-10 xs:gap-3">
             {showSearch ? null : (
-              <div className="md:invisible xs:visible rounded-lg bg-lime w-10 h-10 xs:mt-2">
+              <div className="md:hidden xs:visible rounded-lg bg-lime w-10 h-10 xs:mt-2">
                 <FaSistrix
                   className=" text-white m-2 text-2xl bg-lime"
                   onClick={handleShowSearchBar}

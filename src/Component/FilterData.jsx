@@ -22,11 +22,10 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
   return (
     <div className="md:mt-10 md:mx-20">
       <div className="md:invisible xs:visible">
-      <Search setName={setName} setData={setData} />
+        <Search setName={setName} setData={setData} />
       </div>
-     
-      <div className="md:flex md:flex-row md:flex-wrap md:ml-24">
 
+      <div className="md:flex md:flex-row md:flex-wrap md:ml-24">
         {/* show singal product on filter  */}
         {data &&
           data.map((item) => {
@@ -41,48 +40,50 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
                   <div className="py-4">
                     <h2 className="text-xl font-normal">{item.name}</h2>
                   </div>
-                  
-                      {item &&
-                      item.variants.map((data) => {
-                        return (
-                          <>
-                            <div className="xs:text-sm xs:text-left sm:mt-2 md:mt-[-10px]">
-                              <p className="text-lime text-lg font-bold sm:text-3xl md:text-lg">
-                                You save ₹{data.price - data.discounted_price}
-                                .00
-                              </p>
-                              <p className="2xs:text-base  sm:text-2xl md:text-base text-black font-medium md:mt-1 sm:mt-2">
-                                ₹{data.discounted_price}.00{" "}
-                                <span className="text-xs sm:text-xl md:text-sm text-black line-through">
-                                  ₹{data.price}.00{" "}
-                                </span>
-                              </p>
-                              <p className="2xs:text-base  sm:text-2xl md:text-sm  mt-1 font-light">
-                                {data.measurement} {data.measurement_unit_name}
-                              </p>
-                             <div className="mb-3">
-                             {data.stock > 0 && <button
-                                className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
-                                onClick={() => addItemHandler(item)}
-                              >
-                                Add to cart
-                              </button>}
+
+                  {item &&
+                    item.variants.map((data) => {
+                      return (
+                        <>
+                          <div className="xs:text-sm xs:text-left sm:mt-2 md:mt-[-10px]">
+                            <p className="text-lime text-lg font-bold sm:text-3xl md:text-lg">
+                              You save ₹{data.price - data.discounted_price}
+                              .00
+                            </p>
+                            <p className="2xs:text-base  sm:text-2xl md:text-base text-black font-medium md:mt-1 sm:mt-2">
+                              ₹{data.discounted_price}.00{" "}
+                              <span className="text-xs sm:text-xl md:text-sm text-black line-through">
+                                ₹{data.price}.00{" "}
+                              </span>
+                            </p>
+                            <p className="2xs:text-base  sm:text-2xl md:text-sm  mt-1 font-light">
+                              {data.measurement} {data.measurement_unit_name}
+                            </p>
+                            <div className="mb-3">
+                              {data.stock > 0 && (
+                                <button
+                                  className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
+                                  onClick={() => addItemHandler(item)}
+                                >
+                                  Add to cart
+                                </button>
+                              )}
                               {item &&
-                    item.variants.map((item) =>
-                      item.stock > 0 ? null : (
-                        <p className="text-orange text-sm md:text-lg font-medium sm:text-2xl">
-                          Out of stock
-                        </p>
-                      )
-                    )}
-                             </div>            
+                                item.variants.map((item) =>
+                                  item.stock > 0 ? null : (
+                                    <p className="text-orange text-sm md:text-lg font-medium sm:text-2xl">
+                                      Out of stock
+                                    </p>
+                                  )
+                                )}
                             </div>
-                          </>
-                        );
-                      })}
+                          </div>
+                        </>
+                      );
+                    })}
                 </div>
               </>
-            )
+            );
           })}
       </div>
     </div>

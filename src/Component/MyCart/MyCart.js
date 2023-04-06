@@ -52,77 +52,6 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     navigate("/payment");
     hideMOdal();
   };
-
-
-  // const fetchdata = async () => {
-  //   console.log("Called>>>>>>>>>>>>>>>>>>>");
-  //   const apiDomain = "grocery.intelliatech.com";
-  //   const formData = new FormData();
-  //   formData.append("accesskey", "90336");
-  //   formData.append("add_multiple_items", "1");
-  //   formData.append("user_id", "21");
-  //   formData.append("product_variant_id", "203");
-  //   formData.append("qty", "1");
-  //   console.log(formData, "forms>>>>>>>>>>>>>>>>>>>>");
-  //   for (var [key, value] of formData.entries()) {
-  //     console.log(key, value);
-  //   }
-  //   //or
-  //   console.log(...formData);
-  //   const response = await axios.post(
-  //     `http://${apiDomain}/api-firebase/cart.php`,
-  //     formData,
-  //     {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //         "Authorization":
-  //           "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2ODAyNDYxNzgsImlzcyI6ImVLYXJ0IiwiZXhwIjoxNjgwMjQ3OTc4LCJzdWIiOiJlS2FydCBBdXRoZW50aWNhdGlvbiJ9.zsbDC9LbPKIMKcBXaRD6snL1XkaxWnEpVPcYqGccTfY",
-  //       },
-  //     }
-  //   );
-  //   console.log(response, "HERE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-  //   // await axios
-  //   //   .post(`http://${apiDomain}/api-firebase/cart.php`, {
-  //   //     headers: {
-  //   //       "Content-Type": "multipart/form-data",
-  //   //       Authorization:
-  //   //         "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzkzMTkwMTUsImlzcyI6ImVLYXJ0IiwiZXhwIjoxNjc5MzIwODE1LCJzdWIiOiJlS2FydCBBdXRoZW50aWNhdGlvbiJ9.UQhiBtWhR30Yk9NyZUX8uGHZF4EsL6R8ai7VTfpAOP0",
-  //   //     },
-  //   //     data: formData,
-  //   //   })
-  //   //   .then((res) => {
-  //   //     console.log(res);
-  //   //   })
-  //   //   .catch((err) => {
-  //   //     console.log(err);
-  //   //   });
-  // };
-
-  // const fetchdata = async () => {  
-  //   console.log("Called>>>>>>>>>>>>>>>>>>>")
-  //   setShowModal(true)
-  //   const apiDomain = "grocery.intelliatech.com";
-  //   let data={
-  //     'accesskey': '90336',
-  //     'add_multiple_items': '1',
-  //     'user_id': '21',
-  //     'product_variant_id': '203',
-  //     'qty': '1'
-  //   }
-  //   await axios.post(`http://${apiDomain}/api-firebase/cart.php`, {
-  //     headers: {
-  //       'Authorization':
-  //         "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzkzMzA1MTEsImlzcyI6ImVLYXJ0IiwiZXhwIjoxNjc5MzMyMzExLCJzdWIiOiJlS2FydCBBdXRoZW50aWNhdGlvbiJ9.Ghn2329HNSjGGwhN-1T81YvnwQnESYHwkq18KXB3XpU",
-  //     },
-  //    data,
-  //   })
-  //     .then((res) => {
-  //       console.log(res);
-  //     })
-  //     .catch((err) => {
-  //       console.log(err);
-  //     });
-  // };
   
   return (
     <>
@@ -131,6 +60,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
         font-bold py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
         onClick={() => setShowModal(true)}
+       
         
       >
         <div className="relative xs:px-2 2xs:px-2 bg-lime">
