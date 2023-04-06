@@ -6,7 +6,6 @@ import { useState } from "react";
 import Payment from "./Component/Payment/Payment";
 import "./index.css";
 import { SubCategory } from "./Component/Sub-Category/SubCategory";
-import Search from "./Component/Header/Search/Search";
 import FilterData from "./Component/FilterData";
 import Allproducts from "./Component/Show-All-Products/Allproducts";
 
@@ -51,7 +50,7 @@ function App() {
           path="/subcategory-details/:category_name"
           element={<SubCategory setAddItem={setAddItem} addItem={addItem}/>}
         />
-        <Route path="/search" element={<FilterData setData={setData} setName={setName} data={data}  name={name} addItem={addItem} setAddItem={setAddItem} />} />
+        <Route path="/search" element={<FilterData setData={setData} setName={setName} data={data}  name={name} addItem={addItem} setAddItem={setAddItem}/>} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/allproducts" element={<Allproducts name={name} setAddItem={setAddItem} addItem={addItem}/>} />
       </Routes>

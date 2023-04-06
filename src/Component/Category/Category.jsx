@@ -25,15 +25,14 @@ export const Category = () => {
                   <div className="md:w-72 rounded-lg border-0 border-gray-600 xs:shadow-md md:shadow-lg xs:py-2 md:py-6 transform transition duration-500 hover:scale-110">
                     <NavLink to={`/subcategory-details/${item.name}`}>
                       <img
-                        className="xs:w-40 xs:h-28 md:w-full md:h-56 md:rounded-2xl"
+                        className="xs:w-40 xs:h-28 sm:w-80 sm:h-56 md:w-full md:h-56 md:rounded-2xl"
                         src={item.image}
                         alt="item"
                       />
                     </NavLink>
                     <div className="xs:text-center md:py-4 md:text-center ">
-                      <p className="md:text-xl">{item.name}</p>
+                      <p className="md:text-xl sm:text-xl">{item.name}</p>
                     </div>
-
                   </div>
               );
             })}

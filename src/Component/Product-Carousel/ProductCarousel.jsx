@@ -77,24 +77,24 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
                         alt={name}
                       />
                     </NavLink>
-                    <div className="py-4 xs:mb-[-10px]">
-                      <p className="text-lg font-normal">{item.name}</p>
+                    <div className="py-4 xs:mb-[-10px] md:mx-4 ">
+                      <p className="text-lg font-normal truncate">{item.name}</p>
                     </div>
                     {item &&
                       item.variants.map((data) => {
                         return (
                           <>
-                            <div className="xs:text-sm xs:text-left sm:mt-2 md:mt-[-15px]  md:text-left ">
+                            <div className="xs:text-sm xs:text-left sm:mt-2 md:mt-[-15px] md:mx-4 md:text-left ">
                               <p className="2xs:text-base sm:text-xl md:text-sm text-lime font-semibold">
                                 ₹{data.price}{" "}
                               </p>
                             </div>
                             {data.stock > 0 ? <button
-                            className=" my-2 mr-8 text-white bg-lime hover:bg-opacity-75 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
+                            className=" my-2 mr-8 md:mx-4 text-white bg-lime hover:bg-opacity-75 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                             onClick={() => addItemHandler(item)}
                           >
                             Add to cart
-                          </button>:<p className="text-orange text-sm font-medium mt-4 pb-4 mr-[43px]">
+                          </button>:<p className="text-orange text-sm font-medium mt-4 pb-4 md:mx-4 mr-[43px]">
                           Out of stock
                         </p>}
                           </>

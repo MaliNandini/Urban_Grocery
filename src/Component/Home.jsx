@@ -1,21 +1,18 @@
 import React from "react";
 import { Category } from "./Category/Category";
-import { SubCategory } from "./Sub-Category/SubCategory";
 import CarouselComponent from "./Carousel/Carousel";
 import Search from "./Header/Search/Search";
-import { NavLink } from "react-router-dom";
 import { ProductCarousel } from "./Product-Carousel/ProductCarousel";
 
 function Home({
   data,
-  name,
   SubCategory,
   productDetails,
   setData,
   addItem,
   setAddItem,
 }) {
-  console.log(data, "data ");
+
   return (
     <div>
       <>
@@ -59,7 +56,7 @@ function Home({
               SubCategory={SubCategory}
               productDetails={productDetails}
             />
-            <ProductCarousel addItem={addItem} setAddItem={setAddItem} />
+            <ProductCarousel addItem={addItem} setAddItem={setAddItem} /> 
           </div>
         </div>
       </>
