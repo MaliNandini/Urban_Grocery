@@ -35,7 +35,7 @@ export const Navbar = ({
   return (
 
 <div className="">
-<nav className=" px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray  shadow-sm">
+<nav className=" px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray shadow-sm">
   <div className="bg-white flex flex-wrap items-center justify-between mx-auto ">
     <NavLink to="/" className="flex items-center bg-white">
             <img
@@ -47,7 +47,7 @@ export const Navbar = ({
               Hi,There!
             </span>
           </NavLink>
-
+ 
           <div class="flex md:order-2 z-10 xs:gap-3">
             {showSearch ? null : (
               <div className="md:hidden xs:visible rounded-lg bg-lime w-10 h-10 xs:mt-2">

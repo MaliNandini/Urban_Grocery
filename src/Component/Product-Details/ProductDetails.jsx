@@ -6,6 +6,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Rating from "../StarRating/Rating";
 
+
 export const ProductDetails = ({ setAddItem, addItem }) => {
   const [productPageData, setProductPage] = useState(mockProduct.data);
   const [wishlist, setWishlist] = useState(false);
@@ -54,10 +55,25 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                     className="rounded-xl md:w-[500px] xs:w-80 sm:w-[500px]"
                   >
                     <div className=" ">
+                      {/* <Zoom
+                        img={item.image}
+                        alt=""
+                        className="rounded-xl"
+                        zoomScale={2}
+                        width={600}
+                        height={500}
+                      /> */}
                       <img src={item.image} alt="" className="rounded-xl" />
                     </div>
                     <div className=" ">
-                      <img src={item.other_images} alt="" className="rounded-xl"/>
+                      {/* <Zoom
+                        img={item.other_images}
+                        zoomScale={2}
+                        width={600}
+                        height={500}
+                      /> */}
+                      <img src={item.other_images} alt="" className="rounded-xl" />
+
                     </div>
                   </Carousel>
                 </div>
@@ -140,7 +156,7 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                                     className="w-9 h-9 ml-auto mr-auto "
                                   />
                                   {item.return_status === "1" ? (
-                                    <p >10 Days Returnable</p>
+                                    <p>10 Days Returnable</p>
                                   ) : (
                                     <p>Not Returnable</p>
                                   )}
@@ -154,13 +170,14 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                                   Not Cancellable
                                 </div>
                               </div>
-                              {data.stock > 0 && <button
-                                className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
-                                onClick={() => addItemHandler(item)}
-                              >
-                                Add to cart
-                              </button>}
-                              
+                              {data.stock > 0 && (
+                                <button
+                                  className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
+                                  onClick={() => addItemHandler(item)}
+                                >
+                                  Add to cart
+                                </button>
+                              )}
                             </div>
                           </>
                         );

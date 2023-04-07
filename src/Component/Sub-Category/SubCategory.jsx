@@ -58,8 +58,8 @@ export const SubCategory = ({ setAddItem, addItem }) => {
                     </p>
                     {item.variants.map((data) => {
                       return (
-                        <div className="flex flex-col items-center justify-between  float-left">
-                          <div >
+                        <div className="flex flex-col  items-center justify-between float-left">
+                          <div>
                             <p className="text-lime text-lg font-normal">
                               ₹{data.price}{" "}
                             </p>

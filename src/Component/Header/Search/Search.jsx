@@ -40,11 +40,11 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
 
 
   return (
-    <div className="w-full max-w-screen-2xl bg-white md:h-[69px]">
-      <div className="inline-flex justify-center relative text-black-500 bg-white xs:my-4 xs:mx-4 sm:ml-56 md:my-3 xs:mt-20">
+    <div className="w-full max-w-screen-2xl bg-white md:h-[69px] md:mr-36">
+      <div className="inline-flex justify-center relative text-black-500 bg-white xs:my-4 xs:mx-4 sm:ml-56 md:my-3  xs:mt-20 ">
         <input
           type="text"
-          className=" bg-white input xs:w-[330px] xs:overflow-x-hidden xs:h-auto p-2 pl-10 text-sm md:w-96 md:h-12 font-light rounded-2xl border border-light_gray focus:bg-white focus:outline-none focus:ring-1 focus:border-transparent"
+          className=" bg-white input xs:w-[330px] xs:overflow-x-hidden xs:h-auto p-2 pl-10 text-sm md:w-96 md:h-12 sm:w-[500px] sm:h-  font-light rounded-2xl border border-light_gray focus:bg-white focus:outline-none focus:ring-1 focus:border-transparent"
           placeholder="Search by Product Name"
           onChange={handleChange}
           value={name}
@@ -55,7 +55,7 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          stroke="#15803d"
+          stroke="#15803d" 
         >
           <path
             stroke-line-cap="round"

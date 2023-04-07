@@ -6,7 +6,7 @@ function CarouselComponent() {
   return (
     <>
       <div className="rounded-xl">
-        <Carousel autoPlay infiniteLoop showThumbs={false} showIndicators={false} className="rounded-xl">
+        <Carousel autoPlay infiniteLoop showThumbs={false} showIndicators={false} infinite= {false} className="rounded-xl">
           <div className="h-[300px] rounded-xl">
             <img
               alt=""

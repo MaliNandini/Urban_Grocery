@@ -14,7 +14,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
   const [showForm, setShowForm] = useState(false);
   const [Payment, setPayment] = useState(false);
 
-  const hideMOdal = () => {
+  const hideMOdal = () => {   
     setShowModal(false);
     setShowForm(false);
   };
