@@ -7,7 +7,7 @@ export const SubCategory = ({ setAddItem, addItem }) => {
   const [subcategory, setSubcategory] = useState([]);
 
   const category_name = useParams();
-
+console.log("sdfss")
   const getCategoryData = (catName) => {
     let itemCatgry = allproducts.filter((items) => {
       return items.category_name === catName.category_name;
