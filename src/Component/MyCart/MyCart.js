@@ -4,7 +4,7 @@ import CartQuantity from "../Button/CartQuantity";
 import Form from "./Form/Form";
 import Review from "./Review/Review";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+
 
 function MyCart({ addItem, setAddItem, formData, setFormdata }) {
   const navigate = useNavigate();
@@ -68,7 +68,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
         <div className="relative xs:px-2 2xs:px-2 bg-lime">
           <FaShoppingCart className="xs:text-2xl bg-lime"/>
           {addItem.length >= 1 && (
-            <span class="-top-[13px] md:left-5 xs:left-5 2xs:left-4 absolute my-1 w-5 h-5 bg-red border-2 border-white  rounded-full text-white text-sm">
+            <span class="-top-[11px] md:left-5 xs:left-5 2xs:left-4 absolute my-1 w-5 h-5 bg-red border-2 border-white  rounded-full text-white text-sm">
               {addItem.length}
             </span>
           )}

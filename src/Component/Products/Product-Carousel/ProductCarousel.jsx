@@ -7,6 +7,7 @@ import "react-multi-carousel/lib/styles.css";
 export const ProductCarousel = ({ name, setAddItem, addItem }) => {
   const navigate = useNavigate();
   const [allproduct, setShowAllProducts] = useState(mockProduct.data);
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -89,7 +90,7 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
                                 ₹{data.price}{" "}
                               </p>
                             </div>
-                            {data.stock > 0 ? <button
+                            {data.stock > 0  ? <button
                             className=" my-2 mr-8 md:mx-4 xs:mx-4 sm:mx-4 text-white bg-lime hover:bg-opacity-75 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                             onClick={() => addItemHandler(item)}
                           >

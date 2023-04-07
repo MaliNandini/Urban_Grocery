@@ -24,7 +24,7 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
       <div className="md:invisible xs:visible ">
         <Search setName={setName} setData={setData} />
       </div>
-      <div className="md:flex md:flex-row md:flex-wrap md:ml-24 sm:ml-[206px] ">
+      <div className="md:flex md:flex-row md:flex-wrap md:ml-24 sm:ml-6 sm:flex sm:flex-wrap ">
         {/* show singal product on filter  */}
         {data &&
           data.map((item) => {
@@ -37,14 +37,14 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
                     <img className="w-full rounded-lg h-56 sm:w-80 sm:h-56 bg-white" src={item.image} alt={name} />
                   </NavLink>
                   <div className="py-4 px-3 bg-white">
-                    <h2 className="text-xl font-normal bg-white">{item.name}</h2>
+                    <p className="md:text-xl  font-normal bg-white sm:text-3xl xs:text-xl">{item.name}</p>
                   </div>
 
                   {item &&
                     item.variants.map((data) => {
                       return (
                         <>
-                          <div className="xs:text-sm xs:text-left sm:mt-2 md:mt-[-10px]  px-3 bg-white">
+                          <div className="xs:text-sm xs:text-left xs:-mt-3 md:mt-[-10px]  px-3 bg-white">
                             <p className="text-lime text-lg font-bold sm:text-3xl md:text-lg bg-white">
                               You save ₹{data.price - data.discounted_price}
                               .00
@@ -58,7 +58,7 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
                             <p className="2xs:text-base  sm:text-2xl md:text-sm  mt-1 font-light bg-white">
                               {data.measurement} {data.measurement_unit_name}
                             </p>
-                            <div className="mb-3 bg-white">
+                            <div className="mb-3 bg-white xs:pb-5">
                               {data.stock > 0 && (
                                 <button
                                   className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
