@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { FaRegHeart, FaAlignLeft, FaArrowsAlt, FaHeart } from "react-icons/fa";
 import { useParams } from "react-router-dom";
-import { mockProduct } from "../../Models/MockProduct";
+import { mockProduct } from "../../../Models/MockProduct";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import Rating from "../StarRating/Rating";
+import Rating from "../../StarRating/Rating";
 
 export const ProductDetails = ({ setAddItem, addItem }) => {
   const [productPageData, setProductPage] = useState(mockProduct.data);

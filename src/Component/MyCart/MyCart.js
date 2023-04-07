@@ -13,6 +13,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [Payment, setPayment] = useState(false);
+  
 
   const hideMOdal = () => {
     setShowModal(false);
@@ -41,6 +42,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
     let price = price - item.amount * parseFloat(item.variants[0].price);
     setPrice(price);
+   
   };
 
   const formHandler = () => {
@@ -75,66 +77,66 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
       </button>
       {showModal ? (
         <>
-          <div className="float-right absolute top-0 right-0">
-            <div className="relative">
+          <div className="float-right absolute top-0 right-0 bg-white">
+            <div className="relative ">
               <div className=" min-h-screen md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
-                <div className="flex items-start justify-between px-3 py-3 m-0  border-b border-light_gray shadow-sm">
-                  <div className="mt-3">
+                <div className="bg-white flex items-start justify-between px-3 py-3 m-0  border-b border-light_gray shadow-sm">
+                  <div className="mt-3 bg-white">
                     {showForm ? (
-                      <button className="back-button" onClick={back}>
-                        <FaArrowLeft />
+                      <button className="back-button bg-white" onClick={back}>
+                        <FaArrowLeft className="bg-white"/>
                       </button>
                     ) : null}
                   </div>
 
-                  <p className="py-2 text-xl font-semibold ">My Cart</p>
+                  <p className="py-2 text-xl font-semibold bg-white">My Cart</p>
                   <button
                     className="bg-transparent text-black float-right"
                     onClick={hideMOdal}
                   >
-                    <span className="text-black opacity-6 h-10 w-9 text-2xl block bg-gray-400 py-0 rounded-full">
+                    <span className="text-black opacity-6 h-10 w-9 text-2xl block bg-gray-400 py-0 rounded-full bg-white">
                       x
                     </span>
                   </button>
                 </div>
 
-                <div className="overflow-y-scroll md:h-[500px] xs:h-[758px] sm:h[985px] 2xs:h-[500px]">
+                <div className=" bg-white overflow-y-scroll md:h-[500px] xs:h-[758px] sm:h[985px] 2xs:h-[500px]">
                   {!showForm && addItem.length
                     ? addItem &&
                       addItem.map((item) => {
                         return (
                           <>
-                            <div class="mt-3  md:p-5 xs:p-4 2xs:p-2 ">
+                            <div class="mt-3 bg-white  md:p-5 xs:p-4 2xs:p-2  ">
                               <div class="flow-root">
                                 <ul
                                   role="list"
                                   class="-my-6 divide-y divide-gray-200"
                                 >
-                                  <li class="flex py-6">
-                                    <div class="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                  <li class="flex py-6 bg-white">
+                                    <div class=" bg-white md:h-24 md:w-24 xs:h-24 xs:w-24 sm:h-48 sm:w-48  flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                       <img
                                         src={item.image}
                                         alt="product"
-                                        class="h-full w-full object-cover object-center"
+                                        class="h-full w-full object-cover object-center bg-white"
                                       />
                                     </div>
 
-                                    <div class="ml-4 flex flex-1 flex-col truncate ...">
-                                      <div class="text-sm font-semibold text-gray-900 ">
-                                          <p className="float-left truncate ...">
+                                    <div class="bg-white ml-4 flex flex-1 flex-col truncate ...">
+                                      <div class=" bg-white md:text-sm xs:text-sm sm:text-3xl font-semibold text-gray-900 ">
+                                          <p className="bg-white float-left truncate ...">
                                             {item.name}
                                           </p>
                                         <br />
                                         {item.variants.map((data) => {
                                           return (
                                             <>
-                                              <div className="2xs:flex-col md:flex-col">
-                                                <p class="text-sm font-light float-left">
+                                              <div className="2xs:flex-col md:flex-col bg-white">
+                                                <p class=" bg-white md:text-sm xs:text-sm sm:text-2xl font-light float-left">
                                                   {data.measurement}{" "}
                                                   {data.measurement_unit_name}
                                                 </p>
                                                <br></br>
-                                                <p class="text-sm text-gray-500 float-left text-lime">
+                                                <p class="bg-white md:text-sm xs:text-sm sm:text-2xl text-gray-500 float-left text-lime">
                                                   ₹{data.price}{" "}
                                                 </p>
                                                 <br></br>
@@ -144,16 +146,16 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                           );
                                         })}
 
-                                        <div className="flex justify-between ">
-                                          <div>
-                                            <p class="text-sm font-light float-left">
+                                        <div className="bg-white flex justify-between ">
+                                          <div className="bg-white">
+                                            <p class="bg-white md:text-sm xs:text-sm sm:text-2xl font-light float-left">
                                               {" "}
                                               Qty : {item.amount}
                                               {() => setAmount(item.amount)}
                                             </p>
                                           </div>
 
-                                          <div>
+                                          <div className="bg-white">
                                             <CartQuantity
                                               item={item}
                                               setAddItem={setAddItem}
@@ -161,12 +163,12 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                             
                                             />
                                           </div>
-                                          <div>
+                                          <div className="bg-white">
                                             <FaTrash
                                               onClick={() =>
                                                 removeItemHandler(item)
                                               }
-                                              className="cursor-pointer mt-1 text-sm text-red"
+                                              className="bg-white cursor-pointer mt-1 md:text-sm xs:text-sm sm:text-3xl text-red"
                                             />
                                           </div>
                                         </div>
@@ -200,8 +202,8 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                     : null}
 
                   {!showForm && !addItem.length ? (
-                    <div className="relative p-6 flex-auto text-center text-2xl font-medium">
-                      <p>Your cart is empty</p>
+                    <div className="relative p-6 flex-auto text-center text-2xl font-medium bg-white">
+                      <p className="bg-white">Your cart is empty</p>
                     </div>
                   ) : null}
 
@@ -214,7 +216,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                   ) : null}
                 </div>
 
-                {showForm && addItem.length ? null : (
+                {showForm && addItem.length  ? null : (
                   <div className="fixed bottom-10 bg-white p-3">
                     <Review formData={formData} />
                   </div>

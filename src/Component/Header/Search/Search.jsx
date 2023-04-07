@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { mockProduct } from "../../../Models/MockProduct";
 import { NavLink, useNavigate } from "react-router-dom";
 
-
 const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
   const [searchData, setSearchData] = useState(mockProduct.data);
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -15,10 +15,11 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
     result = searchData.filter((item) => {
       return item.name.toLowerCase().startsWith(filteredData.toLowerCase());
     });
+    
     setData(result);
-    // setSearchData("")
-  };
+   
 
+  };
 
   const addItemHandler = (item) => {
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
@@ -37,21 +38,20 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
     setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
   };
 
- 
 
   return (
-    <div className="w-full max-w-screen-2xl bg-white md:h-[69px]">
-    <div className="inline-flex justify-center relative text-black-500 bg-white xs:my-4 xs:mx-4 md:my-3 xs:mt-20">
+    <div className="w-full max-w-screen-2xl bg-white md:h-[69px] md:mr-44">
+      <div className="inline-flex justify-center relative text-black-500 bg-white xs:my-4 xs:mx-4 sm:ml-36 md:my-3 xs:mt-20">
         <input
           type="text"
-          className=" bg-white input xs:w-[330px] xs:overflow-x-hidden xs:h-auto p-2 pl-10 text-sm md:w-96 md:h-12 font-light rounded-2xl border border-light_gray focus:bg-white focus:outline-none focus:ring-1 focus:border-transparent"
+          className=" bg-white input xs:w-[330px] sm:w-[500px] sm:h-16 xs:overflow-x-hidden xs:h-auto p-2 pl-10 md:text-sm xs:text-sm sm:texl-lg md:w-96 md:h-12 font-light rounded-2xl border border-light_gray focus:bg-white focus:outline-none focus:ring-1 focus:border-transparent sm:text-xl sm:pl-14"
           placeholder="Search by Product Name"
           onChange={handleChange}
           value={name}
         />
 
         <svg
-          className="xs:w-6 xs:h-5 xs:text-white md:w-6 md:h-6 absolute xs:left-2 xs:top-2.5 md:left-2.5 md:top-3.5 bg-white"
+          className="xs:w-6 sm:h-12 sm:w-10 xs:h-5 xs:text-white md:w-6 md:h-6 absolute xs:left-2 xs:top-2.5 md:left-2.5 md:top-3.5 bg-white"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -66,15 +66,15 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
         </svg>
       </div>
 
-      {data &&
-        data.map((item) => {
+      {searchData ? (
+        data && data.map((item) => {
           return (
             <>
-              <div className="w-80 rounded-lg md:mt-[-285px] xs:mt-16 mx-5 container shadow-lg bg-lightblue md:hidden xs:visible">
+              <div className="w-80 rounded-lg md:mt-[-285px] xs:mt-16 mx-5 container shadow-lg bg-lightblue md:hidden xs:visible  ">
                 <NavLink
                   to={`/subcategory-details/${item.category_name}/product-details/${item.id}`}
                 >
-                  <img className="w-full h-56" src={item.image} alt={name} />
+                  <img className="w-full h-56 rounded-lg" src={item.image} alt={name} />
                 </NavLink>
                 <div className="py-4">
                   <p className="text-xl font-normal">{item.name}</p>
@@ -106,7 +106,13 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
               </div>
             </>
           );
-        })}
+        })
+      ) : (
+        <div className="items-center justify-center text-center w-full md:mt-20">
+          <h1 className="text-lg">Sorry, no results found !</h1>
+          <p>Please Check the spelling or try a different word</p>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,50 +1,48 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
-import Search from "./Header/Search/Search";
+import React, { useState } from 'react'
+import { NavLink } from 'react-router-dom';
+import { mockProduct } from '../../Models/MockProduct';
 
-function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
-  const addItemHandler = (item) => {
-    if (addItem.some((cartItem) => cartItem.id === item.id)) {
-      setAddItem((cart) =>
-        cart.map((data) =>
-          data.id === item.id
-            ? {
-                ...data,
-                amount: data.amount + 1,
-              }
-            : data
-        )
-      );
-      return;
-    }
-    setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
-  };
+function Allproducts({name,addItem,setAddItem}) {
+    const [allproduct, setShowAllProducts] = useState(mockProduct.data);
+    const addItemHandler = (item) => {
+        console.log(item);
+        if (addItem.some((cartItem) => cartItem.id === item.id)) {
+          setAddItem((cart) =>
+            cart.map((data) =>
+              data.id === item.id
+                ? {
+                    ...data,
+                    amount: data.amount + 1,
+                  }
+                : data
+            )
+          );
+          return;
+        }
+    
+        setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
+      };
   return (
-    <div className="md:mt-10 md:mx-20 ">
-      <div className="md:invisible xs:visible ">
-        <Search setName={setName} setData={setData} />
-      </div>
-      <div className="md:flex md:flex-row md:flex-wrap md:ml-24 sm:ml-[206px] ">
-        {/* show singal product on filter  */}
-        {data &&
-          data.map((item) => {
+    <div className='mt-20 flex flex-wrap md:mx-6 '>
+        {allproduct &&
+          allproduct.map((item) => {
             return (
               <>
-                <div className="w-80 rounded-lg mx-5 sm:my-4 container shadow-lg  bg-white">
+                <div className="w-80 rounded-lg mx-5 my-4 container shadow-lg bg-white">
                   <NavLink
                     to={`/subcategory-details/${item.category_name}/product-details/${item.id}`}
                   >
-                    <img className="w-full rounded-lg h-56 sm:w-80 sm:h-56 bg-white" src={item.image} alt={name} />
+                    <img className="w-full h-56 rounded-lg" src={item.image} alt={name} />
                   </NavLink>
                   <div className="py-4 px-3 bg-white">
-                    <h2 className="text-xl font-normal bg-white">{item.name}</h2>
+                    <p className="text-xl font-normal truncate sm:text-4xl xs:text-2xl md:text-xl bg-white">{item.name}</p>
                   </div>
 
                   {item &&
                     item.variants.map((data) => {
                       return (
                         <>
-                          <div className="xs:text-sm xs:text-left sm:mt-2 md:mt-[-10px]  px-3 bg-white">
+                          <div className="xs:text-sm xs:text-left sm:mt-2 md:mt-[-10px] px-3 bg-white">
                             <p className="text-lime text-lg font-bold sm:text-3xl md:text-lg bg-white">
                               You save ₹{data.price - data.discounted_price}
                               .00
@@ -55,7 +53,7 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
                                 ₹{data.price}.00{" "}
                               </span>
                             </p>
-                            <p className="2xs:text-base  sm:text-2xl md:text-sm  mt-1 font-light bg-white">
+                            <p className="bg-white 2xs:text-base  sm:text-2xl md:text-sm  mt-1 font-light">
                               {data.measurement} {data.measurement_unit_name}
                             </p>
                             <div className="mb-3 bg-white">
@@ -70,7 +68,7 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
                               {item &&
                                 item.variants.map((item) =>
                                   item.stock > 0 ? null : (
-                                    <p className="text-orange text-sm md:text-lg font-medium sm:text-2xl bg-white">
+                                    <p className="bg-white text-orange my-5 text-sm md:text-lg font-medium sm:text-2xl">
                                       Out of stock
                                     </p>
                                   )
@@ -84,9 +82,8 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
               </>
             );
           })}
-      </div>
     </div>
-  );
+  )
 }
 
-export default FilterData;
+export default Allproducts

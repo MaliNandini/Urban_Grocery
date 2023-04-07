@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Search from "../Search/Search";
 import MyCart from "../../MyCart/MyCart";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FaSistrix } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 
 export const Navbar = ({
   setData,
@@ -30,17 +29,14 @@ export const Navbar = ({
   }, []);
 
   const handleShowSearchBar = () => {
-    console.log("search bar");
     setShowSearchBar(true);
     navigate("/search");
   };
   return (
-
-<div className="">
-<nav className=" px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray  shadow-sm">
-  <div className="bg-white flex flex-wrap items-center justify-between mx-auto ">
-    <NavLink to="/" className="flex items-center bg-white">
-
+    <div>
+      <nav className=" px-2 sm:px-4 fixed w-full z-20 top-0 left-0 border-b border-light_gray  shadow-sm bg-white">
+        <div className="bg-white flex flex-wrap items-center justify-between mx-auto ">
+          <NavLink to="/" className="flex items-center bg-white">
             <img
               src="http://grocery.intelliatech.com/dist/img/logo.png"
               className="h-6 mr-3 mt-2 sm:h-9 bg-white"
@@ -51,7 +47,7 @@ export const Navbar = ({
             </span>
           </NavLink>
 
-          <div class="flex md:order-2 z-10 xs:gap-3">
+          <div class="flex md:order-2 z-10 xs:gap-3 bg-white">
             {showSearch ? null : (
               <div className="md:hidden xs:visible rounded-lg bg-lime w-10 h-10 xs:mt-2">
                 <FaSistrix
@@ -68,9 +64,7 @@ export const Navbar = ({
               setFormdata={setFormdata}
             />
           </div>
-          <div
-            className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 z-0"
-          >
+          <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 z-0 bg-white">
             <Search setData={setData} name={name} setName={setName} />
           </div>
         </div>
