@@ -22,7 +22,7 @@ export const Category = () => {
             {categorydata &&
               categorydata.map((item) => {
                 return (
-                  <div className="md:w-72 rounded-lg border-0 border-gray-600 xs:shadow-md md:shadow-lg xs:py-2 transform transition duration-500 hover:scale-110 bg-white">
+                  <div className="md:w-64 rounded-lg border-0 border-gray-600 xs:shadow-md md:shadow-lg xs:py-2 transform transition duration-500 hover:scale-110 bg-white">
                     <NavLink to={`/subcategory-details/${item.name}`}>
                       <img
                         className="xs:w-40 xs:h-28 sm:w-96 sm:h-56 md:w-full md:h-56 md:rounded-2xl xs:rounded-lg bg-white sm:rounded-lg"

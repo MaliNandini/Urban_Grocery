@@ -67,7 +67,7 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
             allproduct.map((item) => {
               return (
                 <>
-                  <div className="w-72 rounded-lg xs:mx-7 container shadow-lg bg-white">
+                  <div className="w-64 rounded-lg xs:mx-7 container shadow-lg bg-white">
                     <NavLink
                       to={`/subcategory-details/${item.category_name}/product-details/${item.id}`}
                     >

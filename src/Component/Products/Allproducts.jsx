@@ -23,12 +23,12 @@ function Allproducts({name,addItem,setAddItem}) {
         setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
       };
   return (
-    <div className='mt-20 flex flex-wrap md:mx-6 '>
+    <div className='mt-20 flex flex-wrap md:mx-6 md:ml-20'>
         {allproduct &&
           allproduct.map((item) => {
             return (
               <>
-                <div className="w-80 rounded-lg mx-5 my-4 container shadow-lg bg-white">
+                <div className="w-64 rounded-lg mx-5 my-4 container shadow-lg bg-white">
                   <NavLink
                     to={`/subcategory-details/${item.category_name}/product-details/${item.id}`}
                   >

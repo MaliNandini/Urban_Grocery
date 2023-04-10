@@ -52,26 +52,12 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                 <div className="img md:ml-20 xs:ml-1">
                   <Carousel
                     showIndicators={false}
-                    className="rounded-xl md:w-[500px] xs:w-80 sm:w-[500px]"
+                    className="rounded-xl md:w-[400px] xs:w-80 sm:w-[500px] "
                   >
                     <div className=" ">
-                      {/* <Zoom
-                        img={item.image}
-                        alt=""
-                        className="rounded-xl"
-                        zoomScale={2}
-                        width={600}
-                        height={500}
-                      /> */}
                       <img src={item.image} alt="" className="rounded-xl" />
                     </div>
                     <div className=" ">
-                      {/* <Zoom
-                        img={item.other_images}
-                        zoomScale={2}
-                        width={600}
-                        height={500}
-                      /> */}
                       <img src={item.other_images} alt="" className="rounded-xl" />
 
                     </div>
@@ -119,9 +105,9 @@ export const ProductDetails = ({ setAddItem, addItem }) => {
                   </div>
 
                   <div className="data 2xs:mt-3 xs:mb-3 ">
-                    <h3 className="  2xs:text-xl 2xs:font-semibold xs:mt-2 mr-50 xs:text-2xl xs:font-semibold sm:mt-4 sm:text-4xl md:mt-3 md:text-4xl  md:font-medium ">
+                    <p className="  2xs:text-xl 2xs:font-semibold xs:mt-2 mr-50 xs:text-2xl xs:font-semibold sm:mt-4 sm:text-4xl md:mt-3 md:text-3xl  md:font-medium ">
                       {item.name}
-                    </h3>
+                    </p>
 
                     <div className="flex text-yellow_rating mt-2 sm:mt-3 sm:text-2xl md:text-sm">
                       <Rating
