@@ -28,7 +28,6 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
   };
 
   const addItemHandler = (item) => {
-    console.log(item);
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
       setAddItem((cart) =>
         cart.map((data) =>

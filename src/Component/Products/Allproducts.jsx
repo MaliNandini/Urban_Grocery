@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom';
 import { mockProduct } from '../../Models/MockProduct';
+import CartQuantity from '../Button/CartQuantity';
 
 function Allproducts({name,addItem,setAddItem}) {
     const [allproduct, setShowAllProducts] = useState(mockProduct.data);
+   
     const addItemHandler = (item) => {
-        console.log(item);
         if (addItem.some((cartItem) => cartItem.id === item.id)) {
           setAddItem((cart) =>
             cart.map((data) =>
@@ -22,6 +23,7 @@ function Allproducts({name,addItem,setAddItem}) {
     
         setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
       };
+    
   return (
     <div className='mt-20 flex flex-wrap md:mx-6 md:ml-20'>
         {allproduct &&
@@ -40,6 +42,7 @@ function Allproducts({name,addItem,setAddItem}) {
 
                   {item &&
                     item.variants.map((data) => {
+                      
                       return (
                         <>
                           <div className="xs:text-sm xs:text-left sm:mt-2 md:mt-[-10px] px-3 bg-white">
@@ -57,14 +60,14 @@ function Allproducts({name,addItem,setAddItem}) {
                               {data.measurement} {data.measurement_unit_name}
                             </p>
                             <div className="mb-3 bg-white">
-                              {data.stock > 0 && (
+                              {data.stock > 0 ? (
                                 <button
                                   className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
                                   onClick={() => addItemHandler(item)}
                                 >
                                   Add to cart
                                 </button>
-                              )}
+                              ): <CartQuantity item={data}/>}
                               {item &&
                                 item.variants.map((item) =>
                                   item.stock > 0 ? null : (
@@ -82,6 +85,9 @@ function Allproducts({name,addItem,setAddItem}) {
               </>
             );
           })}
+
+
+        
     </div>
   )
 }
