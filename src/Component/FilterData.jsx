@@ -20,46 +20,45 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
     setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
   };
   return (
-    <div className="md:mt-10 md:mx-20">
-      <div className="md:invisible xs:visible">
+    <div className="md:mt-10 md:mx-20 ">
+      <div className="md:invisible xs:visible ">
         <Search setName={setName} setData={setData} />
       </div>
-
-      <div className="md:flex md:flex-row md:flex-wrap md:ml-24 sm:ml-[206px]">
+      <div className="md:flex md:flex-row md:flex-wrap md:ml-24 sm:ml-6 sm:flex sm:flex-wrap ">
         {/* show singal product on filter  */}
         {data &&
           data.map((item) => {
             return (
               <>
-                <div className="w-80 rounded-lg mx-5 sm:my-4 container shadow-lg bg-lightblue">
+                <div className="w-80 rounded-lg mx-5 sm:my-4 container shadow-lg bg-white">
                   <NavLink
                     to={`/subcategory-details/${item.category_name}/product-details/${item.id}`}
                   >
-                    <img className="w-full h-56 sm:w-80 sm:h-56" src={item.image} alt={name} />
+                    <img className="w-full rounded-lg h-56 sm:w-80 sm:h-56 bg-white" src={item.image} alt={name} />
                   </NavLink>
-                  <div className="py-4">
-                    <h2 className="text-xl font-normal">{item.name}</h2>
+                  <div className="py-4 px-3 bg-white">
+                    <p className="md:text-xl sm:text-2xl xs:text-xl sm:font-semibold truncate ... md:font-normal bg-white">{item.name}</p>
                   </div>
 
                   {item &&
                     item.variants.map((data) => {
                       return (
                         <>
-                          <div className="xs:text-sm xs:text-left sm:mt-2 md:mt-[-10px]">
-                            <p className="text-lime text-lg font-bold sm:text-3xl md:text-lg">
+                          <div className="xs:text-sm xs:text-left sm:mt-2 xs:-mt-3 sm:mb-5 md:mt-[-10px] px-3 bg-white">
+                            <p className="text-lime text-lg font-bold sm:text-3xl md:text-lg bg-white">
                               You save ₹{data.price - data.discounted_price}
                               .00
                             </p>
-                            <p className="2xs:text-base  sm:text-2xl md:text-base text-black font-medium md:mt-1 sm:mt-2">
+                            <p className="2xs:text-base  sm:text-2xl md:text-base text-black font-medium md:mt-1 sm:mt-2 bg-white">
                               ₹{data.discounted_price}.00{" "}
-                              <span className="text-xs sm:text-xl md:text-sm text-black line-through">
+                              <span className="text-xs sm:text-xl md:text-sm text-black line-through bg-white">
                                 ₹{data.price}.00{" "}
                               </span>
                             </p>
-                            <p className="2xs:text-base  sm:text-2xl md:text-sm  mt-1 font-light">
+                            <p className="2xs:text-base  sm:text-2xl md:text-sm  mt-1 font-light bg-white">
                               {data.measurement} {data.measurement_unit_name}
                             </p>
-                            <div className="mb-3">
+                            <div className="mb-3 xs:pb-5 bg-white">
                               {data.stock > 0 && (
                                 <button
                                   className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
@@ -71,7 +70,7 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
                               {item &&
                                 item.variants.map((item) =>
                                   item.stock > 0 ? null : (
-                                    <p className="text-orange text-sm md:text-lg font-medium sm:text-2xl">
+                                    <p className="text-orange text-sm md:text-lg font-medium sm:text-2xl bg-white">
                                       Out of stock
                                     </p>
                                   )

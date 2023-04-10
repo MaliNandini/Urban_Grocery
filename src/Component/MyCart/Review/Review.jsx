@@ -2,30 +2,19 @@ import React from "react";
 
 function Review({ formData }) {
   return (
-    <div className="px-7 w-96 flex-wrap">
-      {formData.name && (
-        <div className="text-base font-semibold pb-2">
-          <span className="text-sm font-thin mt-1 min-width-max mr-6">
-            Name:{" "}
-          </span>
-          <span>{formData.name}</span>
-        </div>
-      )}
-      {formData.address && <div className="text-sm font-semibold flex pb-2">
-        <span className="text-sm font-thin mt-1 min-width-max mr-4">
-          Address:{" "}
-        </span>
-
-        <span>{formData.address}</span>
-      </div>}
-      {formData.city && <div className="text-sm font-semibold pb-2">
-        <span className="text-sm font-thin mt-1 mr-8">City: </span>
-        <span className="mx-1">{formData.city}</span>
-      </div>}
-      {formData.phone && <div className="text-sm font-semibold	pb-2 mt-1">
-        <span className="text-sm font-thin mt-1 mr-2 ">Mobile No:</span>
-        <span>{formData.phone}</span>
-      </div>}
+    <div className="flex gap-3 px-7 w-96 flex-wrap bg-white">
+      <div className="flex flex-col  md:text-sm xs:text-base sm:text-2xl bg-white">
+        {formData.name && <p className="bg-white">Name :</p>}
+        {formData.address && <p className="bg-white">Address :</p>}
+        {formData.city && <p className="bg-white">City :</p>}
+        {formData.phone && <p className="bg-white">Phone :</p>}
+      </div>
+      <div className="flex flex-col  md:text-sm xs:text-base sm:text-2xl font-semibold bg-white">
+        {formData.name && <p className="bg-white">{formData.name}</p>}
+        {formData.address && <p className="bg-white">{formData.address}</p>}
+        {formData.city && <p className="bg-white">{formData.city}</p>}
+        {formData.phone && <p className="bg-white">{formData.phone}</p>}
+      </div>
     </div>
   );
 }

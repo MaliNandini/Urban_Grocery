@@ -2,7 +2,7 @@ import React from "react";
 import { Category } from "./Category/Category";
 import CarouselComponent from "./Carousel/Carousel";
 import Search from "./Header/Search/Search";
-import { ProductCarousel } from "./Product-Carousel/ProductCarousel";
+import { ProductCarousel } from "./Products/Product-Carousel/ProductCarousel";
 
 function Home({
   data,

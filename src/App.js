@@ -1,13 +1,13 @@
 import { Navbar } from "./Component/Header/Navbar/Navbar";
 import { Route, Routes } from "react-router-dom";
-import { ProductDetails } from "./Component/Product-Details/ProductDetails";
+import { ProductDetails } from "./Component/Products/Product-Details/ProductDetails";
 import Home from "./Component/Home";
 import { useState } from "react";
 import Payment from "./Component/Payment/Payment";
 import "./index.css";
-import { SubCategory } from "./Component/Sub-Category/SubCategory";
+import { SubCategory } from "./Component/Category/Sub-Category/SubCategory";
 import FilterData from "./Component/FilterData";
-import Allproducts from "./Component/Show-All-Products/Allproducts";
+import Allproducts from "./Component/Products/Allproducts";
 
 function App() {
   const [addItem, setAddItem] = useState([]);

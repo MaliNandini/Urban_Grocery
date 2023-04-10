@@ -17,21 +17,21 @@ function Form({ back, setFormdata, formData }) {
   return (
     <>
       <form
-        className="w-full mt-5 xs:px-9  2xs:w-full 2xs:px-9"
+        className="w-full mt-5 xs:px-9  2xs:w-full 2xs:px-9 bg-white"
         onSubmit={submitHandler}
       >
-        <div className="md:flex mb-6">
-          <div className="md:w-1/3">
+        <div className="md:flex mb-6 bg-white">
+          <div className="md:w-1/3 bg-white">
             <label
-              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
+              className="bg-white block text-gray-500 md:text-right  sm:text-2xl md:text-lg md:mb-0 pr-4 font-semibold"
               for="inline-full-name"
             >
               Name:
             </label>
           </div>
-          <div className="md:w-7/12">
+          <div className="md:w-7/12 bg-white">
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white mt-1 shadow appearance-none border rounded w-full sm:py-3 md:py-2 xs:py-2 sm:text-2xl md:text-sm xs:text-sm px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="name"
               type="text"
               name="name"
@@ -43,18 +43,18 @@ function Form({ back, setFormdata, formData }) {
           </div>
         </div>
 
-        <div className="md:flex mb-6">
-          <div className="md:w-1/3">
+        <div className="md:flex mb-6 bg-white">
+          <div className="md:w-1/3 bg-white">
             <label
-              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
+              className="bg-white block text-gray-500 md:text-right sm:text-2xl md:text-lg md:mb-0 pr-4 font-semibold"
               for="inline-full-name"
             >
               Address:
             </label>
           </div>
-          <div className="md:w-7/12">
+          <div className="md:w-7/12 bg-white">
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white mt-1 shadow appearance-none border rounded w-full sm:py-3 md:py-2 xs:py-2 sm:text-2xl md:text-sm xs:text-sm px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="address"
               type="text"
               name="address"
@@ -66,18 +66,18 @@ function Form({ back, setFormdata, formData }) {
           </div>
         </div>
 
-        <div className="md:flex mb-6">
-          <div className="md:w-1/3">
+        <div className="md:flex mb-6 bg-white">
+          <div className="md:w-1/3 bg-white">
             <label
-              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
+              className="bg-white block text-gray-500 md:text-right sm:text-2xl md:text-lg md:mb-0 pr-4 font-semibold"
               for="inline-full-name"
             >
               Phone:
             </label>
           </div>
-          <div className="md:w-7/12">
+          <div className="md:w-7/12 bg-white">
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white mt-1 shadow appearance-none border rounded w-full sm:py-3 md:py-2 xs:py-2 sm:text-2xl md:text-sm xs:text-sm px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="phone"
               type="text"
               name="phone"
@@ -89,18 +89,18 @@ function Form({ back, setFormdata, formData }) {
           </div>
         </div>
 
-        <div className="md:flex mb-6">
-          <div className="md:w-1/3">
+        <div className="md:flex mb-6 bg-white">
+          <div className="md:w-1/3 bg-white">
             <label
-              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
+              className="bg-white block text-gray-500 md:text-right sm:text-2xl md:text-lg md:mb-0 pr-4 font-semibold"
               for="inline-city"
             >
               City:
             </label>
           </div>
-          <div className="md:w-7/12">
+          <div className="md:w-7/12 bg-white ">
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white mt-1 shadow appearance-none border rounded w-full sm:py-3 md:py-2 xs:py-2 sm:text-2xl md:text-sm xs:text-sm px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="city"
               type="text"
               name="city"
@@ -112,18 +112,18 @@ function Form({ back, setFormdata, formData }) {
           </div>
         </div>
 
-        <div className="md:flex  mb-6">
-          <div className="md:w-1/3">
+        <div className="bg-white md:flex  mb-6">
+          <div className="bg-white md:w-1/3">
             <label
-              className="block text-gray-500 md:text-right  md:mb-0 pr-4 font-semibold"
+              className="bg-white block text-gray-500 md:text-right sm:text-2xl md:text-lg md:mb-0 pr-4 font-semibold"
               for="inline-full-name"
             >
               Pin-Code:
             </label>
           </div>
-          <div className="md:w-7/12">
+          <div className="bg-white md:w-7/12">
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="bg-white mt-1 shadow appearance-none border rounded w-full sm:py-3 md:py-2 xs:py-2 sm:text-2xl md:text-sm xs:text-sm px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="pin"
               type="pin-num"
               placeholder="pin-code"
@@ -135,8 +135,8 @@ function Form({ back, setFormdata, formData }) {
           </div>
         </div>
 
-        <div className="text-center">
-          <button className="bg-lime text-white hover:opacity-90 px-4 py-1.5 rounded-lg ">
+        <div className="text-center bg-white">
+          <button className="bg-lime text-white hover:opacity-90 sm:w-full md:w-36 sm:text-2xl md:text-lg px-4 py-1.5 rounded-lg ">
             Next
           </button>
         </div>
