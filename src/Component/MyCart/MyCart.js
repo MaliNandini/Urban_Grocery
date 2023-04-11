@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaShoppingCart, FaTrash } from "react-icons/fa";
 import CartQuantity from "../Button/CartQuantity";
 import Form from "./Form/Form";
@@ -53,6 +53,22 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     hideMOdal();
   };
 
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setShowModal(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
   return (
     <>
       <button
@@ -60,6 +76,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
         font-bold py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
         onClick={() => setShowModal(true)}
+       
       >
         <div
           className={
@@ -92,7 +109,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
       </button>
       {showModal ? (
         <>
-          <div className="float-right absolute top-0 right-0 bg-white">
+          <div className="float-right absolute top-0 right-0 bg-white" ref={menuRef}>
             <div className="relative ">
               <div className=" min-h-screen md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
                 <div className="bg-white flex items-start justify-between px-3 py-3 m-0  border-b border-light_gray shadow-sm">

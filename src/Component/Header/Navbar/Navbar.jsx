@@ -3,7 +3,7 @@ import Search from "../Search/Search";
 import MyCart from "../../MyCart/MyCart";
 import { NavLink, useNavigate } from "react-router-dom";
 import { FaSistrix } from "react-icons/fa";
-import Account from "../../AccountDropdown/Account";
+import AccountButton from "../../AccountDropdown/AccountButton";
 
 export const Navbar = ({
   setData,
@@ -14,9 +14,12 @@ export const Navbar = ({
   setShowSearchBar,
   name,
   setName,
+  isOpen,
+  setIsOpen
 }) => {
   const navigate = useNavigate();
   const [showSearch, setShowSearch] = useState(true);
+  
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,8 +60,7 @@ export const Navbar = ({
                 />
               </div>
             )}
-
-            <Account/>
+            <AccountButton isOpen={isOpen} setIsOpen={setIsOpen}/>
             <MyCart
               addItem={addItem}
               setAddItem={setAddItem}

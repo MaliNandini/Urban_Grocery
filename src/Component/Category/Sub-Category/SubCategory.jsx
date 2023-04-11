@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { mockProduct } from "../../../Models/MockProduct";
+import DropdownMenu from '../../AccountDropdown/DropdownMenu'
 
-export const SubCategory = ({ setAddItem, addItem }) => {
+export const SubCategory = ({ setAddItem, addItem,isOpen }) => {
   const [allproducts, setAllProducts] = useState(mockProduct.data);
   const [subcategory, setSubcategory] = useState([]);
 
@@ -37,7 +38,7 @@ export const SubCategory = ({ setAddItem, addItem }) => {
   };
 
   return (
-    <>
+    <>   
       <div>
         <div className="grid md:grid-cols-6 sm:grid-cols-4 xs:grid-cols-2 2xs:grid-cols-1 mt-20 px-5 gap-4 ">
           {subcategory &&
