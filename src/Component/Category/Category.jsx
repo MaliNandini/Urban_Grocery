@@ -16,22 +16,21 @@ export const Category = () => {
         </div>
       </div>
 
-      <div className="category xs:mx-2">
-
-      <div className=" grid md:grid-cols-4 gap-4 sm:grid-cols-2 xs:grid-cols-2  md:py-3 ">
+      <div className="category xs:mx-2 xs:mt-3 md:mt-5">
+      <div className=" grid md:grid-cols-4 sm:grid-cols-4 gap-4  xs:grid-cols-2 md:py-3 ">
             {categorydata &&
               categorydata.map((item) => {
                 return (
-                  <div className="md:w-72 rounded-lg border-0 border-gray-600 xs:shadow-md md:shadow-lg xs:py-2 transform transition duration-500 hover:scale-110 bg-white">
+                  <div className="md:w-48 md:ml-10 rounded-lg border border-light_gray hover:border-light_green  xs:py-2 bg-white">
                     <NavLink to={`/subcategory-details/${item.name}`}>
                       <img
-                        className="xs:w-40 xs:h-28 sm:w-96 sm:h-56 md:w-full md:h-56 md:rounded-2xl xs:rounded-lg bg-white sm:rounded-lg"
+                        className="xs:w-32 xs:h-28 xs:ml-2 sm:w-36 sm:h-32 md:w-32 md:h-28 md:ml-6 md:mt-2  md:rounded-2xl xs:rounded-lg bg-white sm:rounded-lg"
                         src={item.image}
                         alt="item"
                       />
                     </NavLink>
-                    <div className="xs:text-center md:py-4 md:text-center bg-white ">
-                      <p className="md:text-xl sm:text-3xl sm:py-2 bg-white">{item.name}</p>
+                    <div className="xs:text-center md:text-center bg-white ">
+                      <p className="md:text-sm sm:text-md sm:py-2 bg-white">{item.name}</p>
                     </div>
                   </div>
               );

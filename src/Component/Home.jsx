@@ -25,8 +25,9 @@ function Home({
           />
         </div>
 
-        <div className="container md:mt-10 w-full items-center">
-          <div className=" md:ml-20 xs:px-3 sm:px-5 ">
+
+        <div className="container md:mt-10 w-full items-center md:ml-20">
+          <div className="  xs:px-3 sm:px-5 ">
             <img
               src="https://dao54xqhg9jfa.cloudfront.net/oms/d35e223b-0fae-e484-bac5-5f9680387dc4/original/BANNERS-02_(4).jpeg"
               alt=""
@@ -38,7 +39,7 @@ function Home({
                 <img
                   src="https://www.whatech.com/images/featured/31344/grocery-ct-25.png"
                   alt=""
-                  className="rounded-xl md:h-[260px]  "
+                  className="rounded-xl md:h-[228px]  "
                 />
               </div>
               <div className="md:w-[453px] md:p-2 md:mt-4 xs:pt-3 sm:h-[400px]">
@@ -64,4 +65,5 @@ function Home({
   );
 }
 
-export default Home;
+export default Home; 
+

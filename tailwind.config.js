@@ -39,6 +39,8 @@ module.exports = {
       default: "#CDCDCE",
       green: "#7FFF00",
       light_gray: "#D3D3D3",
+      lime: "#3BB143",
+      light_green : "#8AFF8A"
     },
     fontFamily: { sans: ["Roboto", "sans-serif"] },
   },
