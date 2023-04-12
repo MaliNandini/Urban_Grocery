@@ -15,10 +15,12 @@ export const Navbar = ({
   name,
   setName,
   isOpen,
-  setIsOpen
+  setIsOpen,
+  
 }) => {
   const navigate = useNavigate();
   const [showSearch, setShowSearch] = useState(true);
+  const [item, setItem] = useState([])
   
 
   useEffect(() => {
@@ -66,6 +68,8 @@ export const Navbar = ({
               setAddItem={setAddItem}
               formData={formData}
               setFormdata={setFormdata}
+              item={item}
+              setItem={setItem}
             />
           </div>
           <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 z-0 bg-white">

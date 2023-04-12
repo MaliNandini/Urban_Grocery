@@ -33,7 +33,7 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
   const addItemHandler = (item) => {
     setShowQtybtn(true);
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
-      console.log(showQtybtn, "showQtybtn ///");
+     
 
       setAddItem((cart) =>
         cart.map((data) =>

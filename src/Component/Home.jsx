@@ -14,7 +14,8 @@ function Home({
   addItem,
   setAddItem,
   isOpen,
-  setIsOpen
+  setIsOpen,
+  
 }) {
   return (
     <div className="relative">
@@ -64,8 +65,9 @@ function Home({
               SubCategory={SubCategory}
               productDetails={productDetails}
               
+              
             />
-            <ProductCarousel addItem={addItem} setAddItem={setAddItem} />
+            <ProductCarousel addItem={addItem} setAddItem={setAddItem}/>
           </div>
         </div>
       </>

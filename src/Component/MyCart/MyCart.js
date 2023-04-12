@@ -6,13 +6,14 @@ import Review from "./Review/Review";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function MyCart({ addItem, setAddItem, formData, setFormdata }) {
+function MyCart({ addItem, setAddItem, formData, setFormdata,item,setItem }) {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState();
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [Payment, setPayment] = useState(false);
+
 
   const hideMOdal = () => {
     setShowModal(false);
@@ -95,9 +96,9 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
         </div>
         <div className="bg-lime">
           {price > 0 ? (
-            <div className="xs:block 2xs:hidden md:block sm:block bg-lime text-sm">
-              {addItem.length} items
-            </div>
+               <div className="xs:block 2xs:hidden md:block sm:block bg-lime text-sm text-white">
+                {addItem.length} Items
+                </div>
           ) : (
             <div className="xs:hidden 2xs:hidden md:block sm:block bg-lime ">
               My Cart
