@@ -57,9 +57,12 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
 
   useEffect(() => {
     let handler = (e) => {
-      if (!menuRef.current.contains(e.target)) {
-        setShowModal(false);
+      if(menuRef.current){
+        if (!menuRef.current.contains(e.target)) {
+          setShowModal(false);
+        }
       }
+      
     };
 
     document.addEventListener("mousedown", handler);
@@ -73,7 +76,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     <>
       <button
         className=" relative  bg-lime text-white  float-right flex gap-1
-        font-bold py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
+        font-bold py-1 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
         onClick={() => setShowModal(true)}
        
@@ -92,7 +95,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
         </div>
         <div className="bg-lime">
           {price > 0 ? (
-            <div className="xs:block 2xs:hidden md:block sm:block bg-lime ">
+            <div className="xs:block 2xs:hidden md:block sm:block bg-lime text-sm">
               {addItem.length} items
             </div>
           ) : (

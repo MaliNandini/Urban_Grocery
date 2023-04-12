@@ -60,14 +60,14 @@ function Allproducts({name,addItem,setAddItem}) {
                               {data.measurement} {data.measurement_unit_name}
                             </p>
                             <div className="mb-3 bg-white">
-                              {data.stock > 0 ? (
+                              {data.stock > 0 && (
                                 <button
                                   className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
                                   onClick={() => addItemHandler(item)}
                                 >
                                   Add to cart
                                 </button>
-                              ): <CartQuantity item={data}/>}
+                              )}
                               {item &&
                                 item.variants.map((item) =>
                                   item.stock > 0 ? null : (

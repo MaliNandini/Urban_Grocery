@@ -14,10 +14,11 @@ function Home({
   addItem,
   setAddItem,
   isOpen,
+  setIsOpen
 }) {
   return (
     <div className="relative">
-      <DropdownMenu isOpen={isOpen}/>
+      <DropdownMenu isOpen={isOpen} setIsOpen={setIsOpen}/>
       <>
         <div className="md:invisible xs:visible">
           <Search
@@ -31,7 +32,7 @@ function Home({
         <div className="container md:mt-10 w-full items-center md:ml-20 absolute">
           <div
             className={
-              isOpen ? "opacity-25" : "opacity-100" + "  xs:px-3 sm:px-5 "
+              isOpen ? "opacity-75" : "opacity-100" + "  xs:px-3 sm:px-5 "
             }
           >
             <img
