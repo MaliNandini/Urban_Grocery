@@ -13,6 +13,9 @@ function MyCart({ addItem, setAddItem, formData, setFormdata, item, setItem }) {
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [Payment, setPayment] = useState(false);
+  const [totalItem,setTotalItem]=useState(0);
+
+
 
   const hideMOdal = () => {
     setShowModal(false);
@@ -33,9 +36,19 @@ function MyCart({ addItem, setAddItem, formData, setFormdata, item, setItem }) {
     setPrice(price);
   };
 
+  const totalAmmount =() =>{
+    let totalammount = 0;
+    addItem.map((e)=>{
+      totalammount += parseFloat(e.amount);
+    });
+    setTotalItem(totalammount);
+  }
+
+
   useEffect(() => {
     total();
-  }, [total]);
+    totalAmmount();
+  }, [total,totalAmmount]);
 
   const removeItemHandler = (item) => {
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
@@ -95,7 +108,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata, item, setItem }) {
         <div className="bg-lime">
           {price > 0 ? (
             <div className="xs:block 2xs:hidden md:block sm:block bg-lime text-sm text-white">
-              {addItem.length} Items
+              {totalItem} Items
             </div>
           ) : (
             <div className="xs:hidden 2xs:hidden md:block sm:block bg-lime ">
