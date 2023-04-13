@@ -16,12 +16,10 @@ export const Navbar = ({
   setName,
   isOpen,
   setIsOpen,
-  
 }) => {
   const navigate = useNavigate();
   const [showSearch, setShowSearch] = useState(true);
-  const [item, setItem] = useState([])
-  
+  const [item, setItem] = useState([]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,16 +51,16 @@ export const Navbar = ({
             </span>
           </NavLink>
 
-          <div class="flex md:order-2 z-10 xs:gap-3 bg-white">
+          <div class="flex md:order-2 z-10  bg-white xs:justify-between">
             {showSearch ? null : (
-              <div className="md:hidden xs:visible rounded-lg bg-lime w-10 h-10 xs:mt-2">
+              <div className="md:hidden xs:visible rounded-lg bg-lime w-8 h-8 xs:mt-2 xs:mx-1">
                 <FaSistrix
-                  className=" text-white m-2 text-2xl bg-lime"
+                  className=" text-white m-1 text-2xl bg-lime"
                   onClick={handleShowSearchBar}
                 />
               </div>
             )}
-            <AccountButton isOpen={isOpen} setIsOpen={setIsOpen}/>
+            <AccountButton isOpen={isOpen} setIsOpen={setIsOpen} />
             <MyCart
               addItem={addItem}
               setAddItem={setAddItem}

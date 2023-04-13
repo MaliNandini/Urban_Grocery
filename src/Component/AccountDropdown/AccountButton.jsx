@@ -5,7 +5,7 @@ function AccountButton({ isOpen, setIsOpen }) {
   return (
     <>
       <div
-        className="flex gap-2 w-24 h-[30px] rounded-lg  md:px-2  md:mt-3 xs:mt-3 bg-white"
+        className="flex  md:w-24 xs:w-20 h-[30px] rounded-lg  md:px-2  md:mt-3 xs:mt-3 bg-white"
        
         onClick={() => setIsOpen(!isOpen)}
       >
