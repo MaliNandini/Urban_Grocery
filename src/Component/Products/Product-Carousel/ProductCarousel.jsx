@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { mockProduct } from "../../../Models/MockProduct";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import CartQuantity from "../../Button/CartQuantity";
+
 
 export const ProductCarousel = ({ name, setAddItem, addItem }) => {
   const navigate = useNavigate();

@@ -6,14 +6,13 @@ import Review from "./Review/Review";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function MyCart({ addItem, setAddItem, formData, setFormdata,item,setItem }) {
+function MyCart({ addItem, setAddItem, formData, setFormdata, item, setItem }) {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [amount, setAmount] = useState();
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [Payment, setPayment] = useState(false);
-
 
   const hideMOdal = () => {
     setShowModal(false);
@@ -58,12 +57,11 @@ function MyCart({ addItem, setAddItem, formData, setFormdata,item,setItem }) {
 
   useEffect(() => {
     let handler = (e) => {
-      if(menuRef.current){
+      if (menuRef.current) {
         if (!menuRef.current.contains(e.target)) {
           setShowModal(false);
         }
       }
-      
     };
 
     document.addEventListener("mousedown", handler);
@@ -73,6 +71,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata,item,setItem }) {
     };
   });
 
+
   return (
     <>
       <button
@@ -80,7 +79,6 @@ function MyCart({ addItem, setAddItem, formData, setFormdata,item,setItem }) {
         font-bold py-1 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
         onClick={() => setShowModal(true)}
-       
       >
         <div
           className={
@@ -96,9 +94,9 @@ function MyCart({ addItem, setAddItem, formData, setFormdata,item,setItem }) {
         </div>
         <div className="bg-lime">
           {price > 0 ? (
-               <div className="xs:block 2xs:hidden md:block sm:block bg-lime text-sm text-white">
-                {addItem.length} Items
-                </div>
+            <div className="xs:block 2xs:hidden md:block sm:block bg-lime text-sm text-white">
+              {addItem.length} Items
+            </div>
           ) : (
             <div className="xs:hidden 2xs:hidden md:block sm:block bg-lime ">
               My Cart
@@ -113,7 +111,10 @@ function MyCart({ addItem, setAddItem, formData, setFormdata,item,setItem }) {
       </button>
       {showModal ? (
         <>
-          <div className="float-right absolute top-0 right-0 bg-white" ref={menuRef}>
+          <div
+            className="float-right absolute top-0 right-0 bg-white"
+            ref={menuRef}
+          >
             <div className="relative ">
               <div className=" min-h-screen md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
                 <div className="bg-white flex items-start justify-between px-3 py-3 m-0  border-b border-light_gray shadow-sm">
@@ -196,6 +197,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata,item,setItem }) {
                                               setAddItem={setAddItem}
                                               addItem={addItem}
                                             />
+                                            
                                           </div>
                                           <div className="bg-white">
                                             <FaTrash
