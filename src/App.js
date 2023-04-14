@@ -21,6 +21,8 @@ function App() {
   });
   const [showSearchBar,setShowSearchBar] = useState(false);
   const [name, setName] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  
 
   return (
     <div>
@@ -33,12 +35,14 @@ function App() {
         setShowSearchBar={setShowSearchBar}
         name={name}
         setName={setName}
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
       />
       <Routes>
         <Route
           path="/"
           element={
-            <Home data={data} addItem={addItem} setAddItem={setAddItem} setData={setData} showSearchBar={showSearchBar}/>
+            <Home data={data} addItem={addItem} setAddItem={setAddItem} setData={setData} showSearchBar={showSearchBar} isOpen={isOpen} setIsOpen={setIsOpen} />
           }
         />
         <Route
@@ -48,11 +52,11 @@ function App() {
 
         <Route
           path="/subcategory-details/:category_name"
-          element={<SubCategory setAddItem={setAddItem} addItem={addItem}/>}
+          element={<SubCategory setAddItem={setAddItem} addItem={addItem} isOpen={isOpen}/>}
         />
         <Route path="/search" element={<FilterData setData={setData} setName={setName} data={data}  name={name} addItem={addItem} setAddItem={setAddItem}/>} />
         <Route path="/payment" element={<Payment />} />
-        <Route path="/allproducts" element={<Allproducts name={name} setAddItem={setAddItem} addItem={addItem}/>} />
+        <Route path="/allproducts" element={<Allproducts name={name} setAddItem={setAddItem} addItem={addItem} />} />
       </Routes>
     </div>
   );

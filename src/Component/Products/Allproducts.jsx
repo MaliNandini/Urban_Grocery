@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { mockProduct } from "../../Models/MockProduct";
+import CartQuantity from "../Button/CartQuantity";
 
-function Allproducts({ name, addItem, setAddItem }) {
+function Allproducts({ name, addItem, setAddItem ,}) {
   const [allproduct, setShowAllProducts] = useState(mockProduct.data);
+  const [showQty,setShowQty] = useState(false);
+
   const addItemHandler = (item) => {
     console.log(item);
+   
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
+     
       setAddItem((cart) =>
         cart.map((data) =>
           data.id === item.id
@@ -19,8 +24,9 @@ function Allproducts({ name, addItem, setAddItem }) {
       );
       return;
     }
-
+   
     setAddItem((cart) => [...cart, { ...item, amount: 1 }]);
+    setShowQty(true);
   };
   return (
     <div className="mt-20 xs:grid xs:grid-cols-2 md:grid md:grid-cols-6 sm:grid-cols-3 flex flex-wrap md:ml-5 ">
@@ -28,7 +34,7 @@ function Allproducts({ name, addItem, setAddItem }) {
         allproduct.map((item) => {
           return (
             <>
-              <div className="w-72 xs:w-44 md:w-44 rounded-lg xs:m-2 xs:my-3 md:mx-5 md:my-4 sm:w-60 sm:my-4 container shadow-sm bg border border-light_gray">
+              <div className="w-72 xs:w-44 md:w-44 rounded-xl xs:m-2 xs:my-3 md:mx-5 md:my-4 sm:w-60 sm:my-4 container shadow-sm bg border border-light_gray">
                 <NavLink
                   to={`/subcategory-details/${item.category_name}/product-details/${item.id}`}
                 >
@@ -66,17 +72,19 @@ function Allproducts({ name, addItem, setAddItem }) {
                                 {data.measurement_unit_name}
                               </p>
                             </div>
+
                             <div className="mb-3 bg-white">
                               {data.stock > 0 && (
                                 <button
-                                  className=" text-lime border border-lightgreen bg-transparent 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-20 xs:m-6 xs:rounded-lg xs:py-1 md:mt-3 md:w-[65px] md:mx-5 md:h-10 sm:w-28 sm:mt-5 md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
+                                  className="text-lime border border-lightgreen bg-transparent 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-20 xs:m-6 xs:rounded-lg xs:py-1 md:mt-3 md:w-[65px] md:mx-5 md:h-10 sm:w-28 sm:mt-5 md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
                                   onClick={() => addItemHandler(item)}
                                 >
                                   Add
                                 </button>
                               )}
-                            </div>
+                            </div>   
                           </div>
+                          
                           {item &&
                             item.variants.map((item) =>
                               item.stock > 0 ? null : (

@@ -3,11 +3,13 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { mockProduct } from "../../../Models/MockProduct";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import CartQuantity from "../../Button/CartQuantity";
+
 
 export const ProductCarousel = ({ name, setAddItem, addItem }) => {
   const navigate = useNavigate();
   const [allproduct, setShowAllProducts] = useState(mockProduct.data);
+  const [showQtybtn, setShowQtybtn] = useState(false);
+
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -16,6 +18,7 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
     },
     desktop: {
       breakpoint: { max: 3000, min: 1024 },
+
       items: 5,
     },
     tablet: {
@@ -25,18 +28,24 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
     mobile: {
       breakpoint: { max: 464, min: 0 },
       items: 2,
+
     },
   };
 
   const addItemHandler = (item) => {
+
     console.log(item);
 
+
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
+      console.log(showQtybtn, "showQtybtn ///");
+
       setAddItem((cart) =>
         cart.map((data) =>
           data.id === item.id
             ? {
                 ...data,
+                status: setShowQtybtn(true),
                 amount: data.amount + 1,
               }
             : data
@@ -71,18 +80,24 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
             allproduct.map((item) => {
               return (
                 <>
-                  <div className="w-72 xs:w-40 md:w-48 rounded-lg md:mt-4 container border border-light_gray hover:border-light_green shadow-lg bg-white">
+
+                  <div className="w-72 xs:w-40 md:w-48 rounded-xl md:mt-4 container border border-light_gray hover:border-light_green shadow-lg bg-white">
+
+               
                     <NavLink
                       to={`/subcategory-details/${item.category_name}/product-details/${item.id}`}
                     >
                       <img
-                        className="w-full h-56 xs:w-32 xs:h-32 xs:m-3 md:h-32 md:ml-4 md:w-36 md:mt-4 rounded-lg bg-white"
+                        className="w-full h-56 xs:w-32 xs:h-32 xs:m-3 xs:ml-3.5 md:h-32 md:ml-4 md:w-36 md:mt-4 rounded-lg bg-white"
                         src={item.image}
                         alt={name}
                       />
                     </NavLink>
                     <div className="py-4 xs:mb-[-10px] md:mx-4 xs:mx-4 sm:mx-4 bg-white">
+
                       <p className="md:text-sm xs:text-sm sm:text-2xl font-normal bg-white truncate ...">
+
+                  
                         {item.name}
                       </p>
                     </div>
@@ -95,7 +110,10 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
                                 ₹{data.price}{" "}
                               </p>
                             </div>
+
+                          
                             {data.stock > 0 ? <button
+
                                 className="md:w-[80px] md:h-[40px] mb-3 xs:w-18 xs:ml-20 sm:ml-2 text-lime border border-lightgreen bg-transparent hover:bg-opacity-75 font-medium rounded-lg text-sm px-5 py-2.5 text-center"
                                 onClick={() => addItemHandler(item)}
                               >
@@ -106,6 +124,7 @@ export const ProductCarousel = ({ name, setAddItem, addItem }) => {
                                 </p>
                               )}                           
                           </div>
+
                         );
                       })}
                   </div>

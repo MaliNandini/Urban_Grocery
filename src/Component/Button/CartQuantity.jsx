@@ -1,8 +1,9 @@
 import React from "react";
 
 function CartQuantity({ item, setAddItem, addItem }) {
+ 
   const quantityDecrease = () => {
-    if (addItem.some((cartItem) => cartItem.id === item.id)) {
+    if (addItem.some((cartItem) => cartItem.id === item.id)){
       setAddItem((cart) =>
         cart.map((data) =>
           data.id === item.id && data.amount !== 1

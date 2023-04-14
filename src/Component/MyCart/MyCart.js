@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaShoppingCart, FaTrash } from "react-icons/fa";
 import CartQuantity from "../Button/CartQuantity";
 import Form from "./Form/Form";
@@ -13,9 +13,9 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [Payment, setPayment] = useState(false);
-  
+  const [totalItem,setTotalItem]=useState(0);
 
-  const hideMOdal = () => {   
+  const hideMOdal = () => {
     setShowModal(false);
     setShowForm(false);
   };
@@ -34,15 +34,23 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     setPrice(price);
   };
 
+  const totalAmmount =() =>{
+    let totalammount = 0;
+    addItem.map((e)=>{
+      totalammount += parseFloat(e.amount);
+    });
+    setTotalItem(totalammount);
+  }
+
   useEffect(() => {
     total();
-  }, [total]);
+    totalAmmount();
+  }, [total,totalAmmount]);
 
   const removeItemHandler = (item) => {
     setAddItem((cart) => cart.filter((data) => data.id !== item.id));
     let price = price - item.amount * parseFloat(item.variants[0].price);
     setPrice(price);
-   
   };
 
   const formHandler = () => {
@@ -54,37 +62,68 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     navigate("/payment");
     hideMOdal();
   };
-  
+
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if(menuRef.current){
+        if (!menuRef.current.contains(e.target)) {
+          setShowModal(false);
+        }
+      }
+      
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
+
   return (
     <>
       <button
-        className=" relative  bg-lime text-white  float-right flex gap-1
-        font-bold py-3 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
+        className="relative bg-lime text-white float-right flex gap-1
+        font-bold py-1 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
-        onClick={() => setShowModal(true)}
-       
-        
+        onClick={() => setShowModal(true)}      
       >
-        <div className="relative xs:px-2 2xs:px-2 bg-lime">
-          <FaShoppingCart className="xs:text-2xl bg-lime"/>
-          {addItem.length >= 1 && (
-            <span class="-top-[13px] md:left-5 xs:left-5 2xs:left-4 absolute my-1 w-5 h-5 bg-red border-2 border-white  rounded-full text-white text-sm">
-              {addItem.length}
-            </span>
-          )}
+        <div
+          className={
+            price > 0 ? "mt-3" : null + "relative xs:px-2 2xs:px-2 bg-lime"
+          }
+        >
+          <FaShoppingCart className="xs:text-2xl bg-lime hover:animate-bounce" />
         </div>
-        <div className="xs:hidden 2xs:hidden md:block sm:block bg-lime">My Cart</div>
+        <div className="bg-lime">
+          {price > 0 ? (
+            <div className="xs:block 2xs:hidden md:block sm:block bg-lime text-sm">
+              {totalItem} items
+            </div>
+          ) : (
+            <div className="xs:hidden 2xs:hidden md:block sm:block bg-lime ">
+              My Cart
+            </div>
+          )}
+          {price > 0 ? (
+            <div className="bg-lime text-white text-sm float-left">
+              ₹ {price}
+            </div>
+          ) : null}
+        </div>
       </button>
       {showModal ? (
         <>
-          <div className="float-right absolute top-0 right-0 bg-white">
+          <div className="float-right absolute top-0 right-0 bg-white" ref={menuRef}>
             <div className="relative ">
               <div className=" min-h-screen md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
                 <div className="bg-white flex items-start justify-between px-3 py-3 m-0  border-b border-light_gray shadow-sm">
                   <div className="mt-3 bg-white">
                     {showForm ? (
                       <button className="back-button bg-white" onClick={back}>
-                        <FaArrowLeft className="bg-white"/>
+                        <FaArrowLeft className="bg-white" />
                       </button>
                     ) : null}
                   </div>
@@ -123,9 +162,9 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
 
                                     <div class="bg-white ml-4 flex flex-1 flex-col truncate ...">
                                       <div class=" bg-white md:text-sm xs:text-sm sm:text-3xl font-semibold text-gray-900 ">
-                                          <p className="bg-white float-left truncate ...">
-                                            {item.name}
-                                          </p>
+                                        <p className="bg-white float-left truncate ...">
+                                          {item.name}
+                                        </p>
                                         <br />
                                         {item.variants.map((data) => {
                                           return (
@@ -135,12 +174,11 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                                   {data.measurement}{" "}
                                                   {data.measurement_unit_name}
                                                 </p>
-                                               <br></br>
+                                                <br></br>
                                                 <p class="bg-white md:text-sm xs:text-sm sm:text-2xl text-gray-500 float-left text-lime">
                                                   ₹{data.price}{" "}
                                                 </p>
                                                 <br></br>
-                                               
                                               </div>
                                             </>
                                           );
@@ -160,7 +198,6 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                               item={item}
                                               setAddItem={setAddItem}
                                               addItem={addItem}
-                                            
                                             />
                                           </div>
                                           <div className="bg-white">
@@ -182,16 +219,24 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                     className="flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
                                     onClick={handlePayment}
                                   >
-                                    <p className="p-2 bg-lime rounded-lg">Total : ₹ {price}</p>
-                                    <p className="p-2 bg-lime rounded-lg">Process to Payment </p>
+                                    <p className="p-2 bg-lime rounded-lg">
+                                      Total : ₹ {price}
+                                    </p>
+                                    <p className="p-2 bg-lime rounded-lg">
+                                      Process to Payment{" "}
+                                    </p>
                                   </button>
                                 ) : (
                                   <button
                                     className="flex justify-between bg-lime text-white  fixed bottom-0 md:w-[350px] xs:w-[350px] sm:w-[750px] 2xs:w-[260px] rounded-lg"
                                     onClick={formHandler}
                                   >
-                                    <p className="p-2 bg-lime rounded-lg">Total : ₹ {price}</p>
-                                    <p className="p-2 bg-lime rounded-lg">Process to Pay </p>
+                                    <p className="p-2 bg-lime rounded-lg">
+                                      Total : ₹ {price}
+                                    </p>
+                                    <p className="p-2 bg-lime rounded-lg">
+                                      Process to Pay{" "}
+                                    </p>
                                   </button>
                                 )}
                               </div>
@@ -216,7 +261,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                   ) : null}
                 </div>
 
-                {showForm && addItem.length  ? null : (
+                {showForm && addItem.length ? null : (
                   <div className="fixed bottom-10 bg-white p-3">
                     <Review formData={formData} />
                   </div>

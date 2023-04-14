@@ -3,6 +3,8 @@ import { Category } from "./Category/Category";
 import CarouselComponent from "./Carousel/Carousel";
 import Search from "./Header/Search/Search";
 import { ProductCarousel } from "./Products/Product-Carousel/ProductCarousel";
+import { NavLink } from "react-router-dom";
+import DropdownMenu from "./AccountDropdown/DropdownMenu";
 
 function Home({
   data,
@@ -11,10 +13,13 @@ function Home({
   setData,
   addItem,
   setAddItem,
+  isOpen,
+  setIsOpen,
+  
 }) {
-
   return (
-    <div>
+    <div className="relative">
+      <DropdownMenu isOpen={isOpen} setIsOpen={setIsOpen} />
       <>
         <div className="md:invisible xs:visible">
           <Search
@@ -25,13 +30,16 @@ function Home({
           />
         </div>
 
-
-        <div className="container md:mt-10 w-full items-center md:ml-20">
-          <div className="  xs:px-3 sm:px-5 ">
+        <div className="container md:mt-10 w-full items-center md:ml-20 absolute">
+          <div
+            className={
+              isOpen ? "opacity-75" : "opacity-100" + "  xs:px-3 sm:px-5 "
+            }
+          >
             <img
               src="https://dao54xqhg9jfa.cloudfront.net/oms/d35e223b-0fae-e484-bac5-5f9680387dc4/original/BANNERS-02_(4).jpeg"
               alt=""
-              className="rounded-xl xs:h-[145px] md:w-full md:h-[270px] xs:w-full sm:h-[232px]"
+              className=" rounded-xl xs:h-[145px] md:w-full md:h-[270px] xs:w-full sm:h-[232px]"
             />
 
             <div className="flex md:flex-row justify-between xs:flex-col xs:mt-3">
@@ -57,7 +65,7 @@ function Home({
               SubCategory={SubCategory}
               productDetails={productDetails}
             />
-            <ProductCarousel addItem={addItem} setAddItem={setAddItem} /> 
+            <ProductCarousel addItem={addItem} setAddItem={setAddItem} />
           </div>
         </div>
       </>
@@ -65,5 +73,4 @@ function Home({
   );
 }
 
-export default Home; 
-
+export default Home;
