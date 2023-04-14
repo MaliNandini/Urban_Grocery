@@ -26,8 +26,7 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
       </div>
       <div className="md:flex md:flex-row md:flex-wrap md:ml-24 sm:ml-6 sm:flex sm:flex-wrap ">
         {/* show singal product on filter  */}
-        {data &&
-          data.map((item) => {
+        {data && data.length > 0 ? (data.map((item) => {
             return (
               <>
                 <div className="w-80 rounded-lg mx-5 sm:my-4 container shadow-lg bg-white">
@@ -83,7 +82,16 @@ function FilterData({ data, name, setName, setData, setAddItem, addItem }) {
                 </div>
               </>
             );
-          })}
+          })) : (
+           
+            <div className="text-center justify-center xs:w-[375px] md:w-[1220px] sm:w-[750px]">
+            <p className="xs:text-xl md:text-2xl">No results found.</p>
+            <p className="xs:text-sm md:text-md">Please Check the spelling or try a differnet word</p>
+          </div>
+            
+          
+          )
+          }
       </div>
     </div>
   );

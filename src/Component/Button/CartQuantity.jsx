@@ -39,7 +39,11 @@ function CartQuantity({ item, setAddItem, addItem }) {
       <button className="md:text-lg xs:text-lg sm:text-4xl" onClick={() => quantityDecrease()}>
         -
       </button>
-      <p className="md:text-sm xs:text-sm sm:text-2xl mt-1 bg-lime">{item.amount}</p>
+      {/* {item && item.map((e)=>{
+        return  <p className="md:text-sm xs:text-sm sm:text-2xl mt-1 bg-lime">{e.amount}</p>
+      })} */}
+       <p className="md:text-sm xs:text-sm sm:text-2xl mt-1 bg-lime">{item.amount}</p>
+     
       <button className="md:text-lg xs:text-lg sm:text-3xl" onClick={() => quantityIncrease()}>
         +
       </button>

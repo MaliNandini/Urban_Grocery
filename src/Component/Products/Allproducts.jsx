@@ -5,10 +5,11 @@ import CartQuantity from "../Button/CartQuantity";
 
 function Allproducts({ name, addItem, setAddItem }) {
   const [allproduct, setShowAllProducts] = useState(mockProduct.data);
-  const [cartQty, setCartQty] = useState(0);
+  // const [open, setOpen] = useState(false);
 
   const addItemHandler = (item) => {
     if (addItem.some((cartItem) => cartItem.id === item.id)) {
+      // setOpen(true);
       setAddItem((cart) =>
         cart.map((data) =>
           data.id === item.id
@@ -71,11 +72,39 @@ function Allproducts({ name, addItem, setAddItem }) {
                                 className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
                                 onClick={() => addItemHandler(item)}
                               >
-                                Add to Cart
+                                add to cart
                               </button>
-                              // `Quantity: ${cartItems.find(item => item.id === id).quantity}`
                             )}
-                            {/* {addItem.find(i => i.id === item.id) ? <CartQuantity item={addItem}/> : 'Add to Cart'} */}
+
+                            {/* {addItem.find((i) => i.id === item.id) ? (
+                              <>
+                              <CartQuantity
+                                item={item}
+                                setAddItem={setAddItem}
+                                addItem={addItem}
+                              />
+                              <div>
+                                {console.log(addItem,"addItem.ammount")}
+                                {addItem && addItem.map((e)=>{
+                                  return (
+                                  <>
+                                  { addItem.find((i) => i.id === e.id) ? (
+                                    <p className="md:text-sm xs:text-sm sm:text-2xl mt-1 bg-lime">{e.amount}</p>
+                                  ):null}
+                                  </>
+                                  ) 
+                                })}
+                                </div>
+                              </>
+                            ) : (
+                              <button
+                                className="bg-lime 2xs:px-2 2xs:mt-2 2xs:rounded xs:mt-3 xs:w-24 xs:rounded-lg xs:py-1 md:mt-3 md:w-[118px] sm:w-[130px] sm:mt-5  text-white md:font-bold md:py-3 sm:text-lg md:text-sm md:px-4 md:rounded-lg md:hover:opacity-90"
+                                onClick={() => addItemHandler(item)}
+                              >
+                                add to cart
+                              </button>
+                            )} */}
+
                             {item &&
                               item.variants.map((item) =>
                                 item.stock > 0 ? null : (
