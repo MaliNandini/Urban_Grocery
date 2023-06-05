@@ -8,6 +8,18 @@ import "./index.css";
 import { SubCategory } from "./Component/Category/Sub-Category/SubCategory";
 import FilterData from "./Component/FilterData";
 import Allproducts from "./Component/Products/Allproducts";
+import { Faq } from "./Component/FAQ/Faq";
+import { MyOrder } from "./Component/My-Order/MyOrder";
+import { Myprofile } from "./Component/User-Account/Myprofile";
+import { Success } from "./Component/Payment/Success";
+import { Wallet } from "./Component/MyWallet/Wallet";
+import { Aside } from "./Component/User-Account/Aside";
+import { Login } from "./Component/Login.jsx/Login";
+import { ForgetPass } from "./Component/Login.jsx/ForgetPass";
+import { Address } from "./Component/MyAddress/Address";
+
+
+
 
 function App() {
   const [addItem, setAddItem] = useState([]);
@@ -19,10 +31,13 @@ function App() {
     phone: "",
     pin: "",
   });
+  const [formArr,setFormArr] = useState([])
   const [showSearchBar,setShowSearchBar] = useState(false);
   const [name, setName] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+  const [price, setPrice] = useState(0);
   
+  // console.log(addItem,"");
 
   return (
     <div>
@@ -47,16 +62,27 @@ function App() {
         />
         <Route
           path="/subcategory-details/:category_name/product-details/:id"
-          element={<ProductDetails setAddItem={setAddItem} addItem={addItem} />}
+          element={<ProductDetails setAddItem={setAddItem} addItem={addItem} isOpen={isOpen} setIsOpen={setIsOpen} />}
         />
 
         <Route
-          path="/subcategory-details/:category_name"
-          element={<SubCategory setAddItem={setAddItem} addItem={addItem} isOpen={isOpen}/>}
+          path="/subcategory-details/:category_id"
+          element={<SubCategory setAddItem={setAddItem} addItem={addItem} isOpen={isOpen} setIsOpen={setIsOpen}/>}
         />
         <Route path="/search" element={<FilterData setData={setData} setName={setName} data={data}  name={name} addItem={addItem} setAddItem={setAddItem}/>} />
         <Route path="/payment" element={<Payment />} />
-        <Route path="/allproducts" element={<Allproducts name={name} setAddItem={setAddItem} addItem={addItem} />} />
+        {/* <Route path="/account" element={<Account />} /> */}
+        <Route path="/wallet" element={<Wallet setIsOpen={setIsOpen} isOpen={isOpen} />} />
+        {/* <Route path="/myprofile" element={<Myprofile/>} /> */}
+        <Route path="/aside" element={<Aside/>} />
+        <Route path="/reset" element={<ForgetPass isOpen={isOpen} setIsOpen={setIsOpen}/>} />
+      
+        <Route path="/success" element={<Success/>} />
+        <Route path="/address" element={<Address isOpen={isOpen} setIsOpen={setIsOpen} />} />
+        <Route path="/login" element={<Login setIsOpen={setIsOpen} isOpen={isOpen}/>} />
+        <Route path="/faq" element={<Faq isOpen={isOpen} setIsOpen={setIsOpen}/>}/>
+        <Route path="/myorder" element={<MyOrder isOpen={isOpen} setIsOpen={setIsOpen} setAddItem={setAddItem} addItem={addItem} price={price} setPrice={setPrice} />}/>
+        <Route path="/allproducts" element={<Allproducts name={name} setAddItem={setAddItem} addItem={addItem} isOpen={isOpen} setIsOpen={setIsOpen}/>} />
       </Routes>
     </div>
   );

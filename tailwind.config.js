@@ -34,6 +34,13 @@ module.exports = {
       secondary: "#666666",
       light_green: "#c4fbc4",
       yellow_rating: "#f4cb45",
+      lightgray : "#545454",
+      darkgray: "#3f3f3f",
+      candy: "#D21404",
+      lava_grey: "#989898",
+      lightest_grey : "#e2e2e2",
+      light_gray: "#313131",
+      green_light : "#a3183d"
     },
     borderColor: {
       default: "#CDCDCE",

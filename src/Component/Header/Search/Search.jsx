@@ -1,13 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { mockProduct } from "../../../Models/MockProduct";
 import { NavLink, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { API_TOKEN } from "../../Token/Token";
 
 const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
-  const [searchData, setSearchData] = useState(mockProduct.data);
-
+  // const [searchData, setSearchData] = useState(mockProduct.data);
+  const [searchData, setSearchData] = useState([]);
+  const [Inputsearch, setInputSearch] = useState("");
   const navigate = useNavigate();
 
+  const serchAPIData = () => {
+    let config = {
+      headers: {
+        Authorization: `Bearer ${API_TOKEN}`,
+      },
+    };
+
+    var bodyFormData = new FormData();
+    bodyFormData.append("accesskey", "90336");
+    bodyFormData.append("type", "products-search");
+    bodyFormData.append("search", Inputsearch);
+
+    axios
+      .post(
+        "https://grocery.intelliatech.in/api-firebase/products-search.php",
+        bodyFormData,
+        config
+      )
+      .then((res) => {
+        // console.log(res.data.data)
+        setSearchData(res.data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  useEffect(() => {
+    serchAPIData();
+  },[]);
+
+
   const handleChange = (e) => {
+    setInputSearch(e.target.value); 
     navigate("/search");
     const filteredData = e.target.value;
     setName(filteredData);
@@ -103,7 +139,7 @@ const Search = ({ setData, data, name, setName, setAddItem, addItem }) => {
                   className="my-2 mr-8 text-white bg-lime hover:bg-opacity-75 font-medium rounded-lg text-sm px-5 py-2.5"
                   onClick={() => addItemHandler(item)}
                 >
-                  Add to cart
+                  Add
                 </button>
               </div>
             </>

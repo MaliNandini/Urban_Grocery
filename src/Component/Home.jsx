@@ -3,7 +3,6 @@ import { Category } from "./Category/Category";
 import CarouselComponent from "./Carousel/Carousel";
 import Search from "./Header/Search/Search";
 import { ProductCarousel } from "./Products/Product-Carousel/ProductCarousel";
-import { NavLink } from "react-router-dom";
 import DropdownMenu from "./AccountDropdown/DropdownMenu";
 
 function Home({
@@ -15,8 +14,9 @@ function Home({
   setAddItem,
   isOpen,
   setIsOpen,
-  
-}) {
+})
+ {
+ 
   return (
     <div className="relative">
       <DropdownMenu isOpen={isOpen} setIsOpen={setIsOpen} />

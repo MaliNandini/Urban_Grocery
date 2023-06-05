@@ -42,18 +42,18 @@ export const Navbar = ({
         <div className="bg-white flex flex-wrap items-center justify-between mx-auto ">
           <NavLink to="/" className="flex items-center bg-white">
             <img
-              src="http://grocery.intelliatech.com/dist/img/logo.png"
-              className="h-6 mr-3 mt-2 sm:h-9 bg-white"
+              src="http://grocery.intelliatech.in/dist/img/logo.png"
+              className="h-6 md:w-[150px] md:h-[50px] md:ml-8 mr-3 mt-2 sm:h-9 bg-white "
               alt="Flowbite Logo"
             />
-            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white bg-white">
+            {/* <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white bg-white">
               Hi,There!
-            </span>
+            </span> */}
           </NavLink>
 
-          <div class="flex md:order-2 z-10 xs:justify-between bg-white">
+          <div className="flex md:order-2 z-10 xs:justify-between bg-white">
             {showSearch ? null : (
-              <div className="md:hidden xs:visible rounded-lg bg-lime w-8 h-8 xs:mt-2 xs:mx-1">
+              <div className="md:hidden xs:visible rounded-lg bg-lime w-8 h-8 xs:w-8 xs:h-8 xs:mt-3.5 xs:mx-2">
                 <FaSistrix
                   className=" text-white m-1 text-2xl bg-lime"
                   onClick={handleShowSearchBar}
@@ -66,8 +66,6 @@ export const Navbar = ({
               setAddItem={setAddItem}
               formData={formData}
               setFormdata={setFormdata}
-
-
             />
           </div>
           <div className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 z-0 bg-white">

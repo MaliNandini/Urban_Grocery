@@ -1,10 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaArrowLeft, FaShoppingCart, FaTrash } from "react-icons/fa";
-import CartQuantity from "../Button/CartQuantity";
+
 import Form from "./Form/Form";
 import Review from "./Review/Review";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { API_TOKEN } from "../Token/Token";
+import { QtyAmount } from "../Button/QtyAmount";
+import CartQuantity from "../Button/CartQuantity";
 
 function MyCart({ addItem, setAddItem, formData, setFormdata }) {
   const navigate = useNavigate();
@@ -13,7 +16,10 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
   const [price, setPrice] = useState(0);
   const [showForm, setShowForm] = useState(false);
   const [Payment, setPayment] = useState(false);
-  const [totalItem,setTotalItem]=useState(0);
+  const [totalItem, setTotalItem] = useState(0);
+
+  const accesskey = "90336";
+  const user_id = "14";
 
   const hideMOdal = () => {
     setShowModal(false);
@@ -26,31 +32,61 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     }
   };
 
+
   const total = () => {
     let price = 0;
-    addItem.map((e) => {
-      price += parseFloat(e.variants[0].price) * e.amount;
+    addItem.forEach((e) => {
+      if (e.variants && e.variants[0] && e.variants[0].price && e.amount) {
+        price += parseFloat(e.variants[0].price) * e.amount;
+      }
     });
     setPrice(price);
+    console.log(price,"piceeeeeeeeeeeeeeeeeeeeeeeeee")
   };
-
-  const totalAmmount =() =>{
-    let totalammount = 0;
-    addItem.map((e)=>{
-      totalammount += parseFloat(e.amount);
+  
+  const totalAmount = () => {
+    let totalAmount = 0;
+    addItem.forEach((e) => {
+      if (e.amount) {
+        totalAmount += parseFloat(e.amount);
+      }
     });
-    setTotalItem(totalammount);
-  }
+    setTotalItem(totalAmount);
+  };
+  
 
   useEffect(() => {
     total();
-    totalAmmount();
-  }, [total,totalAmmount]);
+    totalAmount();
+  }, [addItem]);
 
   const removeItemHandler = (item) => {
-    setAddItem((cart) => cart.filter((data) => data.id !== item.id));
-    let price = price - item.amount * parseFloat(item.variants[0].price);
-    setPrice(price);
+    let config = {
+      headers: {
+        Authorization: `Bearer ${API_TOKEN}`,
+      },
+    };
+
+    var bodyFormdata = new FormData();
+    bodyFormdata.append("accesskey", "90336");
+    bodyFormdata.append("remove_from_cart", "1");
+    bodyFormdata.append("user_id", "14");
+
+    axios
+      .post(
+        "https://grocery.intelliatech.in/api-firebase/cart.php",
+        bodyFormdata,
+        config
+      )
+      .then((res) => {
+        console.log(res, "???????????????????????????????");
+        setAddItem((cart) => cart.filter((data) => data.id !== item.id));
+        let price = price - item.amount * parseFloat(item.variants[0].price);
+        setPrice(price);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const formHandler = () => {
@@ -67,12 +103,11 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
 
   useEffect(() => {
     let handler = (e) => {
-      if(menuRef.current){
+      if (menuRef.current) {
         if (!menuRef.current.contains(e.target)) {
           setShowModal(false);
         }
       }
-      
     };
 
     document.addEventListener("mousedown", handler);
@@ -82,20 +117,61 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
     };
   });
 
+  const getUserCarts = (accesskey, user_id) => {
+    let config = {
+      headers: {
+        Authorization: `Bearer ${API_TOKEN}`,
+      },
+    };
+
+    var bodyFormdata = new FormData();
+    bodyFormdata.append("accesskey", accesskey);
+    bodyFormdata.append("get_user_cart", "1");
+    bodyFormdata.append("user_id", user_id);
+
+    return axios.post(
+      "https://grocery.intelliatech.in/api-firebase/cart.php",
+      bodyFormdata,
+      config
+    );
+  };
+  
+  useEffect(() => {
+    getUserCarts(accesskey, user_id)
+      .then((res) => {
+
+        console.log(res.data.data, "cart my-response");
+        console.log(res.data.data.map(data=> ({...data ,amount:+data.qty})), "my-response");
+
+       let addqtytoamount= res.data.data.map(data=> ({...data ,amount:+data.qty}))
+       console.log(addqtytoamount, "addqtytoamount");
+        setAddItem( addqtytoamount);
+        total();
+        totalAmount();
+      })
+      .catch((error) => {
+        console.log("hello this error is shown in the program", error);
+      });
+  }, [accesskey, user_id]);
+
+  console.log("addItemmmmmmmmmmmmmmmmmmmmmmmm",addItem)
   return (
     <>
       <button
         className="relative bg-lime text-white float-right flex gap-1
         font-bold py-1 rounded shadow xs:my-2 xs:px-2 2xs:my-2 2xs:py-2 2xs:px-1"
         type="button"
-        onClick={() => setShowModal(true)}      
+        onClick={() => {
+          setShowModal(true);
+          getUserCarts(accesskey, user_id);
+        }}
       >
         <div
           className={
             price > 0 ? "mt-3" : null + "relative xs:px-2 2xs:px-2 bg-lime"
           }
         >
-          <FaShoppingCart className="xs:text-2xl bg-lime hover:animate-bounce" />
+          <FaShoppingCart className="xs:text-2xl bg-lime hover:animate-hbeat" />
         </div>
         <div className="bg-lime">
           {price > 0 ? (
@@ -116,9 +192,12 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
       </button>
       {showModal ? (
         <>
-          <div className="float-right absolute top-0 right-0 bg-white" ref={menuRef}>
+          <div
+            className="float-right absolute top-0 right-0 bg-white"
+            ref={menuRef}
+          >
             <div className="relative ">
-              <div className=" min-h-screen md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none ">
+              <div className=" min-h-screen md:w-96 sm:w-screen xs:w-screen border-0 rounded-lg shadow-lg relative flex flex-col  bg-white outline-none focus:outline-none">
                 <div className="bg-white flex items-start justify-between px-3 py-3 m-0  border-b border-light_gray shadow-sm">
                   <div className="mt-3 bg-white">
                     {showForm ? (
@@ -145,14 +224,14 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                       addItem.map((item) => {
                         return (
                           <>
-                            <div class="mt-3 bg-white  md:p-5 xs:p-4 2xs:p-2  ">
+                            <div class="mt-3 bg-white md:p-5 xs:p-4 2xs:p-2  ">
                               <div class="flow-root">
                                 <ul
                                   role="list"
                                   class="-my-6 divide-y divide-gray-200"
                                 >
                                   <li class="flex py-6 bg-white">
-                                    <div class=" bg-white md:h-24 md:w-24 xs:h-24 xs:w-24 sm:h-48 sm:w-48  flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
+                                    <div class=" bg-white md:h-24 md:w-24 xs:h-24 xs:w-24 sm:h-48 sm:w-48 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                                       <img
                                         src={item.image}
                                         alt="product"
@@ -166,23 +245,24 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                           {item.name}
                                         </p>
                                         <br />
-                                        {item.variants.map((data) => {
-                                          return (
-                                            <>
-                                              <div className="2xs:flex-col md:flex-col bg-white">
-                                                <p class=" bg-white md:text-sm xs:text-sm sm:text-2xl font-light float-left">
-                                                  {data.measurement}{" "}
-                                                  {data.measurement_unit_name}
-                                                </p>
-                                                <br></br>
-                                                <p class="bg-white md:text-sm xs:text-sm sm:text-2xl text-gray-500 float-left text-lime">
-                                                  ₹{data.price}{" "}
-                                                </p>
-                                                <br></br>
-                                              </div>
-                                            </>
-                                          );
-                                        })}
+                                        {item.variants &&
+                                          item.variants.map((data) => {
+                                            return (
+                                              <>
+                                                <div className="2xs:flex-col md:flex-col bg-white">
+                                                  <p class=" bg-white md:text-sm xs:text-sm sm:text-2xl font-light float-left">
+                                                    {data.measurement}{" "}
+                                                    {data.measurement_unit_name}
+                                                  </p>
+                                                  <br></br>
+                                                  <p class="bg-white md:text-sm xs:text-sm sm:text-2xl text-gray-500 float-left text-lime">
+                                                    ₹{data.price}{" "}
+                                                  </p>
+                                                  <br></br>
+                                                </div>
+                                              </>
+                                            );
+                                          })}
 
                                         <div className="bg-white flex justify-between ">
                                           <div className="bg-white">
@@ -194,7 +274,7 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                           </div>
 
                                           <div className="bg-white">
-                                            <CartQuantity
+                                          <QtyAmount
                                               item={item}
                                               setAddItem={setAddItem}
                                               addItem={addItem}
@@ -213,6 +293,12 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                                     </div>
                                   </li>
                                 </ul>
+
+                                {showForm && addItem.length ? null : (
+                                  <div className="fixed bottom-10 bg-white p-3">
+                                    <Review formData={formData} />
+                                  </div>
+                                )}
 
                                 {Payment ? (
                                   <button
@@ -260,12 +346,6 @@ function MyCart({ addItem, setAddItem, formData, setFormdata }) {
                     />
                   ) : null}
                 </div>
-
-                {showForm && addItem.length ? null : (
-                  <div className="fixed bottom-10 bg-white p-3">
-                    <Review formData={formData} />
-                  </div>
-                )}
               </div>
             </div>
           </div>

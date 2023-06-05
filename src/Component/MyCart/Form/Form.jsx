@@ -1,19 +1,60 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { API_TOKEN } from "../../Token/Token";
+import axios from "axios";
 
 function Form({ back, setFormdata, formData }) {
+  
   const formHandler = (e) => {
     let name = e.target.name;
     let value = e.target.value;
     setFormdata({ ...formData, [name]: value });
   };
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    if (formData !== "") {
-      back();
-    }   
-  };
+  const submitHandler = (event) => {
+    event.preventDefault();
+      if (formData !== "") {
+        back();
+      
+    // event.preventDefault();
+    // setFormArr([...formArr,formData])
+    // console.log(formArr);
+    // console.log(formData)
+    // let config = {
+    //   headers : {
+    //     Authorization : `Bearer ${API_TOKEN}`
+    //   }
+    // }
+    // var bodyFormData = new FormData();
+    // bodyFormData.append("accesskey","90336")
+    // bodyFormData.append("add_address","1")
+    // bodyFormData.append("user_id","Home0")
+    // bodyFormData.append("name",formData.name)
+    // bodyFormData.append("mobile",formData.phone)
+    // bodyFormData.append("address",formData.address)
+    // bodyFormData.append("landmark","Bhuj-Mirzapar Highway")
+    // bodyFormData.append("area_id","1")
+    // bodyFormData.append("city_id","2") 
+    // bodyFormData.append("pincode",formData.pin) 
+    // bodyFormData.append("state","Gujarat") 
+    // bodyFormData.append("country","India") 
 
+    // axios.post("https://grocery.intelliatech.com/api-firebase/user-addresses.php",
+    // config,
+    // bodyFormData
+    // ).then((res)=>{
+    //   console.log(res)
+    //   if(res.status === 200){
+    //     alert("Succesfully Call")
+    //     if (formData !== "") {
+    //       back();
+    //     }
+    //   }
+    // }).catch((err)=>{
+    //   console.log(err)
+    // })
+   
+  };
+}
   return (
     <>
       <form
